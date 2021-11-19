@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Rest-Assured API Test Suite">
+    <listeners>
+        <listener
+                class-name="io.github.mfaisalkhatri.TestListener"/>
+    </listeners>
+    <test name="Authentication Tests" enabled="false">
+        <classes>
+            <class name="io.github.mfaisalkhatri.TestAuthentication">
+                <methods>
+                    <include name="testAuthenticationToken"/>
+                    <include name="testAuthToken"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Get Request Tests" enabled="true">
+        <classes>
+            <class name="io.github.mfaisalkhatri.TestGetRequests">
+                <methods>
+                    <include name="getRequestTest"/>
+                    <include name="getRequestTestWithQueryParam"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Get Tests with Rest Assured Config" enabled="false">
+        <classes>
+            <class name="io.github.mfaisalkhatri.TestGetRequestWithRestAssuredConfig">
+                <methods>
+                    <include name="testGetRequestwithRestAssured"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Post Request tests" enabled="false">
+        <classes>
+            <class name="io.github.mfaisalkhatri.TestPostRequest">
+                <methods>
+                    <include name="testPostWithRestAssured"/>
+                </methods>
+            </class>
+            <class name="io.github.mfaisalkhatri.PostRequestBuilderExample">
+                <methods>
+                    <include name="postTestUsingBuilderPattern"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Put Request Tests">
+        <classes>
+            <class name="io.github.mfaisalkhatri.TestPutRequests">
+                <methods>
+                    <include name="testPutWithRestAssured"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Patch Request tests" enabled="false">
+        <classes>
+            <class name="io.github.mfaisalkhatri.TestPatchRequests">
+                <methods>
+                    <include name="testPatchWithRestAssured"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Delete Requests tests " enabled="false">
+        <classes>
+            <class name="io.github.mfaisalkhatri.TestDeleteRequests">
+                <methods>
+                    <include name="testDeleUsingRestAsured"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite> <!-- Suite -->
