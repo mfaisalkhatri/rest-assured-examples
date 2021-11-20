@@ -43,7 +43,7 @@ public class TestPatchRequests {
      * @param job
      */
     @Test (dataProvider = "patchData")
-    public void testPatchWithRestAssured (final int id, final String name, final String job) {
+    public void patchRequestTests (final int id, final String name, final String job) {
 
         final PostData postData = new PostData (name, job);
         final String response = given ().contentType (ContentType.JSON)

@@ -5,7 +5,7 @@
         <listener
                 class-name="io.github.mfaisalkhatri.TestListener"/>
     </listeners>
-    <test name="Authentication Tests" enabled="false">
+    <test name="Authentication Tests">
         <classes>
             <class name="io.github.mfaisalkhatri.TestAuthentication">
                 <methods>
@@ -15,7 +15,7 @@
             </class>
         </classes>
     </test>
-    <test name="Get Request Tests" enabled="true">
+    <test name="Get Request Tests">
         <classes>
             <class name="io.github.mfaisalkhatri.TestGetRequests">
                 <methods>
@@ -26,7 +26,7 @@
         </classes>
     </test>
 
-    <test name="Get Tests with Rest Assured Config" enabled="false">
+    <test name="Get Tests with Rest Assured Config">
         <classes>
             <class name="io.github.mfaisalkhatri.TestGetRequestWithRestAssuredConfig">
                 <methods>
@@ -36,7 +36,7 @@
         </classes>
     </test>
 
-    <test name="Post Request tests" enabled="false">
+    <test name="Post Request tests">
         <classes>
             <class name="io.github.mfaisalkhatri.TestPostRequests">
                 <methods>
@@ -55,27 +55,27 @@
         <classes>
             <class name="io.github.mfaisalkhatri.TestPutRequests">
                 <methods>
-                    <include name="testPutWithRestAssured"/>
+                    <include name="putRequestsTests"/>
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="Patch Request tests" enabled="false">
+    <test name="Patch Request tests">
         <classes>
             <class name="io.github.mfaisalkhatri.TestPatchRequests">
                 <methods>
-                    <include name="testPatchWithRestAssured"/>
+                    <include name="patchRequestTests"/>
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="Delete Requests tests " enabled="false">
+    <test name="Delete Requests tests ">
         <classes>
             <class name="io.github.mfaisalkhatri.TestDeleteRequests">
                 <methods>
-                    <include name="testDeleUsingRestAsured"/>
+                    <include name="deleteRequestTests"/>
                 </methods>
             </class>
         </classes>
