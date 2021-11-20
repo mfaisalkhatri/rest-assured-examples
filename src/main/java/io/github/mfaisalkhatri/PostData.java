@@ -10,11 +10,12 @@ import lombok.Setter;
 @Setter
 public class PostData {
 
-    private final String	name;
-    private final String	job;
+    private final String name;
+    private final String job;
 
     /**
-     * @author Faisal Khatri
+     * Created By Faisal Khatri on 19-11-2021
+     *
      * @param name
      * @param job
      */

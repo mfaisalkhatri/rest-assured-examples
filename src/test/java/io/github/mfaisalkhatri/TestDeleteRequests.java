@@ -34,7 +34,7 @@ public class TestDeleteRequests {
      *
      * @param userId
      */
-    @Test (dataProvider = "deleteUserRestAssured", groups = "DeleteTests")
+    @Test (dataProvider = "deleteUserRestAssured")
     public void testDeleteRequest (final int userId) {
         given ().when ()
             .delete (URL + userId)

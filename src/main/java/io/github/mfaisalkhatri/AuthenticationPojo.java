@@ -9,9 +9,10 @@ public class AuthenticationPojo {
     private String password;
 
     /**
-     *@author Faisal Khatri
-     *@param email
-     *@param password
+     * Created By Faisal Khatri on 19-11-2021
+     *
+     * @param email
+     * @param password
      */
     public AuthenticationPojo (String email, String password) {
         this.email = email;

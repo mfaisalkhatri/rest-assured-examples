@@ -30,7 +30,7 @@
         <classes>
             <class name="io.github.mfaisalkhatri.TestGetRequestWithRestAssuredConfig">
                 <methods>
-                    <include name="testGetRequestwithRestAssured"/>
+                    <include name="getRequestTestwithRestAssuredConfig"/>
                 </methods>
             </class>
         </classes>
@@ -38,9 +38,9 @@
 
     <test name="Post Request tests" enabled="false">
         <classes>
-            <class name="io.github.mfaisalkhatri.TestPostRequest">
+            <class name="io.github.mfaisalkhatri.TestPostRequests">
                 <methods>
-                    <include name="testPostWithRestAssured"/>
+                    <include name="testPostRequests"/>
                 </methods>
             </class>
             <class name="io.github.mfaisalkhatri.PostRequestBuilderExample">

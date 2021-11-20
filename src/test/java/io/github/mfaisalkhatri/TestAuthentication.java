@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import io.restassured.http.ContentType;
 
 import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -88,7 +89,7 @@ public class TestAuthentication {
             .asString ();
 
         final JSONObject responseObject = new JSONObject (response);
-        final Map<String, Object> responseMap = new java.util.HashMap<> ();
+        final Map<String, Object> responseMap = new HashMap<> ();
         responseMap.put ("id", responseObject.getInt ("id"));
         responseMap.put ("token", responseObject.getString ("token"));
         return responseMap;

@@ -42,7 +42,7 @@ public class TestPatchRequests {
      * @param name
      * @param job
      */
-    @Test (dataProvider = "patchData", groups = "PatchTests")
+    @Test (dataProvider = "patchData")
     public void testPatchWithRestAssured (final int id, final String name, final String job) {
 
         final PostData postData = new PostData (name, job);
