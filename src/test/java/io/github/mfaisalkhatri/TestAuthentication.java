@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import java.util.Iterator;
 import org.json.JSONObject;
 import io.restassured.http.ContentType;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -20,6 +22,7 @@ import static org.hamcrest.Matchers.notNullValue;
 public class TestAuthentication {
 
     private static final String URL = "https://reqres.in";
+    Logger                      log = LogManager.getLogger (TestAuthentication.class);
 
     /**
      * Created by Faisal Khatri on 20-11-2021
@@ -103,7 +106,7 @@ public class TestAuthentication {
      */
     @Test (dataProvider = "getAuthenticationData")
     public void testAuthToken (String email, String password) {
-        System.out.println ("Token is" + getToken (email, password).get ("token")
+        log.info ("Token is" + getToken (email, password).get ("token")
             .toString ());
 
     }
