@@ -25,11 +25,18 @@ jobs:
     - name: Build with Maven
       run: mvn clean install -DskipTests
     
+    - name: Upload target folder
+      uses: actions/upload-artifact@v2
+      with:
+          name: target
+          path: ${{ github.workspace }}/target
+      
     - name: Cache local Maven repository
       uses: actions/cache@v2
       with:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ github.sha }}  
+        
   test:
      needs:
       - build
@@ -53,6 +60,11 @@ jobs:
       - name: Test Execution
         run: mvn clean test
         
+      - name: Download target folder
+        uses: actions/download-artifact@v2
+        with:
+          name: target
+          
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()
