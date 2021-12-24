@@ -70,5 +70,5 @@ jobs:
         if: success() || failure()
         with:
           name: Test Results
-          path: ${{ github.workspace }}/target/surefire-reports/*.xml
+          path: ./target/surefire-reports/*.xml
           reporter: java-junit
