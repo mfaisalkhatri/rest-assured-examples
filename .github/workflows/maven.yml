@@ -56,15 +56,20 @@ jobs:
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ github.sha }}
-      
-      - name: Test Execution
-        run: mvn clean test
-        
+
       - name: Download target folder
         uses: actions/download-artifact@v2
         with:
           name: target
-          
-      - name: Publish Test Report
-        if: ${{ always() }}
-        uses: scacap/action-surefire-report@v1
+
+      - name: Test Execution
+        run: mvn clean test
+        
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Test Results
+          path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
+          reporter: java-junit          
+    
