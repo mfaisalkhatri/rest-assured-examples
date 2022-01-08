@@ -5,13 +5,13 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches:
+      - master
+      - issue-*
 
 jobs:
   build:
-
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -23,53 +23,12 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven
-      run: mvn clean install -DskipTests
-    
-    - name: Upload target folder
-      uses: actions/upload-artifact@v2
+      run: mvn clean install
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
       with:
-          name: target
-          path: ${{ github.workspace }}/target
-      
-    - name: Cache local Maven repository
-      uses: actions/cache@v2
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ github.sha }}  
-        
-  test:
-     needs:
-      - build
-     runs-on: ubuntu-latest
-     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Install Java and Maven
-        uses: actions/setup-java@v2
-        with:
-          java-version: '15'
-          distribution: 'adopt'
-
-      - name: Restore local Maven repository
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ github.sha }}
-
-      - name: Download target folder
-        uses: actions/download-artifact@v2
-        with:
-          name: target
-
-      - name: Test Execution
-        run: mvn clean test
-        
-      - name: Test Report
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: Test Results
-          path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
-          reporter: java-junit          
-    
+         name: Test Results
+         path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
+         reporter: java-junit
