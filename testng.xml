@@ -5,77 +5,91 @@
         <listener
                 class-name="io.github.mfaisalkhatri.TestListener"/>
     </listeners>
-    <test name="Authentication Tests">
-        <classes>
-            <class name="io.github.mfaisalkhatri.TestAuthentication">
-                <methods>
-                    <include name="testAuthenticationToken"/>
-                    <include name="testAuthToken"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test name="Get Request Tests">
-        <classes>
-            <class name="io.github.mfaisalkhatri.TestGetRequests">
-                <methods>
-                    <include name="getRequestTest"/>
-                    <include name="getRequestTestWithQueryParam"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+<!--    <test name="Authentication Tests">-->
+<!--        <classes>-->
+<!--            <class name="io.github.mfaisalkhatri.TestAuthentication">-->
+<!--                <methods>-->
+<!--                    <include name="testAuthenticationToken"/>-->
+<!--                    <include name="testAuthToken"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Get Request Tests">-->
+<!--        <classes>-->
+<!--            <class name="io.github.mfaisalkhatri.TestGetRequests">-->
+<!--                <methods>-->
+<!--                    <include name="getRequestTest"/>-->
+<!--                    <include name="getRequestTestWithQueryParam"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Get Tests with Rest Assured Config">
-        <classes>
-            <class name="io.github.mfaisalkhatri.TestGetRequestWithRestAssuredConfig">
-                <methods>
-                    <include name="getRequestTestwithRestAssuredConfig"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+<!--    <test name="Get Tests with Rest Assured Config">-->
+<!--        <classes>-->
+<!--            <class name="io.github.mfaisalkhatri.TestGetRequestWithRestAssuredConfig">-->
+<!--                <methods>-->
+<!--                    <include name="getRequestTestwithRestAssuredConfig"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Post Request tests">
-        <classes>
-            <class name="io.github.mfaisalkhatri.TestPostRequests">
-                <methods>
-                    <include name="testPostRequests"/>
-                </methods>
-            </class>
-            <class name="io.github.mfaisalkhatri.PostRequestBuilderExample">
-                <methods>
-                    <include name="postTestUsingBuilderPattern"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+<!--    <test name="Post Request tests">-->
+<!--        <classes>-->
+<!--            <class name="io.github.mfaisalkhatri.TestPostRequests">-->
+<!--                <methods>-->
+<!--                    <include name="testPostRequests"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--            <class name="io.github.mfaisalkhatri.PostRequestBuilderExample">-->
+<!--                <methods>-->
+<!--                    <include name="postTestUsingBuilderPattern"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Put Request Tests">
-        <classes>
-            <class name="io.github.mfaisalkhatri.TestPutRequests">
-                <methods>
-                    <include name="putRequestsTests"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+<!--    <test name="Put Request Tests">-->
+<!--        <classes>-->
+<!--            <class name="io.github.mfaisalkhatri.TestPutRequests">-->
+<!--                <methods>-->
+<!--                    <include name="putRequestsTests"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Patch Request tests">
-        <classes>
-            <class name="io.github.mfaisalkhatri.TestPatchRequests">
-                <methods>
-                    <include name="patchRequestTests"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+<!--    <test name="Patch Request tests">-->
+<!--        <classes>-->
+<!--            <class name="io.github.mfaisalkhatri.TestPatchRequests">-->
+<!--                <methods>-->
+<!--                    <include name="patchRequestTests"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Delete Requests tests ">
+<!--    <test name="Delete Requests tests ">-->
+<!--        <classes>-->
+<!--            <class name="io.github.mfaisalkhatri.TestDeleteRequests">-->
+<!--                <methods>-->
+<!--                    <include name="deleteRequestTests"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test name="Restful Booker tests">
         <classes>
-            <class name="io.github.mfaisalkhatri.TestDeleteRequests">
+            <class name="com.restfulbooker.RestfulBookerE2ETests">
                 <methods>
-                    <include name="deleteRequestTests"/>
+                    <include name="createBookingTest"/>
+                    <include name="getBookingTest"/>
+                    <include name="updateBookingTest"/>
+                    <include name="updatePartialBookingTest"/>
+                    <include name="deleteBookingTest"/>
+                    <include name="checkBookingIsDeleted"/>
                 </methods>
             </class>
         </classes>
