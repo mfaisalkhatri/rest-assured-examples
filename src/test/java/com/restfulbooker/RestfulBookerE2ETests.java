@@ -12,7 +12,7 @@ import data.*;
 /**
  * Created By Faisal Khatri on 18-02-2022
  */
-public class RestfulBookerE2ETests extends SetupConfig {
+public class RestfulBookerE2ETests extends BaseSetup {
 
     private BookingData        newBooking;
     private BookingData        updatedBooking;
