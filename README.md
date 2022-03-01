@@ -23,6 +23,7 @@ To get a better understanding on API Testing, check [What is API Testing?][blog_
 - I have covered, `GET`, `POST`, `PUT`, `PATCH` and `DELETE` requests.
 - Sample code to handle the `authentication` requests have also been added.
 - End to End scenarios have been added for the [restful booker APIs][restfulbooker].
+- Refer [End to API testing using rest-assured] [e2eblog]  for better understanding of writing End to End tests using rest-assured framework.
 
 ## :question: Need Assistance?
 
@@ -40,3 +41,4 @@ To get a better understanding on API Testing, check [What is API Testing?][blog_
 [blog]: https://mfaisalkhatri.github.io/2020/05/29/restassuredokhttp/
 [blog_apitesting]: https://mfaisalkhatri.github.io/2020/08/08/apitesting/
 [restfulbooker]:https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-PartialUpdateBooking
+[e2eblog]: https://medium.com/@iamfaisalkhatri/end-to-end-api-testing-using-rest-assured-a58c4ea80255
