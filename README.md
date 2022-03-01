@@ -23,7 +23,7 @@ To get a better understanding on API Testing, check [What is API Testing?][blog_
 - I have covered, `GET`, `POST`, `PUT`, `PATCH` and `DELETE` requests.
 - Sample code to handle the `authentication` requests have also been added.
 - End to End scenarios have been added for the [restful booker APIs][restfulbooker].
-- Refer [End to API testing using rest-assured] [e2eblog]  for better understanding of writing End to End tests using rest-assured framework.
+- Refer [End to API testing using rest-assured][e2eblog]  for better understanding of writing End to End tests using rest-assured framework.
 
 ## :question: Need Assistance?
 
