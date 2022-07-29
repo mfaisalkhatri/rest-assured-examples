@@ -13,28 +13,30 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri;
+package data.reqres;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Created By Faisal Khatri on 19-11-2021
  */
-@Data
-public class AuthenticationPojo {
+@Getter
+@Setter
+public class PostData {
 
-    private String email;
-    private String password;
+    private final String name;
+    private final String job;
 
     /**
      * Created By Faisal Khatri on 19-11-2021
      *
-     * @param email
-     * @param password
+     * @param name
+     * @param job
      */
-    public AuthenticationPojo (String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
+    public PostData (final String name, final String job) {
+        this.name = name;
+        this.job = job;
 
+    }
 }

@@ -3,7 +3,7 @@
 <suite name="ReqRes Test Suite">
     <listeners>
         <listener
-                class-name="io.github.mfaisalkhatri.TestListener"/>
+                class-name="io.github.mfaisalkhatri.utility.TestListener"/>
     </listeners>
     <test name="Authentication Tests">
         <classes>

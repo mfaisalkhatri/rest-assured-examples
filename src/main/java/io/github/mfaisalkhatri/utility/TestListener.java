@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri;
+package io.github.mfaisalkhatri.utility;
 
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -29,14 +29,14 @@ import static org.apache.commons.lang3.StringUtils.repeat;
 
 public class TestListener implements ITestListener {
 
-    Logger log = LogManager.getLogger (TestListener.class);
+    private static final Logger LOGGER = LogManager.getLogger (TestListener.class);
 
     private void logMessage (final String message) {
-        this.log.info ("\n");
-        this.log.info (repeat ("=", 75));
-        this.log.info (message);
-        this.log.info (repeat ("=", 75));
-        this.log.info ("\n");
+        this.LOGGER.info ("\n");
+        this.LOGGER.info (repeat ("=", 75));
+        this.LOGGER.info (message);
+        this.LOGGER.info (repeat ("=", 75));
+        this.LOGGER.info ("\n");
     }
 
     @Override

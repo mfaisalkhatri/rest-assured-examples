@@ -19,7 +19,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 import com.github.javafaker.Faker;
-import data.UserData;
+import data.restfulbooker.UserData;
 import org.testng.annotations.Test;
 
 /**
@@ -30,7 +30,6 @@ public class PostRequestBuilderExample extends SetupConfig {
 
     @Test
     public void postTestUsingBuilderPattern () {
-
         UserData userData = userDataBuilder ();
         given ().body (userData)
             .when ()

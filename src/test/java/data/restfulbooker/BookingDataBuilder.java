@@ -1,4 +1,4 @@
-package data;
+package data.restfulbooker;
 
 import com.github.javafaker.Faker;
 
@@ -10,21 +10,22 @@ import java.util.concurrent.TimeUnit;
  */
 public class BookingDataBuilder {
 
-    public BookingData bookingDataBuilder () {
-        Faker faker = Faker.instance ();
+    private static final Faker FAKER = Faker.instance();
+
+    public static BookingData getbookingData () {
         SimpleDateFormat formatter = new SimpleDateFormat ("YYYY-MM-dd");
         return BookingData.builder ()
-                .firstname (faker.name ()
+                .firstname (FAKER.name ()
                         .firstName ())
-                .lastname (faker.name ()
+                .lastname (FAKER.name ()
                         .lastName ())
-                .totalprice (faker.number ()
+                .totalprice (FAKER.number ()
                         .numberBetween (1, 2000))
                 .depositpaid (true)
                 .bookingdates (BookingDates.builder ()
-                        .checkin (formatter.format (faker.date ()
+                        .checkin (formatter.format (FAKER.date ()
                                 .past (20, TimeUnit.DAYS)))
-                        .checkout (formatter.format (faker.date ()
+                        .checkout (formatter.format (FAKER.date ()
                                 .future (5, TimeUnit.DAYS)))
                         .build ())
                 .additionalneeds ("Breakfast")
@@ -32,12 +33,11 @@ public class BookingDataBuilder {
 
     }
 
-    public PartialBookingData partialBookingBuilder () {
-        Faker faker = Faker.instance ();
+    public static PartialBookingData getpartialBookingData () {
         return PartialBookingData.builder ()
-                .firstname (faker.name ()
+                .firstname (FAKER.name ()
                         .firstName ())
-                .totalprice (faker.number ()
+                .totalprice (FAKER.number ()
                         .numberBetween (100, 5000))
                 .build ();
     }

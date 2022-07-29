@@ -15,6 +15,7 @@
 
 package io.github.mfaisalkhatri;
 
+import data.reqres.PostData;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 import org.apache.logging.log4j.Logger;
