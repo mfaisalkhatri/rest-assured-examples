@@ -13,15 +13,16 @@
         limitations under the License.
 */
 
-package data;
+package data.restfulbooker;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 /**
  * Created By Faisal Khatri on 20-11-2021
  */
-@Data
+@Getter
 @Builder
 public class UserData {
 

@@ -15,6 +15,7 @@
 
 package io.github.mfaisalkhatri;
 
+import data.reqres.AuthenticationPojo;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.util.Iterator;
