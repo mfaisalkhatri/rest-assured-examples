@@ -34,7 +34,7 @@ import static org.hamcrest.Matchers.equalTo;
  */
 public class TestPatchRequests {
 
-    Logger                      log = LogManager.getLogger (TestPatchRequests.class);
+    private static final Logger LOG = LogManager.getLogger (TestPatchRequests.class);
     private static final String URL = "https://reqres.in";
 
     /**
@@ -43,20 +43,21 @@ public class TestPatchRequests {
      * @return test data for patch requests
      */
     @DataProvider (name = "patchData")
-    public Iterator<Object []> patchData () {
-        final List<Object []> patchData = new ArrayList<> ();
-        patchData.add (new Object [] { 2, "Michael", "QA Lead" });
-        patchData.add (new Object [] { 958, "Yuan", "Project Architect" });
+    public Iterator<Object[]> patchData () {
+        final List<Object[]> patchData = new ArrayList<> ();
+        patchData.add (new Object[] { 2, "Michael", "QA Lead" });
+        patchData.add (new Object[] { 958, "Yuan", "Project Architect" });
         return patchData.iterator ();
     }
 
     /**
      * Executing Put Request using Rest Assured.
      *
-     * @since Mar 8, 2020
      * @param id
      * @param name
      * @param job
+     *
+     * @since Mar 8, 2020
      */
     @Test (dataProvider = "patchData")
     public void patchRequestTests (final int id, final String name, final String job) {
@@ -81,7 +82,7 @@ public class TestPatchRequests {
             .body ()
             .asString ();
 
-        this.log.info (response);
+        LOG.info (response);
 
     }
 

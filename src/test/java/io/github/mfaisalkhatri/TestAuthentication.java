@@ -38,7 +38,7 @@ import static org.hamcrest.Matchers.notNullValue;
 public class TestAuthentication {
 
     private static final String URL = "https://reqres.in";
-    Logger                      log = LogManager.getLogger (TestAuthentication.class);
+    private static final Logger                      LOG = LogManager.getLogger (TestAuthentication.class);
 
     /**
      * Created by Faisal Khatri on 20-11-2021
@@ -122,7 +122,7 @@ public class TestAuthentication {
      */
     @Test (dataProvider = "getAuthenticationData")
     public void testAuthToken (String email, String password) {
-        log.info ("Token is" + getToken (email, password).get ("token")
+        LOG.info ("Token is" + getToken (email, password).get ("token")
             .toString ());
 
     }

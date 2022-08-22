@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
  */
 public class TestPutRequests {
 
-    Logger                      log = LogManager.getLogger (TestPutRequests.class);
+    private static final Logger                      LOG = LogManager.getLogger (TestPutRequests.class);
     private static final String URL = "https://reqres.in";
 
     /**
@@ -81,7 +81,7 @@ public class TestPutRequests {
             .body ()
             .asString ();
 
-        this.log.info (response);
+        LOG.info (response);
 
     }
 }
