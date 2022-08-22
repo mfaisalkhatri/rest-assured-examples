@@ -12,7 +12,7 @@ public class BookingDataBuilder {
 
     private static final Faker FAKER = Faker.instance();
 
-    public static BookingData getbookingData () {
+    public static BookingData getBookingData () {
         SimpleDateFormat formatter = new SimpleDateFormat ("YYYY-MM-dd");
         return BookingData.builder ()
                 .firstname (FAKER.name ()
@@ -33,7 +33,7 @@ public class BookingDataBuilder {
 
     }
 
-    public static PartialBookingData getpartialBookingData () {
+    public static PartialBookingData getPartialBookingData () {
         return PartialBookingData.builder ()
                 .firstname (FAKER.name ()
                         .firstName ())

@@ -17,18 +17,18 @@ import org.testng.annotations.Test;
  */
 public class RestfulBookerE2ETests extends BaseSetup {
 
-    private BookingData newBooking;
+    private BookingData        newBooking;
     private BookingData        updatedBooking;
     private PartialBookingData partialUpdateBooking;
-    private Tokencreds tokenCreds;
+    private Tokencreds         tokenCreds;
     private int                bookingId;
 
     @BeforeTest
     public void testSetup () {
-        newBooking = getbookingData();
-        updatedBooking = getbookingData ();
-        partialUpdateBooking = getpartialBookingData();
-        tokenCreds = getToken();
+        newBooking = getBookingData ();
+        updatedBooking = getBookingData ();
+        partialUpdateBooking = getPartialBookingData ();
+        tokenCreds = getToken ();
     }
 
     @Test

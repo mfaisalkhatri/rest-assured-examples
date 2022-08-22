@@ -35,20 +35,21 @@ import org.testng.annotations.Test;
  */
 public class TestPostRequests {
 
-    Logger                      log = LogManager.getLogger (TestPostRequests.class);
+    private static final Logger LOG = LogManager.getLogger (TestPostRequests.class);
     private static final String URL = "https://reqres.in";
 
     /**
-     * @since Mar 7, 2020
      * @return postData
+     *
+     * @since Mar 7, 2020
      */
     @DataProvider (name = "postData")
-    public Iterator<Object []> postData () {
-        final List<Object []> postData = new ArrayList<> ();
-        postData.add (new Object [] { "Rahul", "QA" });
-        postData.add (new Object [] { "Jane", "Sr.Dev" });
-        postData.add (new Object [] { "Albert", "Dev" });
-        postData.add (new Object [] { "Johnny", "Project Manager" });
+    public Iterator<Object[]> postData () {
+        final List<Object[]> postData = new ArrayList<> ();
+        postData.add (new Object[] { "Rahul", "QA" });
+        postData.add (new Object[] { "Jane", "Sr.Dev" });
+        postData.add (new Object[] { "Albert", "Dev" });
+        postData.add (new Object[] { "Johnny", "Project Manager" });
         return postData.iterator ();
     }
 
@@ -83,7 +84,7 @@ public class TestPostRequests {
             .body ()
             .asString ();
 
-        this.log.info (response);
+        LOG.info (response);
 
     }
 }

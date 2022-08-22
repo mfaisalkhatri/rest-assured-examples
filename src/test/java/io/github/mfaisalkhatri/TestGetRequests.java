@@ -15,6 +15,10 @@
 
 package io.github.mfaisalkhatri;
 
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.apache.logging.log4j.LogManager;
@@ -33,7 +37,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class TestGetRequests {
 
     private static final String URL = "https://reqres.in/api/users/";
-    Logger                      log = LogManager.getLogger (TestGetRequests.class);
+    private static  final Logger                      LOG = LogManager.getLogger (TestGetRequests.class);
 
     /**
      * Created By Faisal Khatri on 19-11-2021
@@ -48,7 +52,7 @@ public class TestGetRequests {
     }
 
     @Test (dataProvider = "getUserData")
-    public void getRequestTest (final int userId) {
+    public void getRequestTest (final int userId) throws ParseException {
         given ().when ()
             .get (URL + userId)
             .then ()
@@ -60,13 +64,13 @@ public class TestGetRequests {
         final int statusCode = given ().when ()
             .get (URL + userId)
             .statusCode ();
-        this.log.info (statusCode);
+        LOG.info (statusCode);
 
         final String responseBody = given ().when ()
             .get (URL + userId)
             .getBody ()
             .asString ();
-        this.log.info (responseBody);
+        LOG.info (responseBody);
     }
 
     @Test (dataProvider = "getUserData")
@@ -78,14 +82,23 @@ public class TestGetRequests {
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("page", equalTo (userPage));
+            .body ("page", equalTo (userPage))
+            .and ()
+            .body ("data[0].first_name", equalTo ("Michael"));
 
         final String responseBody = given ().when ()
             .queryParam ("page", userPage)
             .get (URL)
             .getBody ()
             .asString ();
-        this.log.info (responseBody);
+        LOG.info (responseBody);
+
+        JSONObject jsonObject = new JSONObject (responseBody);
+        JSONArray dataArray = jsonObject.getJSONArray ("data");
+        JSONObject dataObject = dataArray.getJSONObject (0);
+        String first_name = dataObject.get ("first_name").toString ();
+        LOG.info (first_name);
+        
     }
 
 }
