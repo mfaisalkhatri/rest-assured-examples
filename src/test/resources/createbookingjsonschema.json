@@ -1,0 +1,118 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1661351970.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "bookingid",
+    "booking"
+  ],
+  "properties": {
+    "bookingid": {
+      "$id": "#root/bookingid",
+      "title": "Bookingid",
+      "type": "integer",
+      "examples": [
+        1
+      ],
+      "default": 0
+    },
+    "booking": {
+      "$id": "#root/booking",
+      "title": "Booking",
+      "type": "object",
+      "required": [
+        "firstname",
+        "lastname",
+        "totalprice",
+        "depositpaid",
+        "bookingdates",
+        "additionalneeds"
+      ],
+      "properties": {
+        "firstname": {
+          "$id": "#root/booking/firstname",
+          "title": "Firstname",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "Jim"
+          ],
+          "pattern": "^.*$"
+        },
+        "lastname": {
+          "$id": "#root/booking/lastname",
+          "title": "Lastname",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "Brown"
+          ],
+          "pattern": "^.*$"
+        },
+        "totalprice": {
+          "$id": "#root/booking/totalprice",
+          "title": "Totalprice",
+          "type": "integer",
+          "examples": [
+            111
+          ],
+          "default": 0
+        },
+        "depositpaid": {
+          "$id": "#root/booking/depositpaid",
+          "title": "Depositpaid",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        },
+        "bookingdates": {
+          "$id": "#root/booking/bookingdates",
+          "title": "Bookingdates",
+          "type": "object",
+          "required": [
+            "checkin",
+            "checkout"
+          ],
+          "properties": {
+            "checkin": {
+              "$id": "#root/booking/bookingdates/checkin",
+              "title": "Checkin",
+              "type": "string",
+              "default": "",
+              "examples": [
+                "2018-01-01"
+              ],
+              "pattern": "^.*$"
+            },
+            "checkout": {
+              "$id": "#root/booking/bookingdates/checkout",
+              "title": "Checkout",
+              "type": "string",
+              "default": "",
+              "examples": [
+                "2019-01-01"
+              ],
+              "pattern": "^.*$"
+            }
+          }
+        }
+      ,
+        "additionalneeds": {
+          "$id": "#root/booking/additionalneeds",
+          "title": "Additionalneeds",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "Breakfast"
+          ],
+          "pattern": "^.*$"
+        }
+      }
+    }
+
+  }
+}
