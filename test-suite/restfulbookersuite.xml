@@ -19,5 +19,18 @@
             </class>
         </classes>
     </test>
+    <test name="Restful Booker JSON Schema Validation tests">
+        <classes>
+            <class name="com.restfulbooker.JsonSchemaValidationTest">
+                <methods>
+                    <include name="testCreateBookingJsonSchema"/>
+                    <include name="testGetBookingJsonSchema"/>
+                    <include name="testUpdateBookingJsonSchema"/>
+                    <include name="testUpdatePartialBookingJsonSchema"/>
+                    <include name="testCreateJsonSchema"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 
 </suite> <!-- Suite -->

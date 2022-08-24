@@ -12,7 +12,7 @@
     "bookingid": {
       "$id": "#root/bookingid",
       "title": "Bookingid",
-      "type": "string",
+      "type": "integer",
       "examples": [
         1
       ],
