@@ -20,6 +20,7 @@
         <java-faker.version>1.0.2</java-faker.version>
         <log4jcore.version>2.18.0</log4jcore.version>
         <log4japi.version>2.18.0</log4japi.version>
+        <json-schema-validator.version>5.1.1</json-schema-validator.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <java-release.version>11</java-release.version>
@@ -87,6 +88,14 @@
             <artifactId>log4j-api</artifactId>
             <version>${log4japi.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${json-schema-validator.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
