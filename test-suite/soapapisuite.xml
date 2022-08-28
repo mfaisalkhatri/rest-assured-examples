@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SOAP API Test Suite">
+    <test name="SOAP API Add Numbers API Tests">
+        <classes>
+            <class name="soapapitests.AddNumbersAPITests">
+                <methods>
+                    <include name="testAddNumbers"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="SOAP API Number to Words Test">
+        <classes>
+            <class name="soapapitests.NumberToWordsTest">
+                <methods>
+                    <include name="testNumberToWordsAPI"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
