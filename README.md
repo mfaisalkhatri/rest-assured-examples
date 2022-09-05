@@ -10,7 +10,7 @@ This project is the outcome of my self-learning about the API Testing Automation
 I heard a lot about Rest-Assured and how it made the QA's life easier by helping them to run all the tedious API tests
 in an efficient way.
 Hence, I started learning about the framework and have documented all my learnings in this repository with all 
-example code from writing basic tests to running end to end automation tests.
+example code from writing basic tests to running end to end API automation tests.
 
 ## :briefcase: What does this repo contain?
 - This repo contains example codes of API Tests using Rest-Assured.
@@ -51,11 +51,9 @@ framework in this repository:
 
 ## :question: Need Assistance?
 
-- Discuss your queries by writing to me @ `mohammadfaisalkhatri@gmail.com` OR ping me on the following
-  social media sites:
-  - [LinkedIn][linkedin]
-  - [Twitter][twitter]
-    
+- Discuss your queries by writing to me @ `mohammadfaisalkhatri@gmail.com`
+  OR ping me on any of the social media sites using the below link:
+   - [Linktree][linktree]
 
 ## :computer: Paid Trainings
 
@@ -66,7 +64,7 @@ mail me @ `mohammadfaisalkhatri@gmail.com` or ping me on [LinkedIn][linkedin]
 
 
 [linkedin]: https://www.linkedin.com/in/faisalkhatri/
-[twitter]: https://twitter.com/mfaisal_khatri
+[linktree]: https://linktr.ee/faisalkhatri
 [website]: https://mfaisalkhatri.github.io
 [reqreswebsite]:https://reqres.in/
 [blog_restassured_okhttp]: https://mfaisalkhatri.github.io/2020/05/29/restassuredokhttp/
