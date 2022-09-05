@@ -12,16 +12,16 @@ in an efficient way.
 Hence, I started learning about the framework and have documented all my learnings in this repository with all 
 example code from writing basic tests to running end to end automation tests.
 
-## What does this repo contain?
+## :briefcase: What does this repo contain?
 - This repo contains example codes of API Tests using Rest-Assured.
 - `Hamcrest Matchers` are used for assertions.
-- [TestNG`][testng_website] Listeners are used to capture the events in logs.
+- [TestNG][testng_website] Listeners are used to capture the events in logs.
 - `Log4j` is used to capture logs.
 - [Lombok][Lombok_website] has been used to generate Getter and Setters automatically for post body requests.
 - FAKE Rest APIs on [Reqres.in][reqreswebsite] has been used for testing.
 - End to End scenarios have been added for the [restful booker APIs][restfulbooker].
 
-## Talking more about the Scenarios Covered in this project:
+## :hammer_and_wrench: Talking more about the Scenarios Covered in this project:
 You will get the answers to the following questions and its respective working code example with rest-assured 
 framework in this repository:
 - How to write tests for `Get` requests?
@@ -39,11 +39,11 @@ framework in this repository:
 - How to create `POJO` for passing values to request body?
 - How to use `Lombok` to generate `Getters` and `Setters`?
 - How to use `Lombok` for writing the builder pattern code?
-- How to use Builder Pattern for test data generation using [Java Faker][java_faker].
+- How to use Builder Pattern for test data generation using [Java Faker][java_faker]?
 - How to write end-to-end api tests?
 - How to perform `JSON Schema Validation`?
 
-## Blog Links
+## :writing_hand: Blog Links
 - [What is API Testing?][blog_apitesting]
 - [End to End API testing using rest-assured][e2eblog]
 - [How to perform JSON Schema Validation using Rest-Assured?][jsconschemavalidationblog]
@@ -51,35 +51,28 @@ framework in this repository:
 
 ## :question: Need Assistance?
 
-- Discuss your queries by writing to me @ [mohammadfaisalkhatri@gmail.com][mail] OR you can ping me on the following
+- Discuss your queries by writing to me @ `mohammadfaisalkhatri@gmail.com` OR ping me on the following
   social media sites:
-- Twitter: [mfaisal_khatri][twitter]
-- LinkedIn: [Mohammad Faisal Khatri][linkedin]
+  - [LinkedIn][linkedin]
+  - [Twitter][twitter]
+    
 
-## Paid Trainings
+## :computer: Paid Trainings
+
 Contact me for Paid trainings related to Test Automation and Software Testing, 
 mail me @ `mohammadfaisalkhatri@gmail.com` or ping me on [LinkedIn][linkedin]
 
 ## :thought_balloon: Checkout the blogs related to Testing on my [website][]
 
-[mail]: mohammadfaisalkhatri@gmail.com
 
 [linkedin]: https://www.linkedin.com/in/faisalkhatri/
-
 [twitter]: https://twitter.com/mfaisal_khatri
-
 [website]: https://mfaisalkhatri.github.io
-
 [reqreswebsite]:https://reqres.in/
-
 [blog_restassured_okhttp]: https://mfaisalkhatri.github.io/2020/05/29/restassuredokhttp/
-
 [blog_apitesting]: https://mfaisalkhatri.github.io/2020/08/08/apitesting/
-
 [restfulbooker]:https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-PartialUpdateBooking
-
 [e2eblog]: https://medium.com/@iamfaisalkhatri/end-to-end-api-testing-using-rest-assured-a58c4ea80255
-
 [jsconschemavalidationblog]: https://medium.com/@iamfaisalkhatri/how-to-perform-json-schema-validation-using-rest-assured-64c3b6616a91
 [Lombok_website]:https://projectlombok.org/
 [testng_website]:https://testng.org
