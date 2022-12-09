@@ -10,17 +10,17 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <testng.version>7.7.0</testng.version>
-        <rest-assured.version>5.3.0</rest-assured.version>
+        <testng.version>7.6.1</testng.version>
+        <rest-assured.version>5.1.1</rest-assured.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <json-simple.version>1.1.1</json-simple.version>
         <lombok.version>1.18.24</lombok.version>
-        <jackson-databind.version>2.14.1</jackson-databind.version>
-        <org-json.verion>20220924</org-json.verion>
+        <jackson-databind.version>2.13.4.1</jackson-databind.version>
+        <org-json.verion>20220320</org-json.verion>
         <java-faker.version>1.0.2</java-faker.version>
-        <log4jcore.version>2.19.0</log4jcore.version>
-        <log4japi.version>2.19.0</log4japi.version>
-        <json-schema-validator.version>5.3.0</json-schema-validator.version>
+        <log4jcore.version>2.18.0</log4jcore.version>
+        <log4japi.version>2.18.0</log4japi.version>
+        <json-schema-validator.version>5.1.1</json-schema-validator.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <java-release.version>11</java-release.version>
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
+            <version>7.6.1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
         <dependency>
@@ -40,17 +40,6 @@
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-schema-validator</artifactId>
-            <version>${json-schema-validator.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
         <dependency>
@@ -71,7 +60,11 @@
             <scope>provided</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
             <groupId>org.json</groupId>
@@ -96,7 +89,12 @@
             <version>${log4japi.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
-
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${json-schema-validator.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
