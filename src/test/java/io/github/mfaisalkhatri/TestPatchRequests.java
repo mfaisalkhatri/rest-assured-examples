@@ -16,6 +16,11 @@
 package io.github.mfaisalkhatri;
 
 import data.reqres.PostData;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 import org.apache.logging.log4j.Logger;
@@ -60,6 +65,10 @@ public class TestPatchRequests {
      * @since Mar 8, 2020
      */
     @Test (dataProvider = "patchData")
+    @Description ("Example Test for executing PATCH request using rest assured ")
+    @Severity (SeverityLevel.CRITICAL)
+    @Epic ("Rest Assured POC - Example Tests")
+    @Feature ("Performing different API Tests using Rest-Assured")
     public void patchRequestTests (final int id, final String name, final String job) {
 
         final PostData postData = new PostData (name, job);

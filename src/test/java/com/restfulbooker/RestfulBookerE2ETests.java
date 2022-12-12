@@ -8,6 +8,10 @@ import static org.hamcrest.Matchers.*;
 import data.restfulbooker.BookingData;
 import data.restfulbooker.PartialBookingData;
 import data.restfulbooker.Tokencreds;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -32,6 +36,9 @@ public class RestfulBookerE2ETests extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for creating new booking - Post request")
+    @Severity (SeverityLevel.BLOCKER)
+    @Epic ("End to End tests using rest-assured")
     public void createBookingTest () {
         bookingId = given ().body (newBooking)
             .when ()
@@ -55,6 +62,9 @@ public class RestfulBookerE2ETests extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for retrieving a booking - Get request")
+    @Severity (SeverityLevel.CRITICAL)
+    @Epic ("End to End tests using rest-assured")
     public void getBookingTest () {
         given ().get ("/booking/" + bookingId)
             .then ()
@@ -74,6 +84,9 @@ public class RestfulBookerE2ETests extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for updating a booking - Put request")
+    @Severity (SeverityLevel.NORMAL)
+    @Epic ("End to End tests using rest-assured")
     public void updateBookingTest () {
         given ().body (updatedBooking)
             .when ()
@@ -96,6 +109,9 @@ public class RestfulBookerE2ETests extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for updating a booking partially- Patch request")
+    @Severity (SeverityLevel.NORMAL)
+    @Epic ("End to End tests using rest-assured")
     public void updatePartialBookingTest () {
         given ().body (partialUpdateBooking)
             .when ()
@@ -118,6 +134,9 @@ public class RestfulBookerE2ETests extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for deleting a booking - Delete request")
+    @Severity (SeverityLevel.NORMAL)
+    @Epic ("End to End tests using rest-assured")
     public void deleteBookingTest () {
         given ().header ("Cookie", "token=" + generateToken ())
             .when ()
@@ -127,6 +146,9 @@ public class RestfulBookerE2ETests extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for checking if booking is deleted by retrieving a deleted booking - Get request")
+    @Severity (SeverityLevel.NORMAL)
+    @Epic ("End to End tests using rest-assured")
     public void checkBookingIsDeleted () {
         given ().get ("/booking/" + bookingId)
             .then ()
@@ -145,5 +167,4 @@ public class RestfulBookerE2ETests extends BaseSetup {
             .extract ()
             .path ("token");
     }
-
 }

@@ -24,6 +24,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import data.reqres.PostData;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.http.ContentType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -60,6 +65,10 @@ public class TestPostRequests {
      * @param job
      */
     @Test (dataProvider = "postData")
+    @Description ("Example Test for executing POST request using rest assured")
+    @Severity (SeverityLevel.CRITICAL)
+    @Epic ("Rest Assured POC - Example Tests")
+    @Feature ("Performing different API Tests using Rest-Assured")
     public void testPostRequests (final String name, final String job) {
         final PostData postData = new PostData (name, job);
         final String response = given ().contentType (ContentType.JSON)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -21,6 +21,8 @@
         <log4jcore.version>2.19.0</log4jcore.version>
         <log4japi.version>2.19.0</log4japi.version>
         <json-schema-validator.version>5.3.0</json-schema-validator.version>
+        <allure.version>2.20.1</allure.version>
+        <aspectj.version>1.9.9.1</aspectj.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <java-release.version>11</java-release.version>
@@ -28,13 +30,11 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -52,7 +52,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-databind.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
@@ -63,16 +62,12 @@
             <artifactId>json-simple</artifactId>
             <version>${json-simple.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-
-        <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
@@ -83,21 +78,24 @@
             <artifactId>javafaker</artifactId>
             <version>${java-faker.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4jcore.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>${log4japi.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
 
-
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -129,7 +127,17 @@
                             <suiteXmlFile>${suite-xml}</suiteXmlFile>
                         </suiteXmlFiles>
                         <argLine>-Dfile.encoding=UTF-8 -Xdebug -Xnoagent</argLine>
+                        <argLine>
+                            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        </argLine>
                     </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.aspectj</groupId>
+                            <artifactId>aspectjweaver</artifactId>
+                            <version>${aspectj.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -150,6 +158,18 @@
                             </configuration>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>io.qameta.allure</groupId>
+                    <artifactId>allure-maven</artifactId>
+                    <version>2.12.0</version>
+                    <configuration>
+                        <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
+                        <reportVersion>${allure.version}</reportVersion>
+                        <allureDownloadUrl>
+                            https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${allure.version}/allure-commandline-${allure.version}.zip
+                        </allureDownloadUrl>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

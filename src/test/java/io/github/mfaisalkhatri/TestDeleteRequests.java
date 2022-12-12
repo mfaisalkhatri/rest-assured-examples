@@ -15,6 +15,11 @@
 
 package io.github.mfaisalkhatri;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -50,6 +55,10 @@ public class TestDeleteRequests {
      * @param userId
      */
     @Test (dataProvider = "deleteUserRestAssured")
+    @Description ("Example Test for executing DELETE request using rest assured")
+    @Severity (SeverityLevel.NORMAL)
+    @Epic ("Rest Assured POC - Example Tests")
+    @Feature ("Performing different API Tests using Rest-Assured")
     public void deleteRequestTests (final int userId) {
         given ().when ()
             .delete (URL + userId)

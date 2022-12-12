@@ -20,6 +20,12 @@ import static org.hamcrest.Matchers.equalTo;
 
 import com.github.javafaker.Faker;
 import data.restfulbooker.UserData;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 /**
@@ -29,6 +35,11 @@ import org.testng.annotations.Test;
 public class PostRequestBuilderExample extends SetupConfig {
 
     @Test
+    @Description("Example of using Builder Pattern to pass test data in tests")
+    @Severity (SeverityLevel.BLOCKER)
+    @Epic ("Rest Assured POC - Example Tests")
+    @Feature ("Performing different API Tests using Rest-Assured")
+    @Story ("Builder Pattern Example")
     public void postTestUsingBuilderPattern () {
         UserData userData = userDataBuilder ();
         given ().body (userData)

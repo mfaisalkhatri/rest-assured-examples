@@ -16,6 +16,11 @@
 package io.github.mfaisalkhatri;
 
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -52,6 +57,10 @@ public class TestGetRequests {
     }
 
     @Test (dataProvider = "getUserData")
+    @Description ("Example Test for executing GET request using rest assured")
+    @Severity (SeverityLevel.CRITICAL)
+    @Epic ("Rest Assured POC - Example Tests")
+    @Feature ("Performing different API Tests using Rest-Assured")
     public void getRequestTest (final int userId) throws ParseException {
         given ().when ()
             .get (URL + userId)
@@ -74,6 +83,10 @@ public class TestGetRequests {
     }
 
     @Test (dataProvider = "getUserData")
+    @Description ("Example Test for executing GET request using rest assured with query params")
+    @Severity (SeverityLevel.CRITICAL)
+    @Epic ("Rest Assured POC - Example Tests")
+    @Feature ("Performing different API Tests using Rest-Assured")
     public void getRequestTestWithQueryParam (final int userPage) {
         given ().when ()
             .queryParam ("page", userPage)

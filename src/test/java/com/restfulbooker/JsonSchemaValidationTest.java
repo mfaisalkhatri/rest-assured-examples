@@ -10,6 +10,12 @@ import java.io.InputStream;
 import data.restfulbooker.BookingData;
 import data.restfulbooker.PartialBookingData;
 import data.restfulbooker.Tokencreds;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -35,6 +41,9 @@ public class JsonSchemaValidationTest extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for checking json schema for new booking - Post request")
+    @Severity (SeverityLevel.CRITICAL)
+    @Epic ("JSON Schema Validation using rest-assured")
     public void testCreateBookingJsonSchema () {
 
         BookingData newBooking = getBookingData ();
@@ -54,6 +63,9 @@ public class JsonSchemaValidationTest extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for checking json schema after getting a booking - get request")
+    @Severity (SeverityLevel.CRITICAL)
+    @Epic ("JSON Schema Validation using rest-assured")
     public void testGetBookingJsonSchema () {
 
         InputStream getBookingJsonSchema = getClass ().getClassLoader ()
@@ -68,6 +80,9 @@ public class JsonSchemaValidationTest extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for checking json schema after updating a booking - Put request")
+    @Severity (SeverityLevel.NORMAL)
+    @Epic ("JSON Schema Validation using rest-assured")
     public void testUpdateBookingJsonSchema() {
         InputStream updateBookingJsonSchema = getClass ().getClassLoader ()
             .getResourceAsStream ("updatebookingjsonschema.json");
@@ -81,6 +96,9 @@ public class JsonSchemaValidationTest extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for checking json schema after updating a booking partially - Patch request")
+    @Severity (SeverityLevel.NORMAL)
+    @Epic ("JSON Schema Validation using rest-assured")
     public void testUpdatePartialBookingJsonSchema() {
         InputStream updatePartialBookingJsonSchema = getClass ().getClassLoader ()
             .getResourceAsStream ("updatepartialbookingjsonschema.json");
@@ -94,6 +112,9 @@ public class JsonSchemaValidationTest extends BaseSetup {
     }
 
     @Test
+    @Description ("Example test for checking json schema for token authentication - Post request")
+    @Severity (SeverityLevel.BLOCKER)
+    @Epic ("JSON Schema Validation using rest-assured")
     public void testCreateJsonSchema() {
         InputStream createTokenJsonSchema = getClass ().getClassLoader ()
             .getResourceAsStream ("createtokenjsonschema.json");

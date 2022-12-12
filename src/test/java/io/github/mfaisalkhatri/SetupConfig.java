@@ -17,6 +17,11 @@ package io.github.mfaisalkhatri;
 
 import static org.hamcrest.Matchers.lessThan;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.BeforeClass;
 
 import io.restassured.RestAssured;
@@ -34,6 +39,10 @@ import io.restassured.specification.ResponseSpecification;
 public class SetupConfig {
 
     @BeforeClass
+    @Description ("Set up the base test for running regression tests")
+    @Severity (SeverityLevel.BLOCKER)
+    @Epic ("Rest Assured POC - Example Tests")
+    @Feature ("Performing different API Tests using Rest-Assured")
     public void setup () {
 
         RequestSpecification request = new RequestSpecBuilder ().addHeader ("Content-Type", "application/json")

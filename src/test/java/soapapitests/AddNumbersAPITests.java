@@ -18,6 +18,10 @@ import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.path.xml.config.XmlPathConfig;
 import io.restassured.response.Response;
@@ -33,6 +37,9 @@ public class AddNumbersAPITests {
     private static final String BASE_URL = "http://www.dneonline.com/calculator.asmx";
 
     @Test
+    @Description ("Adding two numbers using SOAP API")
+    @Epic ("Rest Assured POC - Example Tests")
+    @Feature ("Performing SOAP API Tests using Rest-Assured")
     public void testAddNumbers () {
 
         URI file = null;
