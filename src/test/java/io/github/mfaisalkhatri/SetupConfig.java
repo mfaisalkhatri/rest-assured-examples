@@ -17,8 +17,6 @@ package io.github.mfaisalkhatri;
 
 import static org.hamcrest.Matchers.lessThan;
 
-import org.testng.annotations.BeforeClass;
-
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -26,6 +24,7 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import org.testng.annotations.BeforeClass;
 
 /**
  * Created By Faisal Khatri on 20-11-2021

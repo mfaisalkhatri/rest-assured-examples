@@ -7,3 +7,6 @@
 /.classpath
 /.project
 /.idea/
+/allure-results/
+/allure-report/
+/.allure/

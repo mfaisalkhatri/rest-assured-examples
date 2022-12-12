@@ -30,7 +30,7 @@
         <classes>
             <class name="io.github.mfaisalkhatri.TestGetRequestWithRestAssuredConfig">
                 <methods>
-                    <include name="getRequestTestwithRestAssuredConfig"/>
+                    <include name="getRequestTestWithRestAssuredConfig"/>
                 </methods>
             </class>
         </classes>

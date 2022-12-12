@@ -15,13 +15,13 @@
 
 package io.github.mfaisalkhatri.utility;
 
-import org.testng.ITestListener;
-import org.testng.ITestResult;
-import org.testng.ITestContext;
+import static org.apache.commons.lang3.StringUtils.repeat;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import static org.apache.commons.lang3.StringUtils.repeat;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
 
 /**
  * Created By Faisal Khatri on 19-11-2021
@@ -32,11 +32,11 @@ public class TestListener implements ITestListener {
     private static final Logger LOGGER = LogManager.getLogger (TestListener.class);
 
     private void logMessage (final String message) {
-        this.LOGGER.info ("\n");
-        this.LOGGER.info (repeat ("=", 75));
-        this.LOGGER.info (message);
-        this.LOGGER.info (repeat ("=", 75));
-        this.LOGGER.info ("\n");
+        LOGGER.info ("\n");
+        LOGGER.info (repeat ("=", 75));
+        LOGGER.info (message);
+        LOGGER.info (repeat ("=", 75));
+        LOGGER.info ("\n");
     }
 
     @Override

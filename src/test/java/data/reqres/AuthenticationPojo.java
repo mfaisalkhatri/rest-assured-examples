@@ -29,8 +29,8 @@ public class AuthenticationPojo {
     /**
      * Created By Faisal Khatri on 19-11-2021
      *
-     * @param email
-     * @param password
+     * @param email for login
+     * @param password for login
      */
     public AuthenticationPojo (String email, String password) {
         this.email = email;

@@ -15,9 +15,16 @@
 
 package io.github.mfaisalkhatri;
 
-import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 20-11-2021
@@ -25,7 +32,12 @@ import static org.hamcrest.Matchers.equalTo;
 public class TestGetRequestWithRestAssuredConfig extends SetupConfig {
 
     @Test
-    public void getRequestTestwithRestAssuredConfig () {
+    @Description ("Example Test for executing GET request using rest assured configuration")
+    @Severity (SeverityLevel.CRITICAL)
+    @Epic ("Rest Assured POC - Example Tests")
+    @Feature ("Performing different API Tests using Rest-Assured")
+    @Story ("Writing API Tests using rest assured configurations")
+    public void getRequestTestWithRestAssuredConfig () {
         given ().when ()
             .get ("/api/users/2")
             .then ()

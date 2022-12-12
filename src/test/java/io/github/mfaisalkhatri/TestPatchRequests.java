@@ -15,19 +15,25 @@
 
 package io.github.mfaisalkhatri;
 
-import data.reqres.PostData;
-import org.testng.annotations.Test;
-import org.testng.annotations.DataProvider;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-import io.restassured.http.ContentType;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.ArrayList;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import data.reqres.PostData;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import io.restassured.http.ContentType;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 20-11-2021
@@ -60,6 +66,11 @@ public class TestPatchRequests {
      * @since Mar 8, 2020
      */
     @Test (dataProvider = "patchData")
+    @Description ("Example Test for executing PATCH request using rest assured ")
+    @Severity (SeverityLevel.CRITICAL)
+    @Epic ("Rest Assured POC - Example Tests")
+    @Feature ("Performing different API Tests using Rest-Assured")
+    @Story ("Execute Patch requests using rest-assured")
     public void patchRequestTests (final int id, final String name, final String job) {
 
         final PostData postData = new PostData (name, job);

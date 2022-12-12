@@ -1,27 +1,17 @@
 package soapapitests;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Objects;
-import java.util.stream.Stream;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.path.xml.config.XmlPathConfig;
-import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 /**
@@ -33,6 +23,9 @@ public class AddNumbersAPITests {
     private static final String BASE_URL = "http://www.dneonline.com/calculator.asmx";
 
     @Test
+    @Description ("Adding two numbers using SOAP API")
+    @Epic ("Rest Assured POC - Example Tests")
+    @Story ("Performing SOAP API Tests using Rest-Assured")
     public void testAddNumbers () {
 
         URI file = null;
