@@ -38,8 +38,8 @@ jobs:
       id: allure-report
       with:
         allure_results: build/allure-results
-        gh_pages: gh-pages
-        allure_report: allure-report
+#        gh_pages: gh-pages
+#        allure_report: allure-report
         allure_history: allure-history
     - name: Deploy allure report to Github Pages
       if: always()
@@ -55,5 +55,5 @@ jobs:
         authToken: ${{secrets.GITHUB_TOKEN}}
         context: 'Test report'
         state: 'success'
-        sha: ${{ github.event.pull_request.head.sha }}
-        target_url: mfaisalkhatri.github.io/github-allure-history/${{ github.run_number }}
+        sha: ${{ github.event.pull_request.head.sha || github.sha}}
+        target_url: https://mfaisalkhatri.github.io/github-allure-history/${{ github.run_number }}
