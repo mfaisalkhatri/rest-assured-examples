@@ -31,8 +31,8 @@ public class PostData {
     /**
      * Created By Faisal Khatri on 19-11-2021
      *
-     * @param name
-     * @param job
+     * @param name - mandatory field for post request
+     * @param job - mandatory field for post request
      */
     public PostData (final String name, final String job) {
         this.name = name;

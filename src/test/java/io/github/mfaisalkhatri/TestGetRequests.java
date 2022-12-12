@@ -15,28 +15,26 @@
 
 package io.github.mfaisalkhatri;
 
-
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Param;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.simple.parser.ParseException;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 19-11-2021
@@ -44,7 +42,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class TestGetRequests {
 
     private static final String URL = "https://reqres.in/api/users/";
-    private static  final Logger                      LOG = LogManager.getLogger (TestGetRequests.class);
+    private static final Logger LOG = LogManager.getLogger (TestGetRequests.class);
 
     /**
      * Created By Faisal Khatri on 19-11-2021
@@ -52,9 +50,9 @@ public class TestGetRequests {
      * @return testData
      */
     @DataProvider (name = "getUserData")
-    public Iterator<Object []> getUsers () {
-        final List<Object []> getData = new ArrayList<> ();
-        getData.add (new Object [] { 2 });
+    public Iterator<Object[]> getUsers () {
+        final List<Object[]> getData = new ArrayList<> ();
+        getData.add (new Object[] { 2 });
         return getData.iterator ();
     }
 
@@ -113,9 +111,10 @@ public class TestGetRequests {
         JSONObject jsonObject = new JSONObject (responseBody);
         JSONArray dataArray = jsonObject.getJSONArray ("data");
         JSONObject dataObject = dataArray.getJSONObject (0);
-        String first_name = dataObject.get ("first_name").toString ();
+        String first_name = dataObject.get ("first_name")
+            .toString ();
         LOG.info (first_name);
-        
+
     }
 
 }

@@ -15,6 +15,9 @@
 
 package io.github.mfaisalkhatri;
 
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -22,8 +25,6 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 /**
  * Created By Faisal Khatri on 20-11-2021

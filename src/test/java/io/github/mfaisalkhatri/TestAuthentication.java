@@ -15,31 +15,28 @@
 
 package io.github.mfaisalkhatri;
 
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.notNullValue;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import data.reqres.AuthenticationPojo;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Param;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Step;
 import io.qameta.allure.Story;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-import java.util.Iterator;
-import org.json.JSONObject;
 import io.restassured.http.ContentType;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
-
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.notNullValue;
+import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 20-11-2021
@@ -47,7 +44,7 @@ import static org.hamcrest.Matchers.notNullValue;
 public class TestAuthentication {
 
     private static final String URL = "https://reqres.in";
-    private static final Logger                      LOG = LogManager.getLogger (TestAuthentication.class);
+    private static final Logger LOG = LogManager.getLogger (TestAuthentication.class);
 
     /**
      * Created by Faisal Khatri on 20-11-2021
@@ -55,9 +52,9 @@ public class TestAuthentication {
      * @return test data
      */
     @DataProvider
-    public Iterator<Object []> getAuthenticationData () {
-        final List<Object []> getTestData = new ArrayList<> ();
-        getTestData.add (new Object [] { "eve.holt@reqres.in", "pistol" });
+    public Iterator<Object[]> getAuthenticationData () {
+        final List<Object[]> getTestData = new ArrayList<> ();
+        getTestData.add (new Object[] { "eve.holt@reqres.in", "pistol" });
         return getTestData.iterator ();
     }
 
@@ -68,7 +65,7 @@ public class TestAuthentication {
      * @param password
      */
     @Test (dataProvider = "getAuthenticationData")
-    @Description("Example Test for performing authentication using rest assured")
+    @Description ("Example Test for performing authentication using rest assured")
     @Severity (SeverityLevel.NORMAL)
     @Epic ("Rest Assured POC - Example Tests")
     @Feature ("Performing different API Tests using Rest-Assured")
@@ -98,6 +95,7 @@ public class TestAuthentication {
      *
      * @param email
      * @param password
+     *
      * @return auth details
      */
     public static Map<String, Object> getToken (String email, String password) {
@@ -136,7 +134,7 @@ public class TestAuthentication {
      */
     @Test (dataProvider = "getAuthenticationData")
     @Severity (SeverityLevel.NORMAL)
-    @Description("Example Test for printing token by getting token after executing the post authentication request")
+    @Description ("Example Test for printing token by getting token after executing the post authentication request")
     @Epic ("Rest Assured POC - Example Tests")
     @Feature ("Performing different API Tests using Rest-Assured")
     @Story ("Perform Authentication using rest-assured")

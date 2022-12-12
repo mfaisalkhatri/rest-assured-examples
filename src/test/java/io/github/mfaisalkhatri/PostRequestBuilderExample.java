@@ -35,7 +35,7 @@ import org.testng.annotations.Test;
 public class PostRequestBuilderExample extends SetupConfig {
 
     @Test
-    @Description("Example of using Builder Pattern to pass test data in tests")
+    @Description ("Example of using Builder Pattern to pass test data in tests")
     @Severity (SeverityLevel.BLOCKER)
     @Epic ("Rest Assured POC - Example Tests")
     @Feature ("Performing different API Tests using Rest-Assured")

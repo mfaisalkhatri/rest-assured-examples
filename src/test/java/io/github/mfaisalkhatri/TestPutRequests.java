@@ -40,7 +40,7 @@ import org.testng.annotations.Test;
  */
 public class TestPutRequests {
 
-    private static final Logger                      LOG = LogManager.getLogger (TestPutRequests.class);
+    private static final Logger LOG = LogManager.getLogger (TestPutRequests.class);
     private static final String URL = "https://reqres.in";
 
     /**
@@ -49,16 +49,15 @@ public class TestPutRequests {
      * @return test data for put requests
      */
     @DataProvider (name = "putData")
-    public Iterator<Object []> putData () {
-        final List<Object []> putData = new ArrayList<> ();
-        putData.add (new Object [] { 2, "Michael", "QA Lead" });
-        putData.add (new Object [] { 958, "Yuan", "Project Architect" });
+    public Iterator<Object[]> putData () {
+        final List<Object[]> putData = new ArrayList<> ();
+        putData.add (new Object[] { 2, "Michael", "QA Lead" });
+        putData.add (new Object[] { 958, "Yuan", "Project Architect" });
         return putData.iterator ();
     }
 
     /**
-     * Created By Faisal Khatri on 20-11-2021 Executing Put Request using Rest
-     * Assured.
+     * Created By Faisal Khatri on 20-11-2021 Executing Put Request using Rest Assured.
      *
      * @param id
      * @param name
