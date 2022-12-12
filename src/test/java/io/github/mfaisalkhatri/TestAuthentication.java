@@ -23,6 +23,7 @@ import io.qameta.allure.Param;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -71,6 +72,7 @@ public class TestAuthentication {
     @Severity (SeverityLevel.NORMAL)
     @Epic ("Rest Assured POC - Example Tests")
     @Feature ("Performing different API Tests using Rest-Assured")
+    @Story ("Perform Authentication using rest-assured")
     public void testAuthenticationToken (String email, String password) {
         final AuthenticationPojo requestBody = new AuthenticationPojo (email, password);
 
@@ -133,10 +135,11 @@ public class TestAuthentication {
      * @param password
      */
     @Test (dataProvider = "getAuthenticationData")
+    @Severity (SeverityLevel.NORMAL)
     @Description("Example Test for printing token by getting token after executing the post authentication request")
     @Epic ("Rest Assured POC - Example Tests")
     @Feature ("Performing different API Tests using Rest-Assured")
-    @Severity (SeverityLevel.NORMAL)
+    @Story ("Perform Authentication using rest-assured")
     public void testAuthToken (String email, String password) {
         LOG.info ("Token is" + getToken (email, password).get ("token")
             .toString ());

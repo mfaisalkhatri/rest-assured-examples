@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.path.xml.config.XmlPathConfig;
 import org.testng.annotations.Test;
@@ -25,7 +26,7 @@ public class NumberToWordsTest {
     @Test
     @Description("Printing numbers to words using SOAP API")
     @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
+    @Story ("Performing SOAP API Tests using Rest-Assured")
     public void testNumberToWordsAPI () {
         URI file = null;
         try {

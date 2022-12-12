@@ -21,6 +21,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 import org.apache.logging.log4j.Logger;
@@ -69,6 +70,7 @@ public class TestPatchRequests {
     @Severity (SeverityLevel.CRITICAL)
     @Epic ("Rest Assured POC - Example Tests")
     @Feature ("Performing different API Tests using Rest-Assured")
+    @Story ("Execute Patch requests using rest-assured")
     public void patchRequestTests (final int id, final String name, final String job) {
 
         final PostData postData = new PostData (name, job);

@@ -39,7 +39,7 @@ public class PostRequestBuilderExample extends SetupConfig {
     @Severity (SeverityLevel.BLOCKER)
     @Epic ("Rest Assured POC - Example Tests")
     @Feature ("Performing different API Tests using Rest-Assured")
-    @Story ("Builder Pattern Example")
+    @Story ("Builder Pattern Example using rest assured")
     public void postTestUsingBuilderPattern () {
         UserData userData = userDataBuilder ();
         given ().body (userData)

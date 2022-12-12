@@ -20,6 +20,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -59,6 +60,7 @@ public class TestDeleteRequests {
     @Severity (SeverityLevel.NORMAL)
     @Epic ("Rest Assured POC - Example Tests")
     @Feature ("Performing different API Tests using Rest-Assured")
+    @Story ("Execute Delete requests using rest-assured")
     public void deleteRequestTests (final int userId) {
         given ().when ()
             .delete (URL + userId)

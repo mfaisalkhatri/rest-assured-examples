@@ -39,7 +39,7 @@ public class AddNumbersAPITests {
     @Test
     @Description ("Adding two numbers using SOAP API")
     @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing SOAP API Tests using Rest-Assured")
+    @Story ("Performing SOAP API Tests using Rest-Assured")
     public void testAddNumbers () {
 
         URI file = null;

@@ -6,8 +6,8 @@
                 class-name="io.github.mfaisalkhatri.utility.TestListener"/>
     </listeners>
     <suite-files>
-        <suite-file path="reqrestestsuite.xml"></suite-file>
-        <suite-file path="restfulbookersuite.xml"></suite-file>
+        <suite-file path="reqrestestsuite.xml"/>
+        <suite-file path="restfulbookersuite.xml"/>
         <suite-file path="soapapisuite.xml"/>
     </suite-files>
 </suite> <!-- Suite -->
