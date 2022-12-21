@@ -4,6 +4,13 @@ import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
 import java.util.List;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.path.json.JsonPath;
 
 import io.restassured.response.ResponseBody;
@@ -13,11 +20,16 @@ import org.testng.annotations.Test;
  * @author Faisal Khatri
  * @since 12/21/2022
  **/
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
 public class TestResponseBodyWithJsonPath extends SetupConfig{
 
 
     @Test
-        public void testResponseWithJsonPath() {
+    @Description ("Example Test for extracting the response data using jsonpath")
+    @Severity (SeverityLevel.MINOR)
+    @Story ("Extracting response data using JsonPath")
+    public void testResponseWithJsonPath() {
         ResponseBody response = given ().when ()
             .queryParam ("page", "2")
             .get ("/api/users")
@@ -44,8 +56,6 @@ public class TestResponseBodyWithJsonPath extends SetupConfig{
         String firstNameInSecondObject = jsonPath.getString ("data[1].first_name");
         System.out.println ("First Name in second object " +firstNameInSecondObject);
         assertEquals (firstNameInSecondObject, "Lindsay");
-
-
 
     }
 

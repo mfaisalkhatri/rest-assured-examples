@@ -85,4 +85,11 @@
             <class name="in.reqres.TestResponseHeaders"/>
         </classes>
     </test>
+
+    <test name="JsonPath usage tests">
+        <classes>
+            <class name="in.reqres.TestResponseBodyWithJsonPath"/>
+        </classes>
+    </test>
+
 </suite> <!-- Suite -->
