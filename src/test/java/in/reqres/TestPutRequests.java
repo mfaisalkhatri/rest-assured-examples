@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri;
+package in.reqres;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -38,46 +38,45 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 20-11-2021
  */
-public class TestPatchRequests {
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
 
-    private static final Logger LOG = LogManager.getLogger (TestPatchRequests.class);
+public class TestPutRequests {
+
+    private static final Logger LOG = LogManager.getLogger (TestPutRequests.class);
     private static final String URL = "https://reqres.in";
 
     /**
      * Created By Faisal Khatri on 20-11-2021
      *
-     * @return test data for patch requests
+     * @return test data for put requests
      */
-    @DataProvider (name = "patchData")
-    public Iterator<Object[]> patchData () {
-        final List<Object[]> patchData = new ArrayList<> ();
-        patchData.add (new Object[] { 2, "Michael", "QA Lead" });
-        patchData.add (new Object[] { 958, "Yuan", "Project Architect" });
-        return patchData.iterator ();
+    @DataProvider (name = "putData")
+    public Iterator<Object[]> putData () {
+        final List<Object[]> putData = new ArrayList<> ();
+        putData.add (new Object[] { 2, "Michael", "QA Lead" });
+        putData.add (new Object[] { 958, "Yuan", "Project Architect" });
+        return putData.iterator ();
     }
 
     /**
-     * Executing Put Request using Rest Assured.
+     * Created By Faisal Khatri on 20-11-2021 Executing Put Request using Rest Assured.
      *
      * @param id
      * @param name
      * @param job
-     *
-     * @since Mar 8, 2020
      */
-    @Test (dataProvider = "patchData")
-    @Description ("Example Test for executing PATCH request using rest assured ")
+    @Test (dataProvider = "putData")
+    @Description ("Example Test for executing PUT request using rest assured")
     @Severity (SeverityLevel.CRITICAL)
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
-    @Story ("Execute Patch requests using rest-assured")
-    public void patchRequestTests (final int id, final String name, final String job) {
+    @Story ("Execute Post requests using rest-assured")
+    public void putRequestsTests (final int id, final String name, final String job) {
 
         final PostData postData = new PostData (name, job);
         final String response = given ().contentType (ContentType.JSON)
             .body (postData)
             .when ()
-            .patch (URL + "/api/users/" + id)
+            .put (URL + "/api/users/" + id)
             .then ()
             .assertThat ()
             .statusCode (200)
@@ -96,5 +95,4 @@ public class TestPatchRequests {
         LOG.info (response);
 
     }
-
 }

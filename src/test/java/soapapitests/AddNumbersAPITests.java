@@ -18,13 +18,13 @@ import org.testng.annotations.Test;
  * @author Faisal Khatri
  * @since 8/28/2022
  **/
+@Epic ("Rest Assured POC - Example Tests")
 public class AddNumbersAPITests {
 
     private static final String BASE_URL = "http://www.dneonline.com/calculator.asmx";
 
     @Test
     @Description ("Adding two numbers using SOAP API")
-    @Epic ("Rest Assured POC - Example Tests")
     @Story ("Performing SOAP API Tests using Rest-Assured")
     public void testAddNumbers () {
 

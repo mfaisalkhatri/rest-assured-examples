@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri.utility;
+package in.reqres.utility;
 
 import static org.apache.commons.lang3.StringUtils.repeat;
 

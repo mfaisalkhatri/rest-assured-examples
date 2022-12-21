@@ -13,13 +13,11 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri;
+package in.reqres;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-import com.github.javafaker.Faker;
-import data.restfulbooker.UserData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -31,37 +29,21 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 20-11-2021
  */
-
-public class PostRequestBuilderExample extends SetupConfig {
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
+public class TestGetRequestWithRestAssuredConfig extends SetupConfig {
 
     @Test
-    @Description ("Example of using Builder Pattern to pass test data in tests")
-    @Severity (SeverityLevel.BLOCKER)
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
-    @Story ("Builder Pattern Example using rest assured")
-    public void postTestUsingBuilderPattern () {
-        UserData userData = userDataBuilder ();
-        given ().body (userData)
-            .when ()
-            .post ("/api/users")
+    @Description ("Example Test for executing GET request using rest assured configuration")
+    @Severity (SeverityLevel.CRITICAL)
+    @Story ("Writing API Tests using rest assured configurations")
+    public void getRequestTestWithRestAssuredConfig () {
+        given ().when ()
+            .get ("/api/users/2")
             .then ()
-            .statusCode (201)
+            .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("name", equalTo (userData.getName ()))
-            .body ("job", equalTo (userData.getJob ()));
-
+            .body ("data.first_name", equalTo ("Janet"));
     }
-
-    private UserData userDataBuilder () {
-        Faker faker = Faker.instance ();
-        return UserData.builder ()
-            .name (faker.name ()
-                .firstName ())
-            .job (faker.company ()
-                .profession ())
-            .build ();
-    }
-
 }

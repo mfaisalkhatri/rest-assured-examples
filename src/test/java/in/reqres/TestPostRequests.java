@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri;
+package in.reqres;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -39,6 +39,8 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 20-11-2021
  */
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
 public class TestPostRequests {
 
     private static final Logger LOG = LogManager.getLogger (TestPostRequests.class);
@@ -68,8 +70,6 @@ public class TestPostRequests {
     @Test (dataProvider = "postData")
     @Description ("Example Test for executing POST request using rest assured")
     @Severity (SeverityLevel.CRITICAL)
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
     @Story ("Execute Post requests using rest-assured")
     public void testPostRequests (final String name, final String job) {
         final PostData postData = new PostData (name, job);

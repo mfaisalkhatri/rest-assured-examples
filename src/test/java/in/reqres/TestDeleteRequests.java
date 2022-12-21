@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri;
+package in.reqres;
 
 import static io.restassured.RestAssured.given;
 
@@ -33,6 +33,8 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 20-11-2021
  */
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
 public class TestDeleteRequests {
 
     private static final String URL = "https://reqres.in/api/users/";
@@ -57,8 +59,6 @@ public class TestDeleteRequests {
     @Test (dataProvider = "deleteUserRestAssured")
     @Description ("Example Test for executing DELETE request using rest assured")
     @Severity (SeverityLevel.NORMAL)
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
     @Story ("Execute Delete requests using rest-assured")
     public void deleteRequestTests (final int userId) {
         given ().when ()

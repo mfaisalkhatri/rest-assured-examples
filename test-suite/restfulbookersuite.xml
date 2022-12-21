@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Restful Booker Test Suite">
+<suite name="Restful Booker Test Suite" thread-count="3" parallel="tests">
     <listeners>
         <listener
-                class-name="io.github.mfaisalkhatri.utility.TestListener"/>
+                class-name="in.reqres.utility.TestListener"/>
     </listeners>
     <test name="Restful Booker tests">
         <classes>
@@ -19,7 +19,7 @@
             </class>
         </classes>
     </test>
-    <test name="Restful Booker JSON Schema Validation tests">
+    <test name="Restful Booker JSON Schema Validation tests" >
         <classes>
             <class name="com.restfulbooker.JsonSchemaValidationTest">
                 <methods>

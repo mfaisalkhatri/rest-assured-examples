@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri;
+package in.reqres;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -39,6 +39,8 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 19-11-2021
  */
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
 public class TestGetRequests {
 
     private static final String URL = "https://reqres.in/api/users/";
@@ -59,8 +61,6 @@ public class TestGetRequests {
     @Test (dataProvider = "getUserData")
     @Description ("Example Test for executing GET request using rest assured")
     @Severity (SeverityLevel.CRITICAL)
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
     @Story ("Execute Get requests using rest-assured")
     public void getRequestTest (final int userId) throws ParseException {
         given ().when ()
@@ -86,8 +86,6 @@ public class TestGetRequests {
     @Test (dataProvider = "getUserData")
     @Description ("Example Test for executing GET request using rest assured with query params")
     @Severity (SeverityLevel.CRITICAL)
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
     @Story ("Execute Get requests using rest-assured")
     public void getRequestTestWithQueryParam (final int userPage) {
         given ().when ()

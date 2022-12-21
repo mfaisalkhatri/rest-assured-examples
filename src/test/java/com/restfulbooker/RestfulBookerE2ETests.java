@@ -9,6 +9,8 @@ import data.restfulbooker.BookingData;
 import data.restfulbooker.PartialBookingData;
 import data.restfulbooker.Tokencreds;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
@@ -20,6 +22,8 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 18-02-2022
  */
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Writing End to End tests using rest-assured")
 public class RestfulBookerE2ETests extends BaseSetup {
 
     private BookingData        newBooking;
