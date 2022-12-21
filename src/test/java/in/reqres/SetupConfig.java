@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri;
+package in.reqres;
 
 import static org.hamcrest.Matchers.lessThan;
 

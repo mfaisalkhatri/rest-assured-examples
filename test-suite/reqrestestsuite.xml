@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="ReqRes Test Suite">
+<suite name="ReqRes Test Suite" thread-count="10" parallel="tests">
     <listeners>
         <listener
-                class-name="io.github.mfaisalkhatri.utility.TestListener"/>
+                class-name="in.reqres.utility.TestListener"/>
     </listeners>
     <test name="Authentication Tests">
         <classes>
-            <class name="io.github.mfaisalkhatri.TestAuthentication">
+            <class name="in.reqres.TestAuthentication">
                 <methods>
                     <include name="testAuthenticationToken"/>
                     <include name="testAuthToken"/>
@@ -17,7 +17,7 @@
     </test>
     <test name="Get Request Tests">
         <classes>
-            <class name="io.github.mfaisalkhatri.TestGetRequests">
+            <class name="in.reqres.TestGetRequests">
                 <methods>
                     <include name="getRequestTest"/>
                     <include name="getRequestTestWithQueryParam"/>
@@ -28,7 +28,7 @@
 
     <test name="Get Tests with Rest Assured Config">
         <classes>
-            <class name="io.github.mfaisalkhatri.TestGetRequestWithRestAssuredConfig">
+            <class name="in.reqres.TestGetRequestWithRestAssuredConfig">
                 <methods>
                     <include name="getRequestTestWithRestAssuredConfig"/>
                 </methods>
@@ -38,12 +38,12 @@
 
     <test name="Post Request tests">
         <classes>
-            <class name="io.github.mfaisalkhatri.TestPostRequests">
+            <class name="in.reqres.TestPostRequests">
                 <methods>
                     <include name="testPostRequests"/>
                 </methods>
             </class>
-            <class name="io.github.mfaisalkhatri.PostRequestBuilderExample">
+            <class name="in.reqres.PostRequestBuilderExample">
                 <methods>
                     <include name="postTestUsingBuilderPattern"/>
                 </methods>
@@ -53,7 +53,7 @@
 
     <test name="Put Request Tests">
         <classes>
-            <class name="io.github.mfaisalkhatri.TestPutRequests">
+            <class name="in.reqres.TestPutRequests">
                 <methods>
                     <include name="putRequestsTests"/>
                 </methods>
@@ -63,7 +63,7 @@
 
     <test name="Patch Request tests">
         <classes>
-            <class name="io.github.mfaisalkhatri.TestPatchRequests">
+            <class name="in.reqres.TestPatchRequests">
                 <methods>
                     <include name="patchRequestTests"/>
                 </methods>
@@ -73,11 +73,16 @@
 
     <test name="Delete Requests tests ">
         <classes>
-            <class name="io.github.mfaisalkhatri.TestDeleteRequests">
+            <class name="in.reqres.TestDeleteRequests">
                 <methods>
                     <include name="deleteRequestTests"/>
                 </methods>
             </class>
+        </classes>
+    </test>
+    <test name="Test Response Headers">
+        <classes>
+            <class name="in.reqres.TestResponseHeaders"/>
         </classes>
     </test>
 </suite> <!-- Suite -->

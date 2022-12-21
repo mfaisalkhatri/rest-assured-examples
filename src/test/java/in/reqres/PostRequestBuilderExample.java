@@ -13,58 +13,55 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri;
+package in.reqres;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
+import com.github.javafaker.Faker;
+import data.restfulbooker.UserData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 20-11-2021
  */
-public class TestDeleteRequests {
 
-    private static final String URL = "https://reqres.in/api/users/";
+public class PostRequestBuilderExample extends SetupConfig {
 
-    /**
-     * Created By Faisal Khatri on 20-11-2021
-     *
-     * @return deleteUserData using rest assured
-     */
-    @DataProvider (name = "deleteUserRestAssured")
-    public Iterator<Object[]> deleteRestUsers () {
-        final List<Object[]> deleteData = new ArrayList<> ();
-        deleteData.add (new Object[] { 2 });
-        return deleteData.iterator ();
-    }
-
-    /**
-     * Executing delete requests using Rest-assured. Created By Faisal Khatri on 20-11-2021
-     *
-     * @param userId
-     */
-    @Test (dataProvider = "deleteUserRestAssured")
-    @Description ("Example Test for executing DELETE request using rest assured")
-    @Severity (SeverityLevel.NORMAL)
+    @Test
+    @Description ("Example of using Builder Pattern to pass test data in tests")
+    @Severity (SeverityLevel.BLOCKER)
     @Epic ("Rest Assured POC - Example Tests")
     @Feature ("Performing different API Tests using Rest-Assured")
-    @Story ("Execute Delete requests using rest-assured")
-    public void deleteRequestTests (final int userId) {
-        given ().when ()
-            .delete (URL + userId)
+    @Story ("Builder Pattern Example using rest assured")
+    public void postTestUsingBuilderPattern () {
+        UserData userData = userDataBuilder ();
+        given ().body (userData)
+            .when ()
+            .post ("/api/users")
             .then ()
+            .statusCode (201)
+            .and ()
             .assertThat ()
-            .statusCode (204);
+            .body ("name", equalTo (userData.getName ()))
+            .body ("job", equalTo (userData.getJob ()));
+
     }
+
+    private UserData userDataBuilder () {
+        Faker faker = Faker.instance ();
+        return UserData.builder ()
+            .name (faker.name ()
+                .firstName ())
+            .job (faker.company ()
+                .profession ())
+            .build ();
+    }
+
 }
