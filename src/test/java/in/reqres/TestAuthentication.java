@@ -41,6 +41,9 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 20-11-2021
  */
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
+@Story ("Perform Authentication using rest-assured")
 public class TestAuthentication {
 
     private static final String URL = "https://reqres.in";
@@ -67,9 +70,6 @@ public class TestAuthentication {
     @Test (dataProvider = "getAuthenticationData")
     @Description ("Example Test for performing authentication using rest assured")
     @Severity (SeverityLevel.NORMAL)
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
-    @Story ("Perform Authentication using rest-assured")
     public void testAuthenticationToken (String email, String password) {
         final AuthenticationPojo requestBody = new AuthenticationPojo (email, password);
 
@@ -135,9 +135,6 @@ public class TestAuthentication {
     @Test (dataProvider = "getAuthenticationData")
     @Severity (SeverityLevel.NORMAL)
     @Description ("Example Test for printing token by getting token after executing the post authentication request")
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
-    @Story ("Perform Authentication using rest-assured")
     public void testAuthToken (String email, String password) {
         LOG.info ("Token is" + getToken (email, password).get ("token")
             .toString ());

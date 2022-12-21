@@ -32,13 +32,13 @@ import org.testng.annotations.Test;
  * Created By Faisal Khatri on 20-11-2021
  */
 
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
 public class PostRequestBuilderExample extends SetupConfig {
 
     @Test
     @Description ("Example of using Builder Pattern to pass test data in tests")
     @Severity (SeverityLevel.BLOCKER)
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
     @Story ("Builder Pattern Example using rest assured")
     public void postTestUsingBuilderPattern () {
         UserData userData = userDataBuilder ();

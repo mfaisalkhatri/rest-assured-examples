@@ -11,6 +11,8 @@ import data.restfulbooker.BookingData;
 import data.restfulbooker.PartialBookingData;
 import data.restfulbooker.Tokencreds;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
@@ -22,6 +24,8 @@ import org.testng.annotations.Test;
  * @author Faisal Khatri
  * @since 8/24/2022
  **/
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("JSON Schema Validation using rest-assured")
 public class JsonSchemaValidationTest extends BaseSetup {
 
     private BookingData        newBooking;

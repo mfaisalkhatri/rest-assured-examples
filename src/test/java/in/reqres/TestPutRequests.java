@@ -38,6 +38,9 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 20-11-2021
  */
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
+
 public class TestPutRequests {
 
     private static final Logger LOG = LogManager.getLogger (TestPutRequests.class);
@@ -66,8 +69,6 @@ public class TestPutRequests {
     @Test (dataProvider = "putData")
     @Description ("Example Test for executing PUT request using rest assured")
     @Severity (SeverityLevel.CRITICAL)
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
     @Story ("Execute Post requests using rest-assured")
     public void putRequestsTests (final int id, final String name, final String job) {
 

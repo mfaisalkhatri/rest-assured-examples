@@ -29,13 +29,13 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 20-11-2021
  */
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
 public class TestGetRequestWithRestAssuredConfig extends SetupConfig {
 
     @Test
     @Description ("Example Test for executing GET request using rest assured configuration")
     @Severity (SeverityLevel.CRITICAL)
-    @Epic ("Rest Assured POC - Example Tests")
-    @Feature ("Performing different API Tests using Rest-Assured")
     @Story ("Writing API Tests using rest assured configurations")
     public void getRequestTestWithRestAssuredConfig () {
         given ().when ()
