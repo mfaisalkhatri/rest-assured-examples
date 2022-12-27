@@ -42,7 +42,7 @@ public class SetupSpecification {
             .addFilter (new ResponseLoggingFilter ())
             .build ();
 
-        ResponseSpecification response = new ResponseSpecBuilder ().expectResponseTime (lessThan (5000L))
+        ResponseSpecification response = new ResponseSpecBuilder ().expectResponseTime (lessThan (10000L))
             .build ();
 
         RestAssured.requestSpecification = request;

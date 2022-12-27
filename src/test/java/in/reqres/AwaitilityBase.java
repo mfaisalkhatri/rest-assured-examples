@@ -1,10 +1,8 @@
 package in.reqres;
 
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-import java.util.concurrent.TimeUnit;
-
+import io.restassured.RestAssured;
 import org.awaitility.Awaitility;
 import org.testng.annotations.BeforeClass;
 
@@ -15,9 +13,9 @@ import org.testng.annotations.BeforeClass;
 public class AwaitilityBase {
 
     @BeforeClass
-    public void setupAwaitility() {
+    public void setupAwaitility () {
         Awaitility.reset ();
-        Awaitility.setDefaultPollDelay (3, SECONDS);
+        Awaitility.setDefaultPollDelay (5, SECONDS);
         Awaitility.setDefaultPollInterval (2, SECONDS);
         Awaitility.setDefaultTimeout (10, SECONDS);
     }
