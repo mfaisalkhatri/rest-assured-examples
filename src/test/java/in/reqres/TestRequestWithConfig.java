@@ -13,27 +13,31 @@ import org.testng.annotations.Test;
 
 /**
  * @author Faisal Khatri
- * @since 12/21/2022
+ * @since 12/27/2022
  **/
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
-public class TestResponseHeaders extends SetupSpecification {
+public class TestRequestWithConfig extends SetupConfiguration {
 
     @Test
-    @Description ("Example Test for verifying the response headers using rest assured")
-    @Severity (SeverityLevel.MINOR)
-    @Story ("Checking response headers using rest-assured")
-    public void responseHeadersTest () {
-        given ().when ()
-            .with ()
-            .queryParam ("page", 2)
-            .get ("/api/users")
+    @Description ("Example Test for executing GET request using rest assured configuration")
+    @Severity (SeverityLevel.CRITICAL)
+    @Story ("Writing API Tests using rest assured configurations")
+    public void testGetRequest () {
+        String responseBody = given ().when ()
+            .post ("https://apimocha.com/checkt/rover")
             .then ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("page", equalTo(2))
-            .header ("Content-Type", equalTo ("application/json; charset=utf-8"))
-            .header ("Content-Encoding", equalTo ("gzip"));
+            .body ("type", equalTo ("dog"))
+            .and ()
+            .extract ()
+            .response ()
+            .asString ();
+
+        System.out.println (responseBody);
+
     }
+
 }

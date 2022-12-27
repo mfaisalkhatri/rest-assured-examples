@@ -62,7 +62,7 @@ public class TestGetRequests {
     @Description ("Example Test for executing GET request using rest assured")
     @Severity (SeverityLevel.CRITICAL)
     @Story ("Execute Get requests using rest-assured")
-    public void getRequestTest (final int userId) throws ParseException {
+    public void getRequestTest (final int userId)  {
         given ().when ()
             .get (URL + userId)
             .then ()
@@ -114,5 +114,4 @@ public class TestGetRequests {
         LOG.info (first_name);
 
     }
-
 }
