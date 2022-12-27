@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
 public class TestGetRequestWithRestAssuredSpecs extends SetupSpecification {
 
     @Test
-    @Description ("Example Test for executing GET request using rest assured configuration")
+    @Description ("Example Test for executing GET request using rest assured specification")
     @Severity (SeverityLevel.CRITICAL)
     @Story ("Writing API Tests using rest assured configurations")
     public void getRequestTestWithRestAssuredConfig () {
