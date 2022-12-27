@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
  **/
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
-public class TestResponseBodyWithJsonPath extends SetupConfig{
+public class TestResponseBodyWithJsonPath extends SetupSpecification {
 
 
     @Test

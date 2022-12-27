@@ -30,7 +30,7 @@ import org.testng.annotations.BeforeClass;
  * Created By Faisal Khatri on 20-11-2021
  */
 
-public class SetupConfig {
+public class SetupSpecification {
 
     @BeforeClass
     public void setup () {

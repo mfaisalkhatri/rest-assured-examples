@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
  **/
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
-public class TestValidateResponseTime extends SetupConfig{
+public class TestValidateResponseTime extends SetupSpecification {
 
     @Test
     @Description ("Example Test for validating response time using rest assured")

@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
  **/
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
-public class TestResponseHeaders extends SetupConfig {
+public class TestResponseHeaders extends SetupSpecification {
 
     @Test
     @Description ("Example Test for verifying the response headers using rest assured")
