@@ -28,7 +28,7 @@
 
     <test name="Get Tests with Rest Assured Config">
         <classes>
-            <class name="in.reqres.TestGetRequestWithRestAssuredConfig">
+            <class name="in.reqres.TestGetRequestWithRestAssuredSpecs">
                 <methods>
                     <include name="getRequestTestWithRestAssuredConfig"/>
                 </methods>
@@ -91,5 +91,9 @@
             <class name="in.reqres.TestResponseBodyWithJsonPath"/>
         </classes>
     </test>
-
+    <test name="Awaitility Example tests">
+        <classes>
+            <class name="in.reqres.TestDelayedAPIWithAwaitility"/>
+        </classes>
+    </test>
 </suite> <!-- Suite -->
