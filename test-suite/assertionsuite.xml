@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Hamcrest Assertions Example Test Suite" parallel="tests">
+    <test name="Number related assertion examples" parallel="methods" >
+        <classes>
+            <class name="assertionexamples.NumberRelatedAssertionTests">
+                <methods>
+                    <include name="testNumberAssertions"/>
+                    <include name="testGreaterThanAssertions"/>
+                    <include name="testLessThanAssertions"/>
+
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="String related assertion examples" parallel="methods">
+        <classes>
+            <class name="assertionexamples.StringRelatedAssertionTests">
+                <methods>
+                    <include name="testStringAssertions"/>
+                    <include name="testNotNullAssertions"/>
+                    <include name="testHasKeyAssertion"/>
+                    <include name="testNotAssertions"/>
+                    <include name="testMultipleAssertStatement"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
