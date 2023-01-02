@@ -7,6 +7,8 @@ import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -62,4 +64,12 @@ public class NumberRelatedAssertionTests {
             .body ("total", lessThan (14))
             .body ("total_pages", lessThanOrEqualTo (3));
     }
+
+    @AfterMethod
+    public void getTestExecutionTime (ITestResult result) {
+        String methodName = result.getMethod ().getMethodName ();
+        long totalExecutionTime = (result.getEndMillis () - result.getStartMillis ());
+        System.out.println ("Total Execution time: " +totalExecutionTime +" milliseconds" + " for method " +methodName);
+    }
+
 }

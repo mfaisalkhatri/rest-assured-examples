@@ -14,6 +14,21 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.startsWith;
 
+import java.sql.Time;
+
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
+import org.hamcrest.Matchers;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
@@ -22,19 +37,32 @@ import org.testng.annotations.Test;
  **/
 public class StringRelatedAssertionTests {
 
-    private static final String URL = "https://reqres.in/api/users/";
+    private static RequestSpecBuilder    requestSpecBuilder;
+    private static ResponseSpecBuilder   responseSpecBuilder;
+    private static ResponseSpecification responseSpecification;
+    private static RequestSpecification  requestSpecification;
+
+    @BeforeClass
+    public void setupSpecBuilder () {
+        requestSpecBuilder = new RequestSpecBuilder ().setBaseUri ("https://reqres.in/api/users/")
+            .addQueryParam ("page", 2)
+            .addFilter (new RequestLoggingFilter ())
+            .addFilter (new ResponseLoggingFilter ());
+        responseSpecBuilder = new ResponseSpecBuilder ().expectStatusCode (200)
+            .expectBody ("page", equalTo (2));
+
+        responseSpecification = responseSpecBuilder.build ();
+        requestSpecification = requestSpecBuilder.build ();
+
+    }
 
     @Test
     public void testStringAssertions () {
 
-        given ().when ()
-            .queryParam ("page", 2)
-            .get (URL)
+        given ().spec (requestSpecification)
+            .get ()
             .then ()
-            .log ()
-            .all ()
-            .statusCode (200)
-            .and ()
+            .spec (responseSpecification)
             .assertThat ()
             .body ("data[0].first_name", equalTo ("Michael"))
             .body ("data[0].first_name", equalToIgnoringCase ("MICHael"))
@@ -46,27 +74,22 @@ public class StringRelatedAssertionTests {
 
     @Test
     public void testNotNullAssertions () {
-        given ().when ()
-            .queryParam ("page", 2)
-            .get (URL)
+        given ().spec (requestSpecification)
+            .get ()
             .then ()
-            .log ()
-            .all ()
-            .statusCode (200)
+            .spec (responseSpecification)
             .and ()
             .assertThat ()
-            .body ("data[0].first_name", is (notNullValue ()));
+            .body ("data[0].first_name", is (Matchers.notNullValue ()));
+
     }
 
     @Test
     public void testHasKeyAssertion () {
-        given ().when ()
-            .queryParam ("page", 2)
-            .get (URL)
+        given ().spec (requestSpecification)
+            .get ()
             .then ()
-            .log ()
-            .all ()
-            .statusCode (200)
+            .spec (responseSpecification)
             .and ()
             .assertThat ()
             .body ("data[0]", hasKey ("email"))
@@ -77,13 +100,10 @@ public class StringRelatedAssertionTests {
 
     @Test
     public void testNotAssertions () {
-        given ().when ()
-            .queryParam ("page", 2)
-            .get (URL)
+        given ().spec (requestSpecification)
+            .get ()
             .then ()
-            .log ()
-            .all ()
-            .statusCode (200)
+            .spec (responseSpecification)
             .and ()
             .assertThat ()
             .body ("data", not (emptyArray ()))
@@ -93,16 +113,20 @@ public class StringRelatedAssertionTests {
 
     @Test
     public void testMultipleAssertStatement () {
-        given ().when ()
-            .queryParam ("page", 2)
-            .get (URL)
+        given ().spec (requestSpecification)
+            .get ()
             .then ()
-            .log ()
-            .all ()
-            .statusCode (200)
+            .spec (responseSpecification)
             .and ()
             .assertThat ()
             .body ("page", equalTo (2), "data[0].first_name", equalTo ("Michael"), "support.url", is (notNullValue ()));
 
+    }
+
+    @AfterMethod
+    public void getTestExecutionTime (ITestResult result) {
+        String methodName = result.getMethod ().getMethodName ();
+        long totalExecutionTime = (result.getEndMillis () - result.getStartMillis ());
+        System.out.println ("Total Execution time: " +totalExecutionTime +" milliseconds" + " for method " +methodName);
     }
 }
