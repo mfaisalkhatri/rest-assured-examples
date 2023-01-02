@@ -35,6 +35,7 @@ public class MultiPartFileUploadTest {
         given ().when ()
             .log ()
             .all ()
+            .contentType ("multipart/form-data")
             .multiPart (fileReader.fileToUpload (fileName))
             .when ()
             .post (URL)
