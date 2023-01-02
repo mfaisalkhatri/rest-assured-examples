@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="File upload Example Test Suite" >
+    <test name="Upload file example" >
+        <classes>
+            <class name="fileupload.MultiPartFileUploadTest"/>
+        </classes>
+    </test>
+</suite>
