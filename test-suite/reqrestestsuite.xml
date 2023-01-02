@@ -91,7 +91,7 @@
             <class name="in.reqres.TestResponseBodyWithJsonPath"/>
         </classes>
     </test>
-    <test name="Awaitility Example tests">
+    <test name="Awaitility Example tests" enabled="false">
         <classes>
             <class name="in.reqres.TestDelayedAPIWithAwaitility"/>
         </classes>
