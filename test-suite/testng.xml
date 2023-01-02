@@ -9,6 +9,7 @@
         <suite-file path="reqrestestsuite.xml"/>
         <suite-file path="restfulbookersuite.xml"/>
         <suite-file path="soapapisuite.xml"/>
-        <suite-file path="assertionsuite.xml"></suite-file>
+        <suite-file path="assertionsuite.xml"/>
+        <suite-file path="fileuploadsuite.xml"/>
     </suite-files>
 </suite> <!-- Suite -->
