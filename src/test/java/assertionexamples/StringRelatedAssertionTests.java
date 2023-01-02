@@ -14,8 +14,12 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.startsWith;
 
-import java.sql.Time;
-
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
@@ -23,11 +27,8 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.hamcrest.Matchers;
-import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -35,6 +36,9 @@ import org.testng.annotations.Test;
  * @author Faisal Khatri
  * @since 12/30/2022
  **/
+@Epic ("Rest Assured POC - Example Tests")
+@Feature ("Performing different API Tests using Rest-Assured")
+@Story ("Number related Assertions using Hamcrest in rest assured")
 public class StringRelatedAssertionTests {
 
     private static RequestSpecBuilder    requestSpecBuilder;
@@ -57,6 +61,8 @@ public class StringRelatedAssertionTests {
     }
 
     @Test
+    @Description ("Example Test for performing String related assertions using Hamcrest")
+    @Severity (SeverityLevel.NORMAL)
     public void testStringAssertions () {
 
         given ().spec (requestSpecification)
@@ -73,6 +79,8 @@ public class StringRelatedAssertionTests {
     }
 
     @Test
+    @Description ("Example Test for performing Not null assertions using Hamcrest")
+    @Severity (SeverityLevel.NORMAL)
     public void testNotNullAssertions () {
         given ().spec (requestSpecification)
             .get ()
@@ -85,6 +93,8 @@ public class StringRelatedAssertionTests {
     }
 
     @Test
+    @Description ("Example Test for performing has key assertions using Hamcrest")
+    @Severity (SeverityLevel.NORMAL)
     public void testHasKeyAssertion () {
         given ().spec (requestSpecification)
             .get ()
@@ -99,6 +109,8 @@ public class StringRelatedAssertionTests {
     }
 
     @Test
+    @Description ("Example Test for performing Not assertions using Hamcrest")
+    @Severity (SeverityLevel.NORMAL)
     public void testNotAssertions () {
         given ().spec (requestSpecification)
             .get ()
@@ -112,6 +124,8 @@ public class StringRelatedAssertionTests {
     }
 
     @Test
+    @Description ("Example Test for multiple assertions in single statement using Hamcrest")
+    @Severity (SeverityLevel.NORMAL)
     public void testMultipleAssertStatement () {
         given ().spec (requestSpecification)
             .get ()
@@ -125,8 +139,10 @@ public class StringRelatedAssertionTests {
 
     @AfterMethod
     public void getTestExecutionTime (ITestResult result) {
-        String methodName = result.getMethod ().getMethodName ();
+        String methodName = result.getMethod ()
+            .getMethodName ();
         long totalExecutionTime = (result.getEndMillis () - result.getStartMillis ());
-        System.out.println ("Total Execution time: " +totalExecutionTime +" milliseconds" + " for method " +methodName);
+        System.out.println (
+            "Total Execution time: " + totalExecutionTime + " milliseconds" + " for method " + methodName);
     }
 }
