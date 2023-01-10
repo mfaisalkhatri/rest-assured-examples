@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Authentication test suite">
+    <test name="Authentication Tests">
+        <classes>
+            <class name="authentication.AuthenticationTests">
+                <methods>
+                    <include name="testAPIKeyAuthentication"/>
+                    <include name="testBasicAuth"/>
+                    <include name="testPreemptiveAuth"/>
+                    <include name="testDigestAuth"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>x

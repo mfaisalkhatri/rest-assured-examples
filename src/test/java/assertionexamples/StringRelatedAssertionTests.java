@@ -38,7 +38,7 @@ import org.testng.annotations.Test;
  **/
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
-@Story ("Number related Assertions using Hamcrest in rest assured")
+@Story ("String related Assertions using Hamcrest in rest assured")
 public class StringRelatedAssertionTests {
 
     private static RequestSpecBuilder    requestSpecBuilder;
