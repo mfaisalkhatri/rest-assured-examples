@@ -17,6 +17,7 @@ package in.reqres.utility;
 
 import static org.apache.commons.lang3.StringUtils.repeat;
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
