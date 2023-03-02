@@ -3,14 +3,13 @@ package data.restfulbooker;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
-import com.github.javafaker.Faker;
-
+import net.datafaker.Faker;
 /**
  * Created By Faisal Khatri on 19-02-2022
  */
 public class BookingDataBuilder {
 
-    private static final Faker FAKER = Faker.instance ();
+    private static final Faker FAKER = new Faker ();
 
     public static BookingData getBookingData () {
         SimpleDateFormat formatter = new SimpleDateFormat ("YYYY-MM-dd");

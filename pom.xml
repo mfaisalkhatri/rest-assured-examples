@@ -17,12 +17,13 @@
         <lombok.version>1.18.26</lombok.version>
         <jackson-databind.version>2.14.2</jackson-databind.version>
         <org-json.verion>20230227</org-json.verion>
-        <java-faker.version>1.0.2</java-faker.version>
+        <data-faker.version>1.8.0</data-faker.version>
         <log4jcore.version>2.20.0</log4jcore.version>
         <log4japi.version>2.20.0</log4japi.version>
         <json-schema-validator.version>5.3.0</json-schema-validator.version>
         <allure.version>2.21.0</allure.version>
         <awaitility.version>4.2.0</awaitility.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
         <aspectj.version>1.9.19</aspectj.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
@@ -74,12 +75,18 @@
             <artifactId>json</artifactId>
             <version>${org-json.verion}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/net.datafaker/datafaker -->
         <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>${java-faker.version}</version>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>${data-faker.version}</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
