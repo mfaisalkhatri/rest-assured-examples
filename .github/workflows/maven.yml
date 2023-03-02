@@ -23,16 +23,14 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
-      - name: Setup Juice Shop using docker compose
+      - name: Start restful booker service
         run: docker-compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml up -d
 
       - name: Build with Maven and run tests
         run: mvn clean install
 
-      - name: Stop docker compose for restful booker
+      - name: Stop restful booker service
         run: docker-compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml down --remove-orphans
-
-
 
       - name: Test Report
         uses: dorny/test-reporter@v1
