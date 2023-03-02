@@ -20,7 +20,7 @@ public class BaseSetup {
     public void setup () {
 
         RequestSpecification requestSpecification = new RequestSpecBuilder ().setBaseUri (
-                "https://restful-booker.herokuapp.com")
+                "http://localhost:3001")
             .addHeader ("Content-Type", "application/json")
             .addHeader ("Accept", "application/json")
             .addFilter (new RequestLoggingFilter ())
