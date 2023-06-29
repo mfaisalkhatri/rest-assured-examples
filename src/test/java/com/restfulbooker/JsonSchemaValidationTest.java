@@ -24,111 +24,103 @@ import org.testng.annotations.Test;
  * @author Faisal Khatri
  * @since 8/24/2022
  **/
-@Epic ("Rest Assured POC - Example Tests")
-@Feature ("JSON Schema Validation using rest-assured")
+@Epic("Rest Assured POC - Example Tests")
+@Feature("JSON Schema Validation using rest-assured")
 public class JsonSchemaValidationTest extends BaseSetup {
 
-    private BookingData        newBooking;
-    private BookingData        updatedBooking;
-    private PartialBookingData partialUpdateBooking;
-    private Tokencreds         tokenCreds;
-    private int                bookingId;
+    private int bookingId;
 
-    @BeforeTest
-    public void testSetup () {
-        newBooking = getBookingData ();
-        updatedBooking = getBookingData ();
-        partialUpdateBooking = getPartialBookingData ();
-        tokenCreds = getToken ();
+    @Test
+    @Description("Example test for checking json schema for new booking - Post request")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("JSON Schema Validation using rest-assured")
+    public void testCreateBookingJsonSchema() {
+
+        InputStream createBookingJsonSchema = getClass().getClassLoader()
+                .getResourceAsStream("createbookingjsonschema.json");
+        BookingData newBooking = getBookingData();
+        bookingId = given().body(newBooking)
+                .when()
+                .post("/booking")
+                .then()
+                .statusCode(200)
+                .and()
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchema(createBookingJsonSchema))
+                .and()
+                .extract()
+                .path("bookingid");
     }
 
     @Test
-    @Description ("Example test for checking json schema for new booking - Post request")
-    @Severity (SeverityLevel.CRITICAL)
-    @Story ("JSON Schema Validation using rest-assured")
-    public void testCreateBookingJsonSchema () {
+    @Description("Example test for checking json schema after getting a booking - get request")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("JSON Schema Validation using rest-assured")
+    public void testGetBookingJsonSchema() {
 
-        InputStream createBookingJsonSchema = getClass ().getClassLoader ()
-            .getResourceAsStream ("createbookingjsonschema.json");
-        bookingId = given ().body (newBooking)
-            .when ()
-            .post ("/booking")
-            .then ()
-            .statusCode (200)
-            .and ()
-            .assertThat ()
-            .body (JsonSchemaValidator.matchesJsonSchema (createBookingJsonSchema))
-            .and ()
-            .extract ()
-            .path ("bookingid");
+        InputStream getBookingJsonSchema = getClass().getClassLoader()
+                .getResourceAsStream("getbookingjsonschema.json");
+
+        given().when()
+                .get("/booking/" + bookingId)
+                .then()
+                .statusCode(200)
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchema(getBookingJsonSchema));
     }
 
     @Test
-    @Description ("Example test for checking json schema after getting a booking - get request")
-    @Severity (SeverityLevel.CRITICAL)
-    @Story ("JSON Schema Validation using rest-assured")
-    public void testGetBookingJsonSchema () {
+    @Description("Example test for checking json schema after updating a booking - Put request")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("JSON Schema Validation using rest-assured")
+    public void testUpdateBookingJsonSchema() {
+        InputStream updateBookingJsonSchema = getClass().getClassLoader()
+                .getResourceAsStream("updatebookingjsonschema.json");
 
-        InputStream getBookingJsonSchema = getClass ().getClassLoader ()
-            .getResourceAsStream ("getbookingjsonschema.json");
-
-        given ().when ()
-            .get ("/booking/" + bookingId)
-            .then ()
-            .statusCode (200)
-            .assertThat ()
-            .body (JsonSchemaValidator.matchesJsonSchema (getBookingJsonSchema));
+        BookingData updatedBooking = getBookingData();
+        given().when()
+                .body(updatedBooking)
+                .get("/booking/" + bookingId)
+                .then()
+                .statusCode(200)
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchema(updateBookingJsonSchema));
     }
 
     @Test
-    @Description ("Example test for checking json schema after updating a booking - Put request")
-    @Severity (SeverityLevel.NORMAL)
-    @Story ("JSON Schema Validation using rest-assured")
-    public void testUpdateBookingJsonSchema () {
-        InputStream updateBookingJsonSchema = getClass ().getClassLoader ()
-            .getResourceAsStream ("updatebookingjsonschema.json");
+    @Description("Example test for checking json schema after updating a booking partially - Patch request")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("JSON Schema Validation using rest-assured")
+    public void testUpdatePartialBookingJsonSchema() {
+        InputStream updatePartialBookingJsonSchema = getClass().getClassLoader()
+                .getResourceAsStream("updatepartialbookingjsonschema.json");
 
-        given ().when ()
-            .body (updatedBooking)
-            .get ("/booking/" + bookingId)
-            .then ()
-            .statusCode (200)
-            .assertThat ()
-            .body (JsonSchemaValidator.matchesJsonSchema (updateBookingJsonSchema));
+        PartialBookingData partialUpdateBooking = getPartialBookingData();
+        given().when()
+                .body(partialUpdateBooking)
+                .get("/booking/" + bookingId)
+                .then()
+                .statusCode(200)
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchema(updatePartialBookingJsonSchema));
     }
 
     @Test
-    @Description ("Example test for checking json schema after updating a booking partially - Patch request")
-    @Severity (SeverityLevel.NORMAL)
-    @Story ("JSON Schema Validation using rest-assured")
-    public void testUpdatePartialBookingJsonSchema () {
-        InputStream updatePartialBookingJsonSchema = getClass ().getClassLoader ()
-            .getResourceAsStream ("updatepartialbookingjsonschema.json");
+    @Description("Example test for checking json schema for token authentication - Post request")
+    @Severity(SeverityLevel.BLOCKER)
+    @Story("JSON Schema Validation using rest-assured")
+    public void testCreateJsonSchema() {
+        InputStream createTokenJsonSchema = getClass().getClassLoader()
+                .getResourceAsStream("createtokenjsonschema.json");
 
-        given ().when ()
-            .body (partialUpdateBooking)
-            .get ("/booking/" + bookingId)
-            .then ()
-            .statusCode (200)
-            .assertThat ()
-            .body (JsonSchemaValidator.matchesJsonSchema (updatePartialBookingJsonSchema));
-    }
-
-    @Test
-    @Description ("Example test for checking json schema for token authentication - Post request")
-    @Severity (SeverityLevel.BLOCKER)
-    @Story ("JSON Schema Validation using rest-assured")
-    public void testCreateJsonSchema () {
-        InputStream createTokenJsonSchema = getClass ().getClassLoader ()
-            .getResourceAsStream ("createtokenjsonschema.json");
-
-        given ().body (tokenCreds)
-            .when ()
-            .post ("/auth")
-            .then ()
-            .statusCode (200)
-            .and ()
-            .assertThat ()
-            .body (JsonSchemaValidator.matchesJsonSchema (createTokenJsonSchema));
+        Tokencreds tokenCreds = getToken();
+        given().body(tokenCreds)
+                .when()
+                .post("/auth")
+                .then()
+                .statusCode(200)
+                .and()
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchema(createTokenJsonSchema));
     }
 }

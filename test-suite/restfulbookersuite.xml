@@ -11,6 +11,7 @@
                 <methods>
                     <include name="createBookingTest"/>
                     <include name="getBookingTest"/>
+                    <include name="testTokenGeneration"/>
                     <include name="updateBookingTest"/>
                     <include name="updatePartialBookingTest"/>
                     <include name="deleteBookingTest"/>
