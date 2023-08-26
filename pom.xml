@@ -21,13 +21,13 @@
         <log4jcore.version>3.0.0-alpha1</log4jcore.version>
         <log4japi.version>3.0.0-alpha1</log4japi.version>
         <json-schema-validator.version>5.3.1</json-schema-validator.version>
-        <allure.version>2.23.0</allure.version>
+        <allure.version>2.24.0</allure.version>
         <awaitility.version>4.2.0</awaitility.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
-        <aspectj.version>1.9.19</aspectj.version>
+        <commons-lang3.version>3.13.0</commons-lang3.version>
+        <aspectj.version>1.9.20</aspectj.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
-        <maven-enforcer.version>3.3.0</maven-enforcer.version>
+        <maven-enforcer.version>3.4.0</maven-enforcer.version>
         <java-release.version>17</java-release.version>
         <suite-xml>test-suite/testng.xml</suite-xml>
     </properties>
