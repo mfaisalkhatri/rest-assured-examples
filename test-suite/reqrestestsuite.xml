@@ -96,4 +96,9 @@
             <class name="in.reqres.TestDelayedAPIWithAwaitility"/>
         </classes>
     </test>
+    <test name="Post Request Example with Java records">
+        <classes>
+            <class name="in.reqres.TestPostWithRecords"/>
+        </classes>
+    </test>
 </suite> <!-- Suite -->
