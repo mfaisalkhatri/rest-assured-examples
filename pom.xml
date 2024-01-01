@@ -16,7 +16,7 @@
         <json-simple.version>1.1.1</json-simple.version>
         <lombok.version>1.18.28</lombok.version>
         <jackson-databind.version>2.15.2</jackson-databind.version>
-        <org-json.verion>20230618</org-json.verion>
+        <org-json.verion>20231013</org-json.verion>
         <data-faker.version>2.0.1</data-faker.version>
         <log4jcore.version>3.0.0-alpha1</log4jcore.version>
         <log4japi.version>3.0.0-alpha1</log4japi.version>
