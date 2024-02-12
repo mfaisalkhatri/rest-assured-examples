@@ -55,6 +55,12 @@ framework in this repository:
 - [How to perform JSON Schema Validation using Rest-Assured?](https://medium.com/@iamfaisalkhatri/how-to-perform-json-schema-validation-using-rest-assured-64c3b6616a91)
 - [API Testing using RestAssured and OkHttp](https://mfaisalkhatri.github.io/2020/05/29/restassuredokhttp/)
 
+## :movie_camera: Tutorial Video
+
+[![Watch the video](https://img.youtube.com/vi/xLKpdQE0oKY/hqdefault.jpg)](https://www.youtube.com/watch?v=xLKpdQE0oKY&t=1s)
+[![Watch the video](https://img.youtube.com/vi/AFQSolEeu74/hqdefault.jpg)](https://www.youtube.com/live/AFQSolEeu74?si=8WROMbunjUuzqqQj&t=1)
+
+
 ## :question: Need Assistance?
 
 - Discuss your queries by writing to me @ `mohammadfaisalkhatri@gmail.com`
