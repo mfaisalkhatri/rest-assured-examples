@@ -11,11 +11,10 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeClass;
 
-public class BaseSetup {
+public class BaseTest {
 
     @BeforeClass
-    public void setup () {
-
+    public void configSetup () {
         RequestSpecification requestSpecification = new RequestSpecBuilder ().setBaseUri (
                 "http://localhost:3004")
             .addHeader ("Content-Type", "application/json")

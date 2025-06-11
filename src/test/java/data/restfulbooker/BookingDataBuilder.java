@@ -22,11 +22,10 @@ public class BookingDataBuilder {
                 .numberBetween (1, 2000))
             .depositpaid (true)
             .bookingdates (BookingDates.builder ()
-                .checkin (formatter.format (FAKER.date ()
-                    .past (20, TimeUnit.DAYS)))
-                .checkout (formatter.format (FAKER.date ()
-                    .future (5, TimeUnit.DAYS)))
-                .build ())
+                .checkin(FAKER.timeAndDate()
+                    .past(20, TimeUnit.DAYS,"yyyy-MM-dd"))
+                .checkout(FAKER.timeAndDate()
+                    .future(5, TimeUnit.DAYS, "yyyy-MM-dd")).build())
             .additionalneeds ("Breakfast")
             .build ();
 
