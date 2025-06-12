@@ -90,6 +90,26 @@ public class RestfulEcommerceE2ETests extends BaseTest {
 
         assertThat (orderArray.getJSONObject (0)
             .get ("id"), equalTo (orderId));
+    }
 
+    @Test
+    public void testUpdateOrder() {
+        String responseBody = given ().when ()
+            .pathParam ("id", orderId)
+            .put ("/updateOrder")
+            .then ()
+            .statusCode (200)
+            .and ()
+            .assertThat ()
+            .body ("message", equalTo ("Order found!!"))
+            .extract ()
+            .body ()
+            .asString ();
+
+        JSONObject responseObject = new JSONObject (responseBody);
+        JSONArray orderArray = responseObject.getJSONArray ("orders");
+
+        assertThat (orderArray.getJSONObject (0)
+            .get ("id"), equalTo (orderId));
     }
 }
