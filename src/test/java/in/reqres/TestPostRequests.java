@@ -73,7 +73,8 @@ public class TestPostRequests {
     @Story ("Execute Post requests using rest-assured")
     public void testPostRequests (final String name, final String job) {
         final PostData postData = new PostData (name, job);
-        final String response = given ().contentType (ContentType.JSON)
+        final String response = given ().header ("x-api-key", "reqres-free-v1")
+            .contentType (ContentType.JSON)
             .body (postData)
             .when ()
             .post (URL + "/api/users")

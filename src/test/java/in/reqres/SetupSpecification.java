@@ -35,9 +35,10 @@ public class SetupSpecification {
     @BeforeClass
     public void setup () {
 
-        RequestSpecification request = new RequestSpecBuilder ().addHeader ("Content-Type", "application/json")
+        RequestSpecification request = new RequestSpecBuilder ()
+            .addHeader ("x-api-key","reqres-free-v1")
+            .addHeader ("Content-Type", "application/json")
             .setBaseUri ("https://reqres.in/")
-            .addHeader ("Accept", "application/json")
             .addFilter (new RequestLoggingFilter ())
             .addFilter (new ResponseLoggingFilter ())
             .build ();

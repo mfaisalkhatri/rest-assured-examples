@@ -74,6 +74,7 @@ public class TestPutRequests {
 
         final PostData postData = new PostData (name, job);
         final String response = given ().contentType (ContentType.JSON)
+            .header ("x-api-key","reqres-free-v1")
             .body (postData)
             .when ()
             .put (URL + "/api/users/" + id)

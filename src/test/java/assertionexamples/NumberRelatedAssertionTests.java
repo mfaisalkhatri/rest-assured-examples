@@ -34,6 +34,7 @@ public class NumberRelatedAssertionTests {
     public void testNumberAssertions () {
 
         given ().when ()
+            .header ("x-api-key","reqres-free-v1")
             .queryParam ("page", 2)
             .get (URL)
             .then ()
@@ -53,6 +54,7 @@ public class NumberRelatedAssertionTests {
     public void testGreaterThanAssertions () {
 
         given ().when ()
+            .header ("x-api-key","reqres-free-v1")
             .queryParam ("page", 2)
             .get (URL)
             .then ()
@@ -70,6 +72,7 @@ public class NumberRelatedAssertionTests {
     public void testLessThanAssertions () {
 
         given ().when ()
+            .header ("x-api-key","reqres-free-v1")
             .queryParam ("page", 2)
             .get (URL)
             .then ()

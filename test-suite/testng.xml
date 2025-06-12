@@ -12,4 +12,4 @@
         <suite-file path="assertionsuite.xml"/>
         <suite-file path="fileuploadsuite.xml"/>
     </suite-files>
-</suite> <!-- Suite -->
+</suite>

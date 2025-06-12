@@ -1,10 +1,9 @@
 package in.reqres;
 
+import static io.restassured.RestAssured.given;
 
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
-
-import static io.restassured.RestAssured.given;
 
 public class TestPostWithRecords {
     public record UserData( String name, String job) { }
@@ -16,6 +15,7 @@ public class TestPostWithRecords {
         UserData userData = new UserData("Faisal", "QA");
 
         String response = given ().contentType (ContentType.JSON)
+            .header ("x-api-key", "reqres-free-v1")
                 .body (userData)
                 .when ()
                 .post (URL + "/api/users")

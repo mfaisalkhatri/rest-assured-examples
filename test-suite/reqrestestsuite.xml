@@ -5,7 +5,7 @@
         <listener
                 class-name="in.reqres.utility.TestListener"/>
     </listeners>
-    <test name="Authentication Tests" >
+    <test name="Authentication Tests">
         <classes>
             <class name="in.reqres.TestAuthentication">
                 <methods>
@@ -25,7 +25,6 @@
             </class>
         </classes>
     </test>
-
     <test name="Get Tests with Rest Assured Config">
         <classes>
             <class name="in.reqres.TestGetRequestWithRestAssuredSpecs">
@@ -35,7 +34,6 @@
             </class>
         </classes>
     </test>
-
     <test name="Post Request tests">
         <classes>
             <class name="in.reqres.TestPostRequests">
@@ -50,7 +48,6 @@
             </class>
         </classes>
     </test>
-
     <test name="Put Request Tests">
         <classes>
             <class name="in.reqres.TestPutRequests">
@@ -60,7 +57,6 @@
             </class>
         </classes>
     </test>
-
     <test name="Patch Request tests">
         <classes>
             <class name="in.reqres.TestPatchRequests">
@@ -70,8 +66,7 @@
             </class>
         </classes>
     </test>
-
-    <test name="Delete Requests tests ">
+    <test name="Delete Requests tests">
         <classes>
             <class name="in.reqres.TestDeleteRequests">
                 <methods>
@@ -85,7 +80,6 @@
             <class name="in.reqres.TestResponseHeaders"/>
         </classes>
     </test>
-
     <test name="JsonPath usage tests">
         <classes>
             <class name="in.reqres.TestResponseBodyWithJsonPath"/>
@@ -101,4 +95,4 @@
             <class name="in.reqres.TestPostWithRecords"/>
         </classes>
     </test>
-</suite> <!-- Suite -->
+</suite>

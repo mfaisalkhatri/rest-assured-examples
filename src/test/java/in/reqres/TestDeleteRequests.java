@@ -61,7 +61,7 @@ public class TestDeleteRequests {
     @Severity (SeverityLevel.NORMAL)
     @Story ("Execute Delete requests using rest-assured")
     public void deleteRequestTests (final int userId) {
-        given ().when ()
+        given ().header ("x-api-key","reqres-free-v1").when ()
             .delete (URL + userId)
             .then ()
             .assertThat ()
