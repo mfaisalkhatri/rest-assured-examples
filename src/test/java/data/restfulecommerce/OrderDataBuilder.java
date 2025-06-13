@@ -25,5 +25,15 @@ public class OrderDataBuilder {
             .build ();
     }
 
+    public static OrderData getPartialOrder () {
+        return OrderData.builder ()
+            .productName (FAKER.commerce ()
+                .productName ())
+            .productAmount (FAKER.number ()
+                .numberBetween (188, 559))
+            .qty (FAKER.number ()
+                .numberBetween (1, 15))
+            .build ();
+    }
 
 }

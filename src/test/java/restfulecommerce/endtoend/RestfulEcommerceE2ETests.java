@@ -1,6 +1,7 @@
 package restfulecommerce.endtoend;
 
 import static data.restfulecommerce.OrderDataBuilder.getOrderData;
+import static data.restfulecommerce.OrderDataBuilder.getPartialOrder;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -127,5 +128,34 @@ public class RestfulEcommerceE2ETests extends BaseTest {
             .get ("tax_amt"), equalTo (updatedOrder.getTaxAmt ()));
         assertThat (orderArray.getJSONObject (0)
             .get ("total_amt"), equalTo (updatedOrder.getTotalAmt ()));
+    }
+
+    @Test
+    public void updatePartialOrderTest () {
+        OrderData updatedOrder = getPartialOrder ();
+        String responseBody = given ().when ()
+            .pathParam ("id", orderId)
+            .body (updatedOrder)
+            .put ("/partialUpdateOrder")
+            .then ()
+            .statusCode (200)
+            .and ()
+            .assertThat ()
+            .body ("message", equalTo ("Order updated successfully!"))
+            .extract ()
+            .body ()
+            .asString ();
+
+        JSONObject responseObject = new JSONObject (responseBody);
+        JSONArray orderArray = responseObject.getJSONArray ("orders");
+
+        assertThat (orderArray.getJSONObject (0)
+            .get ("id"), equalTo (orderId));
+        assertThat (orderArray.getJSONObject (0)
+            .get ("product_name"), equalTo (updatedOrder.getProductName ()));
+        assertThat (orderArray.getJSONObject (0)
+            .get ("product_amount"), equalTo (updatedOrder.getProductAmount ()));
+        assertThat (orderArray.getJSONObject (0)
+            .get ("qty"), equalTo (updatedOrder.getQty ()));
     }
 }
