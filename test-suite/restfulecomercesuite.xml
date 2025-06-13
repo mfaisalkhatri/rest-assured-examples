@@ -3,7 +3,7 @@
 <suite name="Restful ECommerce Test Suite">
     <test name="Restful ECommerce tests">
         <classes>
-            <class name="restfulecommerce.RestfulEcommerceE2ETests">
+            <class name="restfulecommerce.endtoend.RestfulEcommerceE2ETests">
                 <methods>
                     <include name="testCreateOrder"/>
                     <include name="testGetOrder"/>

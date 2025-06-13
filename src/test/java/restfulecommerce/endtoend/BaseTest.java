@@ -1,4 +1,4 @@
-package restfulecommerce;
+package restfulecommerce.endtoend;
 
 import static org.hamcrest.Matchers.lessThan;
 

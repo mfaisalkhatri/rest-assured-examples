@@ -1,4 +1,4 @@
-package restfulecommerce;
+package restfulecommerce.endtoend;
 
 import static data.restfulecommerce.OrderDataBuilder.getOrderData;
 import static io.restassured.RestAssured.given;
@@ -94,14 +94,16 @@ public class RestfulEcommerceE2ETests extends BaseTest {
 
     @Test
     public void testUpdateOrder() {
+        OrderData updatedOrder = getOrderData ();
         String responseBody = given ().when ()
             .pathParam ("id", orderId)
+            .body (updatedOrder)
             .put ("/updateOrder")
             .then ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("message", equalTo ("Order found!!"))
+            .body ("message", equalTo ("Order updated successfully!"))
             .extract ()
             .body ()
             .asString ();
@@ -111,5 +113,19 @@ public class RestfulEcommerceE2ETests extends BaseTest {
 
         assertThat (orderArray.getJSONObject (0)
             .get ("id"), equalTo (orderId));
+        assertThat (orderArray.getJSONObject (0)
+            .get ("user_id"), equalTo (updatedOrder.getUserId ()));
+        assertThat (orderArray.getJSONObject (0)
+            .get ("product_id"), equalTo (updatedOrder.getProductId ()));
+        assertThat (orderArray.getJSONObject (0)
+            .get ("product_name"), equalTo (updatedOrder.getProductName ()));
+        assertThat (orderArray.getJSONObject (0)
+            .get ("product_amount"), equalTo (updatedOrder.getProductAmount ()));
+        assertThat (orderArray.getJSONObject (0)
+            .get ("qty"), equalTo (updatedOrder.getQty ()));
+        assertThat (orderArray.getJSONObject (0)
+            .get ("tax_amt"), equalTo (updatedOrder.getTaxAmt ()));
+        assertThat (orderArray.getJSONObject (0)
+            .get ("total_amt"), equalTo (updatedOrder.getTotalAmt ()));
     }
 }
