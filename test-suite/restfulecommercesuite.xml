@@ -5,6 +5,7 @@
         <classes>
             <class name="restfulecommerce.endtoend.RestfulEcommerceE2ETests">
                 <methods>
+                    <include name="testCreateToken"/>
                     <include name="testCreateOrder"/>
                     <include name="testGetOrder"/>
                     <include name="testUpdateOrder"/>

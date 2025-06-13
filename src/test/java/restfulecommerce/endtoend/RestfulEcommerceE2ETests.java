@@ -1,5 +1,6 @@
 package restfulecommerce.endtoend;
 
+import static data.restfulecommerce.AuthDataBuilder.getAuthData;
 import static data.restfulecommerce.OrderDataBuilder.getOrderData;
 import static data.restfulecommerce.OrderDataBuilder.getPartialOrder;
 import static io.restassured.RestAssured.given;
@@ -10,6 +11,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import java.util.ArrayList;
 import java.util.List;
 
+import data.restfulecommerce.AuthData;
 import data.restfulecommerce.OrderData;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,6 +22,7 @@ public class RestfulEcommerceE2ETests extends BaseTest {
 
     private List<OrderData> orderList;
     private int             orderId;
+    private String token;
 
     @BeforeTest
     public void testSetup () {
@@ -97,9 +100,9 @@ public class RestfulEcommerceE2ETests extends BaseTest {
     public void testUpdateOrder() {
         OrderData updatedOrder = getOrderData ();
         String responseBody = given ().when ()
-            .pathParam ("id", orderId)
+            .header ("Authorization", token)
             .body (updatedOrder)
-            .put ("/updateOrder")
+            .put ("/updateOrder/" + orderId)
             .then ()
             .statusCode (200)
             .and ()
@@ -110,33 +113,25 @@ public class RestfulEcommerceE2ETests extends BaseTest {
             .asString ();
 
         JSONObject responseObject = new JSONObject (responseBody);
-        JSONArray orderArray = responseObject.getJSONArray ("orders");
+        JSONObject orderObject = responseObject.getJSONObject ("order");
 
-        assertThat (orderArray.getJSONObject (0)
-            .get ("id"), equalTo (orderId));
-        assertThat (orderArray.getJSONObject (0)
-            .get ("user_id"), equalTo (updatedOrder.getUserId ()));
-        assertThat (orderArray.getJSONObject (0)
-            .get ("product_id"), equalTo (updatedOrder.getProductId ()));
-        assertThat (orderArray.getJSONObject (0)
-            .get ("product_name"), equalTo (updatedOrder.getProductName ()));
-        assertThat (orderArray.getJSONObject (0)
-            .get ("product_amount"), equalTo (updatedOrder.getProductAmount ()));
-        assertThat (orderArray.getJSONObject (0)
-            .get ("qty"), equalTo (updatedOrder.getQty ()));
-        assertThat (orderArray.getJSONObject (0)
-            .get ("tax_amt"), equalTo (updatedOrder.getTaxAmt ()));
-        assertThat (orderArray.getJSONObject (0)
-            .get ("total_amt"), equalTo (updatedOrder.getTotalAmt ()));
+        assertThat (orderObject.get ("id"), equalTo (orderId));
+        assertThat (orderObject.get ("user_id"), equalTo (updatedOrder.getUserId ()));
+        assertThat (orderObject.get ("product_id"), equalTo (updatedOrder.getProductId ()));
+        assertThat (orderObject.get ("product_name"), equalTo (updatedOrder.getProductName ()));
+        assertThat (orderObject.get ("product_amount"), equalTo (updatedOrder.getProductAmount ()));
+        assertThat (orderObject.get ("qty"), equalTo (updatedOrder.getQty ()));
+        assertThat (orderObject.get ("tax_amt"), equalTo (updatedOrder.getTaxAmt ()));
+        assertThat (orderObject.get ("total_amt"), equalTo (updatedOrder.getTotalAmt ()));
     }
 
     @Test
     public void updatePartialOrderTest () {
         OrderData updatedOrder = getPartialOrder ();
         String responseBody = given ().when ()
-            .pathParam ("id", orderId)
+            .header ("Authorization", token)
             .body (updatedOrder)
-            .put ("/partialUpdateOrder")
+            .patch ("/partialUpdateOrder/" + orderId)
             .then ()
             .statusCode (200)
             .and ()
@@ -147,15 +142,28 @@ public class RestfulEcommerceE2ETests extends BaseTest {
             .asString ();
 
         JSONObject responseObject = new JSONObject (responseBody);
-        JSONArray orderArray = responseObject.getJSONArray ("orders");
+        JSONObject orderObject = responseObject.getJSONObject ("order");
 
-        assertThat (orderArray.getJSONObject (0)
-            .get ("id"), equalTo (orderId));
-        assertThat (orderArray.getJSONObject (0)
-            .get ("product_name"), equalTo (updatedOrder.getProductName ()));
-        assertThat (orderArray.getJSONObject (0)
-            .get ("product_amount"), equalTo (updatedOrder.getProductAmount ()));
-        assertThat (orderArray.getJSONObject (0)
-            .get ("qty"), equalTo (updatedOrder.getQty ()));
+        assertThat (orderObject.get ("id"), equalTo (orderId));
+        assertThat (orderObject.get ("product_name"), equalTo (updatedOrder.getProductName ()));
+        assertThat (orderObject.get ("product_amount"), equalTo (updatedOrder.getProductAmount ()));
+        assertThat (orderObject.get ("qty"), equalTo (updatedOrder.getQty ()));
+    }
+
+    @Test
+    public void testCreateToken () {
+        AuthData authData = getAuthData ();
+        token = given ().when ()
+            .body (authData)
+            .post ("/auth")
+            .then ()
+            .assertThat ()
+            .statusCode (201)
+            .and ()
+            .assertThat ()
+            .body ("message", equalTo ("Authentication Successful!"))
+            .body ("token", notNullValue ())
+            .extract ()
+            .path ("token");
     }
 }
