@@ -26,6 +26,9 @@ jobs:
       - name: Start restful booker service
         run: docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml up -d
 
+      - name: Start restful ecommerce service
+        run: docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml up -d
+
       - name: Build with Maven and run tests
         env:
           rbUsername: ${{ secrets.RB_USER_NAME }}
@@ -36,6 +39,9 @@ jobs:
 
       - name: Stop restful booker service
         run: docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml down --remove-orphans
+
+      - name: Stop restful ecommerce service
+        run: docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml down --remove-orphans
 
       - name: Test Report
         uses: dorny/test-reporter@v2
