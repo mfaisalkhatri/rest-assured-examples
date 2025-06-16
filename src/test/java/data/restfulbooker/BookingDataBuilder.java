@@ -12,7 +12,6 @@ public class BookingDataBuilder {
     private static final Faker FAKER = new Faker ();
 
     public static BookingData getBookingData () {
-        SimpleDateFormat formatter = new SimpleDateFormat ("YYYY-MM-dd");
         return BookingData.builder ()
             .firstname (FAKER.name ()
                 .firstName ())

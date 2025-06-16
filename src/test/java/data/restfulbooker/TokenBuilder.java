@@ -5,11 +5,14 @@ package data.restfulbooker;
  */
 public class TokenBuilder {
 
+    private static final String USER_NAME = System.getenv ("rb_username");
+    private static final String PASSWORD = System.getenv ("rb_password");
+
     public static Tokencreds getToken () {
+
         return Tokencreds.builder ()
-            .username ("admin")
-            .password ("password123")
+            .username (USER_NAME)
+            .password (PASSWORD)
             .build ();
     }
-
 }
