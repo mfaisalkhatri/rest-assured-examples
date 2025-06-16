@@ -11,5 +11,6 @@
         <suite-file path="soapapisuite.xml"/>
 <!--        <suite-file path="assertionsuite.xml"/>-->
         <suite-file path="fileuploadsuite.xml"/>
+        <suite-file path="restfulecommercesuite.xml"/>
     </suite-files>
 </suite>

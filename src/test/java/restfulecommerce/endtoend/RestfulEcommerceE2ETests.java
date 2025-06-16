@@ -23,6 +23,7 @@ public class RestfulEcommerceE2ETests extends BaseTest {
     private List<OrderData> orderList;
     private int             orderId;
     private String token;
+    private int totalOrders = 6;
 
     @BeforeTest
     public void testSetup () {
@@ -32,8 +33,7 @@ public class RestfulEcommerceE2ETests extends BaseTest {
     @Test
     public void testCreateOrder () {
 
-        int totalOrder = 6;
-        for (int i = 0; i < totalOrder; i++) {
+        for (int i = 0; i < totalOrders; i++) {
             orderList.add (getOrderData ());
         }
 
@@ -94,6 +94,31 @@ public class RestfulEcommerceE2ETests extends BaseTest {
 
         assertThat (orderArray.getJSONObject (0)
             .get ("id"), equalTo (orderId));
+    }
+
+    @Test
+    public void testGetAllOrders () {
+
+        String responseBody = given ().when ()
+            .queryParam ("id", orderId)
+            .get ("/getAllOrders")
+            .then ()
+            .statusCode (200)
+            .and ()
+            .assertThat ()
+            .body ("message", equalTo ("Orders fetched successfully!"))
+            .extract ()
+            .body ()
+            .asString ();
+
+        JSONObject responseObject = new JSONObject (responseBody);
+        JSONArray orderArray = responseObject.getJSONArray ("orders");
+
+        assertThat (orderArray.getJSONObject (0)
+            .get ("id"), equalTo (orderId));
+
+        assertThat (orderArray.length (), equalTo (totalOrders));
+
     }
 
     @Test
@@ -172,9 +197,9 @@ public class RestfulEcommerceE2ETests extends BaseTest {
     public void testDeleteAllOrders () {
         given ().when ()
             .header ("Authorization", token)
-            .delete ("/getOrder/")
+            .delete ("/deleteAllOrders")
             .then ()
-            .statusCode (404);
+            .statusCode (204);
     }
     @Test
     public void testCreateToken () {

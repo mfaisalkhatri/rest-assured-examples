@@ -8,6 +8,7 @@
                     <include name="testCreateToken"/>
                     <include name="testCreateOrder"/>
                     <include name="testGetOrder"/>
+                    <include name="testGetAllOrders"/>
                     <include name="testUpdateOrder"/>
                     <include name="updatePartialOrderTest"/>
                     <include name="testDeleteOrder"/>

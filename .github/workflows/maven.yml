@@ -30,6 +30,8 @@ jobs:
         env:
           rbUsername: ${{ secrets.RB_USER_NAME }}
           rbPassword: ${{ secrets.RB_PASSWORD }}
+          restful_ecommerce_username: ${{ secrets.ECOMM_USER_NAME }}
+          restful_ecommerce_password: ${{ secrets.ECOMM_PASSWORD }}
         run: mvn clean install
 
       - name: Stop restful booker service
