@@ -153,6 +153,7 @@ public class RestfulEcommerceE2ETests extends BaseTest {
     @Test
     public void testDeleteOrder () {
         given ().when ()
+            .header ("Authorization", token)
             .delete ("/deleteOrder/" + orderId)
             .then ()
             .statusCode (204);
@@ -170,6 +171,7 @@ public class RestfulEcommerceE2ETests extends BaseTest {
     @Test
     public void testDeleteAllOrders () {
         given ().when ()
+            .header ("Authorization", token)
             .delete ("/getOrder/")
             .then ()
             .statusCode (404);

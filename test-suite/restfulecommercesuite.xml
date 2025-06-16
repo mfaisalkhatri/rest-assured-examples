@@ -12,7 +12,7 @@
                     <include name="updatePartialOrderTest"/>
                     <include name="testDeleteOrder"/>
                     <include name="testGetDeletedOrder"/>
-                    <include name=""/>
+                    <include name="testDeleteAllOrders"/>
                 </methods>
             </class>
         </classes>
