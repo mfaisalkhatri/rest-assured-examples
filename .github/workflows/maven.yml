@@ -28,8 +28,8 @@ jobs:
 
       - name: Build with Maven and run tests
         env:
-          RB_USER_NAME: ${{secrets.RB_USER_NAME}}
-          RB_PASSWORD: ${{secrets.RB_PASSWORD}}
+          RB_USER_NAME: ${{ secrets.RB_USER_NAME }}
+          RB_PASSWORD: ${{ secrets.RB_PASSWORD }}
         run: mvn clean install -Drb_username=$RB_USER_NAME -Drb_password=$RB_PASSWORD
 
       - name: Stop restful booker service
