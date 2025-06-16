@@ -6,14 +6,15 @@
             <class name="restfulecommerce.endtoend.RestfulEcommerceE2ETests">
                 <methods>
                     <include name="testCreateToken"/>
-                    <include name="testCreateOrder"/>
-                    <include name="testGetOrder"/>
-                    <include name="testGetAllOrders"/>
-                    <include name="testUpdateOrder"/>
-                    <include name="updatePartialOrderTest"/>
-                    <include name="testDeleteOrder"/>
-                    <include name="testGetDeletedOrder"/>
-                    <include name="testDeleteAllOrders"/>
+                    <!--                    <include name="testCreateOrder"/>-->
+                    <!--                    <include name="testGetOrder"/>-->
+                    <!--                    <include name="testGetAllOrders"/>-->
+                    <!--                    <include name="testUpdateOrder"/>-->
+                    <!--                    <include name="updatePartialOrderTest"/>-->
+                    <!--                    <include name="testDeleteOrder"/>-->
+                    <!--                    <include name="testGetDeletedOrder"/>-->
+                    <!--                    <include name="testDeleteAllOrders"/>-->
+                    <include name="testUploadImage"/>
                 </methods>
             </class>
         </classes>

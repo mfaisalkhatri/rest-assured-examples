@@ -20,15 +20,10 @@ import org.testng.annotations.Test;
 
 public class RestfulEcommerceE2ETests extends BaseTest {
 
-    private List<OrderData> orderList;
-    private int             orderId;
-    private String token;
-    private int totalOrders = 6;
-
-    @BeforeTest
-    public void testSetup () {
-        this.orderList = new ArrayList<> ();
-    }
+    private       int             orderId;
+    private       List<OrderData> orderList;
+    private       String          token;
+    private final int             totalOrders = 6;
 
     @Test
     public void testCreateOrder () {
@@ -76,24 +71,38 @@ public class RestfulEcommerceE2ETests extends BaseTest {
     }
 
     @Test
-    public void testGetOrder () {
-        String responseBody = given ().when ()
-            .queryParam ("id", orderId)
-            .get ("/getOrder")
+    public void testCreateToken () {
+        AuthData authData = getAuthData ();
+        token = given ().when ()
+            .body (authData)
+            .post ("/auth")
             .then ()
-            .statusCode (200)
+            .assertThat ()
+            .statusCode (201)
             .and ()
             .assertThat ()
-            .body ("message", equalTo ("Order found!!"))
+            .body ("message", equalTo ("Authentication Successful!"))
+            .body ("token", notNullValue ())
             .extract ()
-            .body ()
-            .asString ();
+            .path ("token");
+    }
 
-        JSONObject responseObject = new JSONObject (responseBody);
-        JSONArray orderArray = responseObject.getJSONArray ("orders");
+    @Test
+    public void testDeleteAllOrders () {
+        given ().when ()
+            .header ("Authorization", token)
+            .delete ("/deleteAllOrders")
+            .then ()
+            .statusCode (204);
+    }
 
-        assertThat (orderArray.getJSONObject (0)
-            .get ("id"), equalTo (orderId));
+    @Test
+    public void testDeleteOrder () {
+        given ().when ()
+            .header ("Authorization", token)
+            .delete ("/deleteOrder/" + orderId)
+            .then ()
+            .statusCode (204);
     }
 
     @Test
@@ -122,10 +131,45 @@ public class RestfulEcommerceE2ETests extends BaseTest {
     }
 
     @Test
-    public void testUpdateOrder() {
-        OrderData updatedOrder = getOrderData ();
+    public void testGetDeletedOrder () {
+        given ().when ()
+            .queryParam ("id", orderId)
+            .get ("/getOrder/")
+            .then ()
+            .statusCode (404);
+    }
+
+    @Test
+    public void testGetOrder () {
         String responseBody = given ().when ()
-            .header ("Authorization", token)
+            .queryParam ("id", orderId)
+            .get ("/getOrder")
+            .then ()
+            .statusCode (200)
+            .and ()
+            .assertThat ()
+            .body ("message", equalTo ("Order found!!"))
+            .extract ()
+            .body ()
+            .asString ();
+
+        JSONObject responseObject = new JSONObject (responseBody);
+        JSONArray orderArray = responseObject.getJSONArray ("orders");
+
+        assertThat (orderArray.getJSONObject (0)
+            .get ("id"), equalTo (orderId));
+    }
+
+    @BeforeTest
+    public void testSetup () {
+        this.orderList = new ArrayList<> ();
+    }
+
+    @Test
+    public void testUpdateOrder () {
+        OrderData updatedOrder = getOrderData ();
+        String responseBody = given ().header ("Authorization", token)
+            .when ()
             .body (updatedOrder)
             .put ("/updateOrder/" + orderId)
             .then ()
@@ -173,48 +217,5 @@ public class RestfulEcommerceE2ETests extends BaseTest {
         assertThat (orderObject.get ("product_name"), equalTo (updatedOrder.getProductName ()));
         assertThat (orderObject.get ("product_amount"), equalTo (updatedOrder.getProductAmount ()));
         assertThat (orderObject.get ("qty"), equalTo (updatedOrder.getQty ()));
-    }
-
-    @Test
-    public void testDeleteOrder () {
-        given ().when ()
-            .header ("Authorization", token)
-            .delete ("/deleteOrder/" + orderId)
-            .then ()
-            .statusCode (204);
-    }
-
-    @Test
-    public void testGetDeletedOrder () {
-        given ().when ()
-            .queryParam ("id", orderId)
-            .get ("/getOrder/")
-            .then ()
-            .statusCode (404);
-    }
-
-    @Test
-    public void testDeleteAllOrders () {
-        given ().when ()
-            .header ("Authorization", token)
-            .delete ("/deleteAllOrders")
-            .then ()
-            .statusCode (204);
-    }
-    @Test
-    public void testCreateToken () {
-        AuthData authData = getAuthData ();
-        token = given ().when ()
-            .body (authData)
-            .post ("/auth")
-            .then ()
-            .assertThat ()
-            .statusCode (201)
-            .and ()
-            .assertThat ()
-            .body ("message", equalTo ("Authentication Successful!"))
-            .body ("token", notNullValue ())
-            .extract ()
-            .path ("token");
     }
 }

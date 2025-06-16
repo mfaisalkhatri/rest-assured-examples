@@ -15,14 +15,11 @@ public class FileReader {
             .getResource (fileName);
         if (resource == null) {
             throw new IllegalArgumentException ("file not found! " + fileName);
-        } else {
-            try {
-                return new File (resource.toURI ());
-            } catch (URISyntaxException e) {
-                throw new Error ("File not found!!");
-            }
         }
-
+        try {
+            return new File (resource.toURI ());
+        } catch (URISyntaxException e) {
+            throw new Error ("File not found!!");
+        }
     }
-
 }
