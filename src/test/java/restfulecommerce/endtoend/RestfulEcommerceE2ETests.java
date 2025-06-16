@@ -151,6 +151,30 @@ public class RestfulEcommerceE2ETests extends BaseTest {
     }
 
     @Test
+    public void testDeleteOrder () {
+        given ().when ()
+            .delete ("/deleteOrder/" + orderId)
+            .then ()
+            .statusCode (204);
+    }
+
+    @Test
+    public void testGetDeletedOrder () {
+        given ().when ()
+            .queryParam ("id", orderId)
+            .get ("/getOrder/")
+            .then ()
+            .statusCode (404);
+    }
+
+    @Test
+    public void testDeleteAllOrders () {
+        given ().when ()
+            .delete ("/getOrder/")
+            .then ()
+            .statusCode (404);
+    }
+    @Test
     public void testCreateToken () {
         AuthData authData = getAuthData ();
         token = given ().when ()

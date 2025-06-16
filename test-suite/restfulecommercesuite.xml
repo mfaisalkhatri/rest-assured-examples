@@ -10,6 +10,9 @@
                     <include name="testGetOrder"/>
                     <include name="testUpdateOrder"/>
                     <include name="updatePartialOrderTest"/>
+                    <include name="testDeleteOrder"/>
+                    <include name="testGetDeletedOrder"/>
+                    <include name=""/>
                 </methods>
             </class>
         </classes>
