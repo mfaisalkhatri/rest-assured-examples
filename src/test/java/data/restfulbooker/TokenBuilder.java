@@ -5,8 +5,8 @@ package data.restfulbooker;
  */
 public class TokenBuilder {
 
-    private static final String USER_NAME = System.getenv ("rb_username");
-    private static final String PASSWORD = System.getenv ("rb_password");
+    private static final String USER_NAME = System.getenv ("rbUsername");
+    private static final String PASSWORD = System.getenv ("rbPassword");
 
     public static Tokencreds getToken () {
 
