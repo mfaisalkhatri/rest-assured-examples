@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Restful ECommerce Image Upload Test Suite">
+    <test name="Restful ECommerce Image Upload test">
+        <classes>
+            <class name="restfulecommerce.endtoend.ImageUploadTest">
+                <methods>
+                    <include name="testCreateToken"/>
+                    <include name="testUploadImage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

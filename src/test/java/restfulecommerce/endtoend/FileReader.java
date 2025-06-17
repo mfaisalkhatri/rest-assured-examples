@@ -14,6 +14,7 @@ public class FileReader {
         }
 
         try {
+            System.out.println ("File found!" + fileName);
             return new File (resource.toURI ());
         } catch (URISyntaxException e) {
             throw new IllegalStateException ("Invalid URI Syntax for file" + fileName);
