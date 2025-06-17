@@ -18,4 +18,14 @@
             </class>
         </classes>
     </test>
+    <test name="Restful ECommerce Image Upload test">
+        <classes>
+            <class name="restfulecommerce.endtoend.ImageUploadTest">
+                <methods>
+                    <include name="testCreateToken"/>
+                    <include name="testUploadImage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

@@ -61,6 +61,7 @@ public class ImageUploadTest {
     public void testUploadImage () {
         String fileName = "sample_image.png";
         given ().header ("Authorization", token)
+            .contentType (ContentType.MULTIPART)
             .multiPart ("image", getFile (fileName), "image/png")
             .when ()
             .post ("/imageUpload")
