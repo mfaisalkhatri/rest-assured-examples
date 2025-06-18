@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Restful ECommerce Test Suite">
+    <test name="Restful ECommerce End to End tests">
+        <classes>
+            <class name="restfulecommerce.endtoend.RestfulEcommerceE2ETests">
+                <methods>
+                    <include name="testCreateToken"/>
+                    <include name="testCreateOrder"/>
+                    <include name="testGetOrder"/>
+                    <include name="testGetAllOrders"/>
+                    <include name="testUpdateOrder"/>
+                    <include name="updatePartialOrderTest"/>
+                    <include name="testDeleteOrder"/>
+                    <include name="testGetDeletedOrder"/>
+                    <include name="testDeleteAllOrders"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Restful ECommerce Image Upload test">
+        <classes>
+            <class name="restfulecommerce.endtoend.ImageUploadTest">
+                <methods>
+                    <include name="testCreateToken"/>
+                    <include name="testUploadImage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

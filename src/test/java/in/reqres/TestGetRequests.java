@@ -64,6 +64,7 @@ public class TestGetRequests {
     @Story ("Execute Get requests using rest-assured")
     public void getRequestTest (final int userId)  {
         given ().when ()
+            .header ("x-api-key","reqres-free-v1")
             .get (URL + userId)
             .then ()
             .statusCode (200)
@@ -72,6 +73,7 @@ public class TestGetRequests {
             .body ("data.id", equalTo (userId));
 
         final int statusCode = given ().when ()
+            .header ("x-api-key","reqres-free-v1")
             .get (URL + userId)
             .statusCode ();
         LOG.info (statusCode);
@@ -90,6 +92,7 @@ public class TestGetRequests {
     public void getRequestTestWithQueryParam (final int userPage) {
         given ().when ()
             .queryParam ("page", userPage)
+            .header ("x-api-key","reqres-free-v1")
             .get (URL)
             .then ()
             .statusCode (200)
@@ -100,6 +103,7 @@ public class TestGetRequests {
             .body ("data[0].first_name", equalTo ("Michael"));
 
         final String responseBody = given ().when ()
+            .header ("x-api-key","reqres-free-v1")
             .queryParam ("page", userPage)
             .get (URL)
             .getBody ()

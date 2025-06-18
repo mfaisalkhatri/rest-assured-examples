@@ -18,6 +18,7 @@ package in.reqres;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -78,6 +79,7 @@ public class TestAuthentication {
             .when ()
             .log ()
             .all ()
+            .header ("x-api-key", "reqres-free-v1")
             .post (URL + "/api/register")
             .then ()
             .assertThat ()
@@ -105,6 +107,7 @@ public class TestAuthentication {
             .when ()
             .log ()
             .all ()
+            .header ("x-api-key","reqres-free-v1")
             .post (URL + "/api/register")
             .then ()
             .assertThat ()
@@ -136,8 +139,7 @@ public class TestAuthentication {
     @Severity (SeverityLevel.NORMAL)
     @Description ("Example Test for printing token by getting token after executing the post authentication request")
     public void testAuthToken (String email, String password) {
-        LOG.info ("Token is" + getToken (email, password).get ("token")
-            .toString ());
+        LOG.info (MessageFormat.format ("Token is {0}", getToken (email, password).get ("token")));
 
     }
 

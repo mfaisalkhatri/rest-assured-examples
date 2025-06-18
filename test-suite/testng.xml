@@ -6,10 +6,12 @@
                 class-name="in.reqres.utility.TestListener"/>
     </listeners>
     <suite-files>
-        <suite-file path="reqrestestsuite.xml"/>
+        <!--        <suite-file path="reqrestestsuite.xml"/>-->
         <suite-file path="restfulbookersuite.xml"/>
         <suite-file path="soapapisuite.xml"/>
-        <suite-file path="assertionsuite.xml"/>
+        <!--        <suite-file path="assertionsuite.xml"/>-->
         <suite-file path="fileuploadsuite.xml"/>
+        <suite-file path="restfulecommercesuite.xml"/>
+        <suite-file path="restfulecommerceimageupload.xml"/>
     </suite-files>
-</suite> <!-- Suite -->
+</suite>

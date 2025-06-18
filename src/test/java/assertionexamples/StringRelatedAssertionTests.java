@@ -49,6 +49,7 @@ public class StringRelatedAssertionTests {
     @BeforeClass
     public void setupSpecBuilder () {
         requestSpecBuilder = new RequestSpecBuilder ().setBaseUri ("https://reqres.in/api/users/")
+            .addHeader ("x-api-key","reqres-free-v1")
             .addQueryParam ("page", 2)
             .addFilter (new RequestLoggingFilter ())
             .addFilter (new ResponseLoggingFilter ());

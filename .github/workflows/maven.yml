@@ -15,25 +15,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 17
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
           cache: maven
 
       - name: Start restful booker service
         run: docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml up -d
 
+      - name: Start restful ecommerce service
+        run: docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml up -d
+
       - name: Build with Maven and run tests
+        env:
+          rbUsername: ${{ secrets.RB_USER_NAME }}
+          rbPassword: ${{ secrets.RB_PASSWORD }}
+          restful_ecommerce_username: ${{ secrets.ECOMM_USER_NAME }}
+          restful_ecommerce_password: ${{ secrets.ECOMM_PASSWORD }}
         run: mvn clean install
 
       - name: Stop restful booker service
         run: docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml down --remove-orphans
 
+      - name: Stop restful ecommerce service
+        run: docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml down --remove-orphans
+
       - name: Test Report
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
         if: always()
         with:
           name: Test Results

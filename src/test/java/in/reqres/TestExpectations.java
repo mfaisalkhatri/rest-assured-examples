@@ -10,6 +10,7 @@ public class TestExpectations {
     @Test
     public void testUsingExpect () {
         expect ().that ()
+            .header ("x-api-key", "reqres-free-v1")
             .when ()
             .get ("https://reqres.in/api/users/2")
             .then ()
@@ -20,7 +21,8 @@ public class TestExpectations {
 
     @Test
     public void testBodyUsingExpect () {
-        expect ().body ("data.email", equalTo("janet.weaver@reqres.in"))
+        expect ().header ("x-api-key", "reqres-free-v1")
+            .body ("data.email", equalTo ("janet.weaver@reqres.in"))
             .body ("data.id", equalTo(2))
             .when ()
             .get ("https://reqres.in/api/users/2")
