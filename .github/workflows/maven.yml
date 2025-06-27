@@ -9,6 +9,11 @@ on:
       - master
       - issue-*
 
+  pull_request_target:
+    branches:
+      - master
+      - issue-*
+
 jobs:
   build:
     name: Build and Test

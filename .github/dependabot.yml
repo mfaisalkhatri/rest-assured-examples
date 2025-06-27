@@ -1,0 +1,26 @@
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    target-branch: master
+    open-pull-requests-limit: 20
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Calcutta"
+    groups:
+      dependencies:
+        dependency-type: 'production'
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: master
+    open-pull-requests-limit: 20
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Calcutta"
+    groups:
+      dependencies:
+        dependency-type: 'production'
