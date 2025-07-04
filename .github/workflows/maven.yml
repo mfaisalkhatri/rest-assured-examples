@@ -47,7 +47,7 @@ jobs:
         run: |
           docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml down --remove-orphans
           docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml down --remove-orphans
-          
+
       - name: Test Report
         uses: dorny/test-reporter@v2
         if: always()
@@ -77,7 +77,7 @@ jobs:
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
-        env:
+        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
