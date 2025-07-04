@@ -14,6 +14,9 @@ on:
       - master
       - issue-*
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build and Test
@@ -28,11 +31,10 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Start restful booker service
-        run: docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml up -d
-
-      - name: Start restful ecommerce service
-        run: docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml up -d
+      - name: Start restful booker and ecommerce service
+        run: |
+          docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml up -d
+          docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml up -d
 
       - name: Build with Maven and run tests
         env:
@@ -42,11 +44,10 @@ jobs:
           restful_ecommerce_password: ${{ secrets.ECOMM_PASSWORD }}
         run: mvn clean install
 
-      - name: Stop restful booker service
-        run: docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml down --remove-orphans
-
-      - name: Stop restful ecommerce service
-        run: docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml down --remove-orphans
+      - name: Stop restful booker and ecomerce service
+        run: |
+          docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml down --remove-orphans
+          docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml down --remove-orphans
 
       - name: Test Report
         uses: dorny/test-reporter@v2
@@ -67,7 +68,6 @@ jobs:
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
         if: always()
-        #id: allure-report
         with:
           allure_results: target/allure-results
           #gh_pages: gh-pages
@@ -78,7 +78,7 @@ jobs:
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
