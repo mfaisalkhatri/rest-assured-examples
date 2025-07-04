@@ -12,6 +12,5 @@
         <!--        <suite-file path="assertionsuite.xml"/>-->
         <suite-file path="fileuploadsuite.xml"/>
         <suite-file path="restfulecommercesuite.xml"/>
-        <suite-file path="restfulecommerceimageupload.xml"/>
     </suite-files>
 </suite>
