@@ -18,6 +18,8 @@ jobs:
   build:
     name: Build and Test
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -28,11 +30,10 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Start restful booker service
-        run: docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml up -d
-
-      - name: Start restful ecommerce service
-        run: docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml up -d
+      - name: Start restful booker and ecommerce service
+        run: |
+          docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml up -d
+          docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml up -d
 
       - name: Build with Maven and run tests
         env:
@@ -42,12 +43,11 @@ jobs:
           restful_ecommerce_password: ${{ secrets.ECOMM_PASSWORD }}
         run: mvn clean install
 
-      - name: Stop restful booker service
-        run: docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml down --remove-orphans
-
-      - name: Stop restful ecommerce service
-        run: docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml down --remove-orphans
-
+      - name: Stop restful booker and ecomerce service
+        run: |
+          docker compose -f ${{ github.workspace }}/docker-compose-restfulbooker.yml down --remove-orphans
+          docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml down --remove-orphans
+          
       - name: Test Report
         uses: dorny/test-reporter@v2
         if: always()
@@ -67,7 +67,6 @@ jobs:
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
         if: always()
-        #id: allure-report
         with:
           allure_results: target/allure-results
           #gh_pages: gh-pages
