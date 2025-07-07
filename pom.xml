@@ -27,7 +27,7 @@
         <aspectj.version>1.9.24</aspectj.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
-        <maven-enforcer.version>3.5.0</maven-enforcer.version>
+        <maven-enforcer.version>3.6.0</maven-enforcer.version>
         <java-release.version>17</java-release.version>
         <suite-xml>test-suite/testng.xml</suite-xml>
     </properties>
