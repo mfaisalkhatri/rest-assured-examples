@@ -23,7 +23,7 @@
         <json-schema-validator.version>5.5.5</json-schema-validator.version>
         <allure.version>2.29.1</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
-        <commons-lang3.version>3.17.0</commons-lang3.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
         <aspectj.version>1.9.24</aspectj.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
