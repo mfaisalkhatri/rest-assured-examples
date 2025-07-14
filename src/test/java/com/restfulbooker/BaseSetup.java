@@ -10,17 +10,19 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 /**
  * Created By Faisal Khatri on 18-02-2022
  */
 public class BaseSetup {
-
+    @Parameters ("agent")
     @BeforeClass
-    public void setup () {
-
-        RequestSpecification requestSpecification = new RequestSpecBuilder ().setBaseUri (
-                "http://localhost:3001")
+    public void setup (String agent) {
+        String baseUri = agent.equals ("githubActions")
+                         ? "http://localhost:3001"
+                         : "https://restful-booker.herokuapp.com";
+        RequestSpecification requestSpecification = new RequestSpecBuilder ().setBaseUri (baseUri)
             .addHeader ("Content-Type", "application/json")
             .addHeader ("Accept", "application/json")
             .addFilter (new RequestLoggingFilter ())
