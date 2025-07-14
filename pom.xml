@@ -17,9 +17,9 @@
         <lombok.version>1.18.38</lombok.version>
         <jackson-databind.version>2.19.1</jackson-databind.version>
         <org-json.verion>20250517</org-json.verion>
-        <data-faker.version>2.4.3</data-faker.version>
-        <log4jcore.version>2.25.0</log4jcore.version>
-        <log4japi.version>2.25.0</log4japi.version>
+        <data-faker.version>2.4.4</data-faker.version>
+        <log4jcore.version>2.25.1</log4jcore.version>
+        <log4japi.version>2.25.1</log4japi.version>
         <json-schema-validator.version>5.5.5</json-schema-validator.version>
         <allure.version>2.29.1</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
