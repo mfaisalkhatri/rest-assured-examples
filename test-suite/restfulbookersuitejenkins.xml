@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Restful Booker Test Suite" thread-count="3" parallel="tests">
+    <listeners>
+        <listener
+                class-name="in.reqres.utility.TestListener"/>
+    </listeners>
+    <test name="Restful Booker tests on Jenkins">
+        <parameter name="agent" value="jenkins"/>
+        <classes>
+            <class name="com.restfulbooker.RestfulBookerE2ETests">
+                <methods>
+                    <include name="createBookingTest"/>
+                    <include name="getBookingTest"/>
+                    <include name="testTokenGeneration"/>
+                    <include name="updateBookingTest"/>
+                    <include name="updatePartialBookingTest"/>
+                    <include name="deleteBookingTest"/>
+                    <include name="checkBookingIsDeleted"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
