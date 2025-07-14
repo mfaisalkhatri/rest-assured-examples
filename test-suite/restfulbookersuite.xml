@@ -5,7 +5,8 @@
         <listener
                 class-name="in.reqres.utility.TestListener"/>
     </listeners>
-    <test name="Restful Booker tests">
+    <test name="Restful Booker tests on GitHub Actions">
+        <parameter name="agent" value="githubActions"/>
         <classes>
             <class name="com.restfulbooker.RestfulBookerE2ETests">
                 <methods>
@@ -20,7 +21,8 @@
             </class>
         </classes>
     </test>
-    <test name="Restful Booker JSON Schema Validation tests">
+    <test name="Restful Booker JSON Schema Validation tests for GitHub Actions">
+        <parameter name="agent" value="githubActions"/>
         <classes>
             <class name="com.restfulbooker.JsonSchemaValidationTest">
                 <methods>
@@ -33,5 +35,20 @@
             </class>
         </classes>
     </test>
-
-</suite> <!-- Suite -->
+    <test name="Restful Booker tests on Jenkins">
+        <parameter name="agent" value="jenkins"/>
+        <classes>
+            <class name="com.restfulbooker.RestfulBookerE2ETests">
+                <methods>
+                    <include name="createBookingTest"/>
+                    <include name="getBookingTest"/>
+                    <include name="testTokenGeneration"/>
+                    <include name="updateBookingTest"/>
+                    <include name="updatePartialBookingTest"/>
+                    <include name="deleteBookingTest"/>
+                    <include name="checkBookingIsDeleted"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
