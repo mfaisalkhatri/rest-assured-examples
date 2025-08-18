@@ -20,7 +20,7 @@
         <data-faker.version>2.4.4</data-faker.version>
         <log4jcore.version>2.25.1</log4jcore.version>
         <log4japi.version>2.25.1</log4japi.version>
-        <json-schema-validator.version>5.5.5</json-schema-validator.version>
+        <json-schema-validator.version>5.5.6</json-schema-validator.version>
         <allure.version>2.29.1</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
         <commons-lang3.version>3.18.0</commons-lang3.version>
