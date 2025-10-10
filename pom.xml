@@ -92,13 +92,11 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4jcore.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>${log4japi.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
@@ -116,7 +114,6 @@
             <version>${google-gson.verion}</version>
         </dependency>
     </dependencies>
-
     <build>
         <pluginManagement>
             <plugins>
