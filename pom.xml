@@ -14,7 +14,7 @@
         <testng.version>7.11.0</testng.version>
         <lombok.version>1.18.42</lombok.version>
         <jackson-databind.version>2.20.0</jackson-databind.version>
-        <data-faker.version>2.5.1</data-faker.version>
+        <data-faker.version>2.5.2</data-faker.version>
         <google-gson.verion>2.13.2</google-gson.verion>
         <log4jcore.version>2.25.2</log4jcore.version>
         <log4japi.version>2.25.2</log4japi.version>
