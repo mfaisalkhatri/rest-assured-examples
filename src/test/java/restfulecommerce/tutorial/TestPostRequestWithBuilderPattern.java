@@ -1,15 +1,15 @@
 package restfulecommerce.tutorial;
 
-import static data.restfulecommerce.OrderDataBuilder.getOrderData;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static restfulecommerce.tutorial.data.OrderDataBuilder.getOrderData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import data.restfulecommerce.OrderData;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
+import restfulecommerce.tutorial.data.OrderData;
 
 public class TestPostRequestWithBuilderPattern {
 
@@ -31,8 +31,5 @@ public class TestPostRequestWithBuilderPattern {
             .and ()
             .assertThat ()
             .body ("message", equalTo ("Orders added successfully!"));
-
     }
-
 }
-

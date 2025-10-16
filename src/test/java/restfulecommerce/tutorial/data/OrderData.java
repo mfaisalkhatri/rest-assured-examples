@@ -1,6 +1,7 @@
 package restfulecommerce.tutorial.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
+@JsonPropertyOrder ({ "user_id", "product_id", "product_name", "product_amount", "qty", "tax_amt", "total_amt" })
 public class OrderData {
     @JsonProperty ("user_id")
     private String userId;
