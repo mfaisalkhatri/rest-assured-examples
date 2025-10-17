@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "user_id": "1",
+    "product_id": "1",
+    "product_name": "iPhone",
+    "product_amount": 500,
+    "qty": 1,
+    "tax_amt": 5.99,
+    "total_amt": 505.99
+  },
+  {
+    "id": 1,
+    "user_id": "1",
+    "product_id": "2",
+    "product_name": "iPad",
+    "product_amount": 750,
+    "qty": 1,
+    "tax_amt": 7.99,
+    "total_amt": 757.99
+  }
+]
