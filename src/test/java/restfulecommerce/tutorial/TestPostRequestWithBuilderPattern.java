@@ -30,6 +30,11 @@ public class TestPostRequestWithBuilderPattern {
             .statusCode (201)
             .and ()
             .assertThat ()
-            .body ("message", equalTo ("Orders added successfully!"));
+            .body ("message", equalTo ("Orders added successfully!"))
+            .and ()
+            .assertThat ()
+            .body ("orders[1].user_id", equalTo (orderDataList.get (1)
+                .getUserId ()), "orders[3].total_amt", equalTo (orderDataList.get (3)
+                .getTotalAmt ()));
     }
 }
