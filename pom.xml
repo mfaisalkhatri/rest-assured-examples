@@ -19,7 +19,7 @@
         <log4jcore.version>2.25.2</log4jcore.version>
         <log4japi.version>2.25.2</log4japi.version>
         <json-schema-validator.version>5.5.6</json-schema-validator.version>
-        <hamcrest-all.version>1.3</hamcrest-all.version>
+        <hamcrest.version>3.0</hamcrest.version>
         <json-simple.version>1.1.1</json-simple.version>
         <org-json.verion>20250517</org-json.verion>
         <allure.version>2.30.0</allure.version>
@@ -58,8 +58,8 @@
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>${hamcrest-all.version}</version>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>

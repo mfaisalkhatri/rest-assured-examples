@@ -1,6 +1,7 @@
 package soapapitests;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.testng.Assert.assertEquals;
 
 import java.io.File;
@@ -56,5 +57,32 @@ public class AddNumbersAPITests {
         XmlPath xmlpath = new XmlPath (response).using (new XmlPathConfig ("UTF-8"));
         assertEquals (xmlpath.getString ("AddResult"), "10");
 
+    }
+
+    @Test
+    public void testAddEndPoint () {
+        URI file = null;
+        try {
+            file = getClass ().getClassLoader ()
+                .getResource ("addrequest.xml")
+                .toURI ();
+        } catch (URISyntaxException e) {
+            throw new Error ("Error in URI syntax", e);
+        }
+        File body = new File (file);
+        given ().when ()
+            .body (body)
+            .header ("SOAPAction", "http://tempuri.org/Add")
+            .contentType ("text/xml; charset=utf-8")
+            .log ()
+            .all ()
+            .post (BASE_URL)
+            .then ()
+            .log ()
+            .all ()
+            .statusCode (200)
+            .and ()
+            .assertThat ()
+            .body ("Envelope.Body.AddResponse.AddResult", equalTo ("10"));
     }
 }
