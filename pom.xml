@@ -22,9 +22,9 @@
         <hamcrest.version>3.0</hamcrest.version>
         <json-simple.version>1.1.1</json-simple.version>
         <org-json.verion>20250517</org-json.verion>
-        <allure.version>2.30.0</allure.version>
+        <allure.version>2.31.0</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
-        <commons-lang3.version>3.19.0</commons-lang3.version>
+        <commons-lang3.version>3.20.0</commons-lang3.version>
         <aspectj.version>1.9.25</aspectj.version>
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
