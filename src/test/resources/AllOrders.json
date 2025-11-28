@@ -1,0 +1,45 @@
+{
+  "message": "Orders fetched successfully!",
+  "orders": [
+    {
+      "id": 1,
+      "user_id": "466",
+      "product_id": "357",
+      "product_name": "Small Marble Shoes",
+      "product_amount": 1558,
+      "qty": 9,
+      "tax_amt": 1402,
+      "total_amt": 15424
+    },
+    {
+      "id": 2,
+      "user_id": "484",
+      "product_id": "219",
+      "product_name": "Aerodynamic Bronze Chair",
+      "product_amount": 1755,
+      "qty": 7,
+      "tax_amt": 1228,
+      "total_amt": 13513
+    },
+    {
+      "id": 3,
+      "user_id": "386",
+      "product_id": "342",
+      "product_name": "Mediocre Aluminum Coat",
+      "product_amount": 335,
+      "qty": 1,
+      "tax_amt": 33,
+      "total_amt": 368
+    },
+    {
+      "id": 4,
+      "user_id": "481",
+      "product_id": "220",
+      "product_name": "Fantastic Concrete Table",
+      "product_amount": 79,
+      "qty": 1,
+      "tax_amt": 7,
+      "total_amt": 86
+    }
+  ]
+}

@@ -22,6 +22,7 @@
         <hamcrest.version>3.0</hamcrest.version>
         <json-simple.version>1.1.1</json-simple.version>
         <org-json.verion>20250517</org-json.verion>
+        <jsonassert.version>1.5.3</jsonassert.version>
         <allure.version>2.31.0</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
         <commons-lang3.version>3.20.0</commons-lang3.version>
@@ -112,6 +113,11 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${google-gson.verion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <version>${jsonassert.version}</version>
         </dependency>
     </dependencies>
     <build>

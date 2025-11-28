@@ -4,11 +4,17 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.testng.Assert.assertEquals;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Objects;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.annotations.Test;
 import restfulecommerce.tutorial.pojo.OrderResponse;
 
@@ -122,6 +128,34 @@ public class ResponseBodyVerificationTest {
         assertEquals (orderResponse.getOrders ()
             .get (1)
             .getTaxAmt (), 1228);
+
+    }
+
+    @Test
+    public void testResponseFromJsonFile () {
+        String actualResponse = given ().when ()
+            .log ()
+            .all ()
+            .get ("http://localhost:3004/getAllOrders")
+            .then ()
+            .log ()
+            .all ()
+            .statusCode (200)
+            .extract ()
+            .response ()
+            .asString ();
+
+        String expectedJson = null;
+        try {
+            expectedJson = Files.readString (Paths.get (Objects.requireNonNull (this.getClass ()
+                    .getClassLoader ()
+                    .getResource ("AllOrders.json"))
+                .getPath ()));
+        } catch (IOException e) {
+            throw new RuntimeException (e);
+        }
+
+        JSONAssert.assertEquals (expectedJson, actualResponse, true);
 
     }
 }
