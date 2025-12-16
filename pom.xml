@@ -18,7 +18,7 @@
         <google-gson.verion>2.13.2</google-gson.verion>
         <log4jcore.version>2.25.2</log4jcore.version>
         <log4japi.version>2.25.2</log4japi.version>
-        <json-schema-validator.version>5.5.6</json-schema-validator.version>
+        <json-schema-validator.version>6.0.0</json-schema-validator.version>
         <hamcrest.version>3.0</hamcrest.version>
         <json-simple.version>1.1.1</json-simple.version>
         <org-json.verion>20250517</org-json.verion>
