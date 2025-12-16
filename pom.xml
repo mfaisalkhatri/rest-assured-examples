@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <rest-assured.version>5.5.6</rest-assured.version>
+        <rest-assured.version>6.0.0</rest-assured.version>
         <testng.version>7.11.0</testng.version>
         <lombok.version>1.18.42</lombok.version>
         <jackson-databind.version>2.20.1</jackson-databind.version>
