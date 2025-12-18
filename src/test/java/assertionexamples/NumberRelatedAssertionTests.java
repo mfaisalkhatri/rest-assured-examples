@@ -4,8 +4,11 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
+import static org.hamcrest.Matchers.not;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -26,7 +29,7 @@ import org.testng.annotations.Test;
 @Story ("Number related Assertions using Hamcrest in rest assured")
 public class NumberRelatedAssertionTests {
 
-    private static String URL = "https://reqres.in/api/users/";
+    private static final String URL = "https://api.restful-api.dev/objects";
 
     @Test
     @Description ("Example Test for performing number related assertions using Hamcrest")
@@ -34,18 +37,17 @@ public class NumberRelatedAssertionTests {
     public void testNumberAssertions () {
 
         given ().when ()
-            .header ("x-api-key","reqres-free-v1")
-            .queryParam ("page", 2)
+            .queryParam ("id", 3)
             .get (URL)
             .then ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("page", equalTo(2))
-            .body ("per_page", greaterThan (4))
-            .body ("per_page", greaterThanOrEqualTo (6))
-            .body ("total", lessThan (14))
-            .body ("total_pages", lessThanOrEqualTo (3));
+            .body ("[0].id", equalTo ("3"))
+            .body ("[0].data['capacity GB']", greaterThan (500))
+            .body ("[0].data['capacity GB']", greaterThanOrEqualTo (512))
+            .body ("[0].data['capacity GB']", lessThan (550))
+            .body ("[0].data['capacity GB']", lessThanOrEqualTo (512));
     }
 
     @Test
@@ -54,17 +56,15 @@ public class NumberRelatedAssertionTests {
     public void testGreaterThanAssertions () {
 
         given ().when ()
-            .header ("x-api-key","reqres-free-v1")
-            .queryParam ("page", 2)
+            .queryParam ("id", 3)
             .get (URL)
             .then ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("per_page", greaterThan (4))
-            .body ("per_page", greaterThanOrEqualTo (6));
+            .body ("[0].data['capacity GB']", greaterThan (500))
+            .body ("[0].data['capacity GB']", greaterThanOrEqualTo (512));
     }
-
 
     @Test
     @Description ("Example Test for performing Less than assertions using Hamcrest")
@@ -72,22 +72,43 @@ public class NumberRelatedAssertionTests {
     public void testLessThanAssertions () {
 
         given ().when ()
-            .header ("x-api-key","reqres-free-v1")
-            .queryParam ("page", 2)
+            .queryParam ("id", 5)
+            .log ()
+            .all ()
+            .get (URL)
+            .then ()
+            .log ()
+            .all ()
+            .statusCode (200)
+            .and ()
+            .assertThat ()
+            .body ("[0].data.price", lessThan (700f))
+            .body ("[0].data.price", lessThanOrEqualTo (689.99f));
+    }
+
+    @Test
+    @Description ("Example Test for performing size, item, and not equal assertions")
+    @Severity (SeverityLevel.NORMAL)
+    public void testHasSizeOrItemOrNotEqual () {
+        given ().when ()
+            .queryParam ("id", 3)
+            .queryParam ("id", 5)
             .get (URL)
             .then ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("total", lessThan (14))
-            .body ("total_pages", lessThanOrEqualTo (3));
+            .body ("$", hasSize (2))
+            .body ("name", hasItem ("Apple iPhone 12 Pro Max"))
+            .body ("[1].id", not (equalTo ("6")));
     }
 
     @AfterMethod
     public void getTestExecutionTime (ITestResult result) {
-        String methodName = result.getMethod ().getMethodName ();
+        String methodName = result.getMethod ()
+            .getMethodName ();
         long totalExecutionTime = (result.getEndMillis () - result.getStartMillis ());
-        System.out.println ("Total Execution time: " +totalExecutionTime +" milliseconds" + " for method " +methodName);
+        System.out.println (
+            "Total Execution time: " + totalExecutionTime + " milliseconds" + " for method " + methodName);
     }
-
 }

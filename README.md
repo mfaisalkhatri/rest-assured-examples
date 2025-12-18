@@ -18,7 +18,7 @@ example code from writing basic tests to running end to end API automation tests
 - `Log4j` is used to capture logs.
 - [Lombok](https://projectlombok.org/) is used to generate Getter and Setters automatically for post body
   requests.
-- FAKE Rest APIs on [Reqres.in](https://reqres.in/) is used for testing.
+- [{REST-API} READY TO USE APIs](https://restful-api.dev/) is used for testing.
 - End to End scenarios have been added for
   the [restful booker APIs](https://restful-booker.herokuapp.com/apidoc/index.html).
 
@@ -52,12 +52,16 @@ framework in this repository:
 - [End to End API testing using rest-assured](https://medium.com/@iamfaisalkhatri/end-to-end-api-testing-using-rest-assured-a58c4ea80255)
 - [How to perform JSON Schema Validation using Rest-Assured?](https://medium.com/@iamfaisalkhatri/how-to-perform-json-schema-validation-using-rest-assured-64c3b6616a91)
 - [API Testing using RestAssured and OkHttp](https://mfaisalkhatri.github.io/2020/05/29/restassuredokhttp/)
+- [How to Test POST Requests with Rest-Assured Java for API Testing: Part I](https://medium.com/javarevisited/how-to-test-post-requests-with-rest-assured-for-api-testing-part-i-d697efab5875)
+- [How to Test POST Requests with Rest-Assured Java for API Testing: Part II](https://medium.com/javarevisited/how-to-test-post-requests-with-rest-assured-java-for-api-testing-part-ii-30dfe04a533a)
+- [How to test a SOAP API request with Rest-Assured Java](https://medium.com/javarevisited/how-to-test-a-soap-api-request-with-rest-assured-java-c7fbab845c46)
+- [How to Perform Response Verification in REST-Assured Java for API Testing](https://medium.com/javarevisited/how-to-perform-response-verification-in-rest-assured-java-for-api-testing-666583f58334)
+- [What is API Testing?](https://medium.com/@iamfaisalkhatri/what-is-api-testing-2921e3114afb)
 
 ## :movie_camera: Tutorial Video
 
 [![Watch the video](https://img.youtube.com/vi/xLKpdQE0oKY/hqdefault.jpg)](https://www.youtube.com/watch?v=xLKpdQE0oKY&t=1s)
 [![Watch the video](https://img.youtube.com/vi/AFQSolEeu74/hqdefault.jpg)](https://www.youtube.com/live/AFQSolEeu74?si=8WROMbunjUuzqqQj&t=1)
-
 
 ## :question: Need Assistance?
 
