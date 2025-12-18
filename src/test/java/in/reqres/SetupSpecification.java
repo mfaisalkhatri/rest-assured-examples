@@ -35,10 +35,8 @@ public class SetupSpecification {
     @BeforeClass
     public void setup () {
 
-        RequestSpecification request = new RequestSpecBuilder ()
-            .addHeader ("x-api-key","reqres-free-v1")
-            .addHeader ("Content-Type", "application/json")
-            .setBaseUri ("https://reqres.in/")
+        RequestSpecification request = new RequestSpecBuilder ().addHeader ("Content-Type", "application/json")
+            .setBaseUri ("https://api.restful-api.dev/objects")
             .addFilter (new RequestLoggingFilter ())
             .addFilter (new ResponseLoggingFilter ())
             .build ();
