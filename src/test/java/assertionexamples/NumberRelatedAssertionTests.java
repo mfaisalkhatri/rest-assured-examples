@@ -72,14 +72,18 @@ public class NumberRelatedAssertionTests {
     public void testLessThanAssertions () {
 
         given ().when ()
-            .queryParam ("id", 3)
+            .queryParam ("id", 5)
+            .log ()
+            .all ()
             .get (URL)
             .then ()
+            .log ()
+            .all ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("[0].data['capacity GB']", lessThan (550))
-            .body ("[0].data['capacity GB']", lessThanOrEqualTo (512));
+            .body ("[0].data.price", lessThan (700f))
+            .body ("[0].data.price", lessThanOrEqualTo (689.99f));
     }
 
     @Test
@@ -97,7 +101,6 @@ public class NumberRelatedAssertionTests {
             .body ("$", hasSize (2))
             .body ("name", hasItem ("Apple iPhone 12 Pro Max"))
             .body ("[1].id", not (equalTo ("6")));
-
     }
 
     @AfterMethod

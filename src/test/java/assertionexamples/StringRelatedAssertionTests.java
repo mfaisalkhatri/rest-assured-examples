@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToCompressingWhiteSpace;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
+import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.Matchers.is;
@@ -41,20 +42,17 @@ import org.testng.annotations.Test;
 @Story ("String related Assertions using Hamcrest in rest assured")
 public class StringRelatedAssertionTests {
 
-    private static RequestSpecBuilder    requestSpecBuilder;
-    private static ResponseSpecBuilder   responseSpecBuilder;
     private static ResponseSpecification responseSpecification;
     private static RequestSpecification  requestSpecification;
 
     @BeforeClass
     public void setupSpecBuilder () {
-        requestSpecBuilder = new RequestSpecBuilder ().setBaseUri ("")
-            .addHeader ("x-api-key", "reqres-free-v1")
-            .addQueryParam ("page", 2)
+        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder ().setBaseUri (
+                "https://api.restful-api.dev/objects")
+            .addQueryParam ("id", 3)
             .addFilter (new RequestLoggingFilter ())
             .addFilter (new ResponseLoggingFilter ());
-        responseSpecBuilder = new ResponseSpecBuilder ().expectStatusCode (200)
-            .expectBody ("page", equalTo (2));
+        ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder ().expectStatusCode (200);
 
         responseSpecification = responseSpecBuilder.build ();
         requestSpecification = requestSpecBuilder.build ();
@@ -71,12 +69,12 @@ public class StringRelatedAssertionTests {
             .then ()
             .spec (responseSpecification)
             .assertThat ()
-            .body ("data[0].first_name", equalTo ("Michael"))
-            .body ("data[0].first_name", equalToIgnoringCase ("MICHael"))
-            .body ("data[0].email", containsString ("michael.lawson"))
-            .body ("data[0].last_name", startsWith ("L"))
-            .body ("data[0].last_name", endsWith ("n"))
-            .body ("data[1].first_name", equalToCompressingWhiteSpace ("    Lindsay "));
+            .body ("[0].name", equalTo ("Apple iPhone 12 Pro Max"))
+            .body ("[0].name", equalToIgnoringCase ("ApPLE IPhone 12 pro MAX"))
+            .body ("[0].data.color", containsString ("White"))
+            .body ("[0].name", startsWith ("A"))
+            .body ("[0].name", endsWith ("x"))
+            .body ("[0].name", equalToCompressingWhiteSpace ("    Apple iPhone    12    Pro Max    "));
     }
 
     @Test
@@ -89,7 +87,7 @@ public class StringRelatedAssertionTests {
             .spec (responseSpecification)
             .and ()
             .assertThat ()
-            .body ("data[0].first_name", is (Matchers.notNullValue ()));
+            .body ("[0].name", is (Matchers.notNullValue ()));
 
     }
 
@@ -103,10 +101,9 @@ public class StringRelatedAssertionTests {
             .spec (responseSpecification)
             .and ()
             .assertThat ()
-            .body ("data[0]", hasKey ("email"))
-            .body ("support", hasKey ("url"))
-            .body ("$", hasKey ("page"))
-            .body ("$", hasKey ("total"));
+            .body ("$", everyItem (hasKey ("id")))
+            .body ("[0].data", hasKey ("capacity GB"))
+            .body ("$", everyItem (hasKey ("name")));
     }
 
     @Test
@@ -119,9 +116,9 @@ public class StringRelatedAssertionTests {
             .spec (responseSpecification)
             .and ()
             .assertThat ()
-            .body ("data", not (emptyArray ()))
-            .body ("data[0].first_name", not (equalTo ("George")))
-            .body ("data.size()", greaterThan (5));
+            .body ("$", not (emptyArray ()))
+            .body ("[0].name", not (equalTo ("Samsung")))
+            .body ("[0].data['capacity GB']", not (greaterThan (550)));
     }
 
     @Test
@@ -134,7 +131,8 @@ public class StringRelatedAssertionTests {
             .spec (responseSpecification)
             .and ()
             .assertThat ()
-            .body ("page", equalTo (2), "data[0].first_name", equalTo ("Michael"), "support.url", is (notNullValue ()));
+            .body ("[0].id", equalTo ("3"), "[0].name", equalTo ("Apple iPhone 12 Pro Max"), "[0].data.color",
+                is (notNullValue ()));
 
     }
 
