@@ -4,8 +4,11 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
+import static org.hamcrest.Matchers.not;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -79,6 +82,24 @@ public class NumberRelatedAssertionTests {
             .body ("[0].data['capacity GB']", lessThanOrEqualTo (512));
     }
 
+    @Test
+    @Description ("Example Test for performing size, item, and not equal assertions")
+    @Severity (SeverityLevel.NORMAL)
+    public void testHasSizeOrItemOrNotEqual () {
+        given ().when ()
+            .queryParam ("id", 3)
+            .queryParam ("id", 5)
+            .get (URL)
+            .then ()
+            .statusCode (200)
+            .and ()
+            .assertThat ()
+            .body ("$", hasSize (2))
+            .body ("name", hasItem ("Apple iPhone 12 Pro Max"))
+            .body ("[1].id", not (equalTo ("6")));
+
+    }
+
     @AfterMethod
     public void getTestExecutionTime (ITestResult result) {
         String methodName = result.getMethod ()
@@ -87,5 +108,4 @@ public class NumberRelatedAssertionTests {
         System.out.println (
             "Total Execution time: " + totalExecutionTime + " milliseconds" + " for method " + methodName);
     }
-
 }
