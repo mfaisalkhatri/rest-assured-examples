@@ -17,7 +17,7 @@
         <data-faker.version>2.5.3</data-faker.version>
         <google-gson.verion>2.13.2</google-gson.verion>
         <log4jcore.version>2.25.3</log4jcore.version>
-        <log4japi.version>2.25.2</log4japi.version>
+        <log4japi.version>2.25.3</log4japi.version>
         <json-schema-validator.version>6.0.0</json-schema-validator.version>
         <hamcrest.version>3.0</hamcrest.version>
         <json-simple.version>1.1.1</json-simple.version>
@@ -26,7 +26,7 @@
         <allure.version>2.32.0</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
         <commons-lang3.version>3.20.0</commons-lang3.version>
-        <aspectj.version>1.9.25</aspectj.version>
+        <aspectj.version>1.9.25.1</aspectj.version>
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
         <maven-enforcer.version>3.6.2</maven-enforcer.version>
