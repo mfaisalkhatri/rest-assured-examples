@@ -21,7 +21,7 @@
         <json-schema-validator.version>6.0.0</json-schema-validator.version>
         <hamcrest.version>3.0</hamcrest.version>
         <json-simple.version>1.1.1</json-simple.version>
-        <org-json.verion>20250517</org-json.verion>
+        <org-json.verion>20251224</org-json.verion>
         <jsonassert.version>1.5.3</jsonassert.version>
         <allure.version>2.32.0</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
