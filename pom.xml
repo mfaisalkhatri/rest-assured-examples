@@ -13,7 +13,7 @@
         <rest-assured.version>6.0.0</rest-assured.version>
         <testng.version>7.11.0</testng.version>
         <lombok.version>1.18.42</lombok.version>
-        <jackson-databind.version>2.20.1</jackson-databind.version>
+        <jackson-databind.version>2.21.0</jackson-databind.version>
         <data-faker.version>2.5.3</data-faker.version>
         <google-gson.verion>2.13.2</google-gson.verion>
         <log4jcore.version>2.25.3</log4jcore.version>
