@@ -34,7 +34,7 @@ public class TestPostRequestWithDataProviderObject {
             .then ()
             .log ()
             .all ()
-            .statusCode (201)
+            .statusCode (order.getExpectedStatus ())
             .and ()
             .assertThat ()
             .body ("message", equalTo ("Orders added successfully!"));
