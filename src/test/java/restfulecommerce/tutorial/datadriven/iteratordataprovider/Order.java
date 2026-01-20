@@ -1,4 +1,4 @@
-package restfulecommerce.tutorial.datadriven.objectdataprovider;
+package restfulecommerce.tutorial.datadriven.iteratordataprovider;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
