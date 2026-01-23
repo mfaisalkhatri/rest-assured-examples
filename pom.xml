@@ -25,6 +25,7 @@
         <jsonassert.version>1.5.3</jsonassert.version>
         <allure.version>2.32.0</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
+        <jackson-dataformat-csv.version>2.21.0</jackson-dataformat-csv.version>
         <commons-lang3.version>3.20.0</commons-lang3.version>
         <aspectj.version>1.9.25.1</aspectj.version>
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
@@ -118,6 +119,11 @@
             <groupId>org.skyscreamer</groupId>
             <artifactId>jsonassert</artifactId>
             <version>${jsonassert.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-csv</artifactId>
+            <version>${jackson-dataformat-csv.version}</version>
         </dependency>
     </dependencies>
     <build>
