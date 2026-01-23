@@ -18,13 +18,12 @@ public class CSVReader {
             throw new RuntimeException ("File not found: " + filename);
         }
 
-        CsvMapper csvMapper = new CsvMapper ();
         CsvSchema schema = CsvSchema.emptySchema ()
             .withHeader ();
         MappingIterator<Order> iterator;
 
         try {
-            iterator = csvMapper.readerFor (Order.class)
+            iterator = new CsvMapper ().readerFor (Order.class)
                 .with (schema)
                 .readValues (inputStream);
 
