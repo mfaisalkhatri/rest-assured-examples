@@ -3,13 +3,13 @@ package restfulecommerce.tutorial.datadriven.csvdataprovider;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@ToString (exclude = "expectedStatus")
+@NoArgsConstructor
 public class Order {
     @JsonProperty ("user_id")
     private String userId;
@@ -24,5 +24,4 @@ public class Order {
     private int    taxAmt;
     @JsonProperty ("total_amt")
     private int    totalAmt;
-    private int    expectedStatus;
 }

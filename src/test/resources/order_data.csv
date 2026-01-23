@@ -2,7 +2,7 @@ user_id,product_id,product_name,product_amount,qty,tax_amt,total_amt
 "U001","P1001","Laptop",850,1,42,892
 "U002","P1002","Smartphone",600,2,60,1260
 "U003","P1003","Headphones",120,3,18,378
-"U004","P1004","Keyboard",75,2,7.5,157
+"U004","P1004","Keyboard",75,2,7,157
 "U005","P1005","Mouse",40,4,8,168
 "U006","P1006","Monitor",300,1,15,315
 "U007","P1007","Tablet",450,2,45,945
