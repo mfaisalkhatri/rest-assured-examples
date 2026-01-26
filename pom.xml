@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <rest-assured.version>6.0.0</rest-assured.version>
-        <testng.version>7.11.0</testng.version>
+        <testng.version>7.12.0</testng.version>
         <lombok.version>1.18.42</lombok.version>
         <jackson-databind.version>2.21.0</jackson-databind.version>
         <data-faker.version>2.5.3</data-faker.version>
