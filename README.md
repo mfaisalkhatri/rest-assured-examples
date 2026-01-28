@@ -57,15 +57,16 @@ framework in this repository:
 - [How to test a SOAP API request with Rest-Assured Java](https://medium.com/javarevisited/how-to-test-a-soap-api-request-with-rest-assured-java-c7fbab845c46)
 - [How to Perform Response Verification in REST-Assured Java for API Testing](https://medium.com/javarevisited/how-to-perform-response-verification-in-rest-assured-java-for-api-testing-666583f58334)
 - [How to use Java Records to serialize JSON API requests](https://medium.com/@iamfaisalkhatri/how-to-use-java-records-to-serialize-json-api-requests-23af1a52b378)
-
+- [Data Driven API Testing in Java using Object[] with Rest-Assured and TestNG](https://medium.com/javarevisited/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-1-275795ca2c62)
+- [Data Driven API Testing in Java using Iterator with Rest-Assured and TestNG](https://medium.com/@iamfaisalkhatri/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-2-06029e688efe)
+- [Data Driven API Testing in Java using CSV files with Rest-Assured and TestNG](https://medium.com/@iamfaisalkhatri/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-3-3eed3cc1e39f)
 
 ## :movie_camera: Tutorial Video
 
 [![Watch the video](https://img.youtube.com/vi/xLKpdQE0oKY/hqdefault.jpg)](https://www.youtube.com/watch?v=xLKpdQE0oKY&t=1s)
 [![Watch the video](https://img.youtube.com/vi/AFQSolEeu74/hqdefault.jpg)](https://www.youtube.com/live/AFQSolEeu74?si=8WROMbunjUuzqqQj&t=1)
-[![Watch the video](https://img.youtube.com/vi/VpIU2BunhUc/hqdefault.jpg)]( https://youtu.be/VpIU2BunhUc?si=IwymTyT2ytRd5Xqi)
-[![Watch the video](https://img.youtube.com/vi/BWkAz72u6wg/hqdefault.jpg)]( https://youtu.be/BWkAz72u6wg?si=1Ly0QmdXsrFV_GSk)
-
+[![Watch the video](https://img.youtube.com/vi/VpIU2BunhUc/hqdefault.jpg)](https://youtu.be/VpIU2BunhUc?si=IwymTyT2ytRd5Xqi)
+[![Watch the video](https://img.youtube.com/vi/BWkAz72u6wg/hqdefault.jpg)](https://youtu.be/BWkAz72u6wg?si=1Ly0QmdXsrFV_GSk)
 
 ## :question: Need Assistance?
 

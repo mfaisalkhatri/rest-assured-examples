@@ -1,0 +1,38 @@
+[
+  {
+    "user_id": "1",
+    "product_id": "1",
+    "product_name": "iPhone",
+    "product_amount": 500.00,
+    "qty": 1,
+    "tax_amt": 5.99,
+    "total_amt": 505.99
+  },
+  {
+    "user_id": "1",
+    "product_id": "2",
+    "product_name": "iPad",
+    "product_amount": 699.00,
+    "qty": 1,
+    "tax_amt": 7.99,
+    "total_amt": 706.99
+  },
+  {
+    "user_id": "2",
+    "product_id": "2",
+    "product_name": "iPhone 15 PRO",
+    "product_amount": 999.00,
+    "qty": 2,
+    "tax_amt": 9.99,
+    "total_amt": 1088.99
+  },
+  {
+    "user_id": "3",
+    "product_id": "3",
+    "product_name": "Samsung S24 Ultra",
+    "product_amount": 4300.00,
+    "qty": 1,
+    "tax_amt": 5.99,
+    "total_amt": 4305.99
+  }
+]
