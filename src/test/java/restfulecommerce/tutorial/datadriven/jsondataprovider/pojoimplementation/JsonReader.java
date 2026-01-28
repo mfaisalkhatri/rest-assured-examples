@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 public class JsonReader {
 
     public static List<Order> getOrderData (String fileName) {
-
         InputStream inputStream = JsonReader.class.getClassLoader ()
             .getResourceAsStream (fileName);
 

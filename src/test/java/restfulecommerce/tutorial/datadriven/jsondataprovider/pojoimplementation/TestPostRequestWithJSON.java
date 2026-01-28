@@ -15,7 +15,6 @@ public class TestPostRequestWithJSON {
 
     @DataProvider (name = "orderData")
     public Iterator<Object[]> getOrderData () {
-
         List<Order> orderList = JsonReader.getOrderData ("orders_data.json");
         List<Object[]> data = new ArrayList<> ();
         for (Order order : orderList) {

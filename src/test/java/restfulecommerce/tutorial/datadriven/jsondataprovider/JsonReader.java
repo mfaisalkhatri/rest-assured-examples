@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 public class JsonReader {
 
     public static List<Map<String, Object>> getOrderData (String fileName) {
-
         InputStream inputStream = JsonReader.class.getClassLoader ()
             .getResourceAsStream (fileName);
 

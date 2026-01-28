@@ -16,7 +16,6 @@ public class TestPostRequestWithJSON {
 
     @DataProvider (name = "orderData")
     public Iterator<Object[]> getOrderData () {
-
         List<Map<String, Object>> orderList = JsonReader.getOrderData ("orders_data.json");
         List<Object[]> data = new ArrayList<> ();
         for (Map<String, Object> order : orderList) {
@@ -40,6 +39,5 @@ public class TestPostRequestWithJSON {
             .statusCode (201)
             .assertThat ()
             .body ("message", equalTo ("Orders added successfully!"));
-
     }
 }
