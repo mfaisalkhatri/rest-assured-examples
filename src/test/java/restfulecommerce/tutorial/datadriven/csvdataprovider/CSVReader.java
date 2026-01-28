@@ -20,8 +20,8 @@ public class CSVReader {
 
         CsvSchema schema = CsvSchema.emptySchema ()
             .withHeader ();
-        MappingIterator<Order> iterator;
 
+        MappingIterator<Order> iterator;
         try {
             iterator = new CsvMapper ().readerFor (Order.class)
                 .with (schema)
