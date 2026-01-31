@@ -3,10 +3,12 @@ package restfulecommerce.tutorial.datadriven.jsondataprovider.pojoimplementation
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString
 public class Order {
     private String user_id;
     private String product_id;
