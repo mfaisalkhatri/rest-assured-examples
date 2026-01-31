@@ -27,6 +27,8 @@
         <awaitility.version>4.3.0</awaitility.version>
         <jackson-dataformat-csv.version>2.21.0</jackson-dataformat-csv.version>
         <commons-lang3.version>3.20.0</commons-lang3.version>
+        <apache.poi.common.version>5.5.1</apache.poi.common.version>
+        <apache.poi.ooxml.version>5.5.1</apache.poi.ooxml.version>
         <aspectj.version>1.9.25.1</aspectj.version>
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
@@ -124,6 +126,16 @@
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-csv</artifactId>
             <version>${jackson-dataformat-csv.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${apache.poi.common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache.poi.ooxml.version}</version>
         </dependency>
     </dependencies>
     <build>
