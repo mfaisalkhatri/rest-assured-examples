@@ -28,7 +28,7 @@ public class JsonReader {
             return new Gson ().fromJson (reader, listType);
 
         } catch (IOException e) {
-            throw new RuntimeException ("File not found: " + fileName);
+            throw new RuntimeException ("Error reading the file: " + fileName);
         }
     }
 }
