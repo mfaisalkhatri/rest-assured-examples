@@ -13,7 +13,7 @@
         <rest-assured.version>6.0.0</rest-assured.version>
         <testng.version>7.12.0</testng.version>
         <lombok.version>1.18.44</lombok.version>
-        <jackson-databind.version>2.21.1</jackson-databind.version>
+        <jackson-databind.version>2.21.2</jackson-databind.version>
         <data-faker.version>2.5.4</data-faker.version>
         <google-gson.verion>2.13.2</google-gson.verion>
         <log4jcore.version>2.25.3</log4jcore.version>
@@ -25,7 +25,7 @@
         <jsonassert.version>1.5.3</jsonassert.version>
         <allure.version>2.33.0</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
-        <jackson-dataformat-csv.version>2.21.1</jackson-dataformat-csv.version>
+        <jackson-dataformat-csv.version>2.21.2</jackson-dataformat-csv.version>
         <commons-lang3.version>3.20.0</commons-lang3.version>
         <apache.poi.common.version>5.5.1</apache.poi.common.version>
         <apache.poi.ooxml.version>5.5.1</apache.poi.ooxml.version>
