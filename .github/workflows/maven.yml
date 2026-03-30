@@ -50,7 +50,7 @@ jobs:
           docker compose -f ${{ github.workspace }}/docker-compose-ecommerce.yml down --remove-orphans
 
       - name: Test Report
-        uses: dorny/test-reporter@v2
+        uses: dorny/test-reporter@v3
         if: always()
         with:
           name: Test Results
