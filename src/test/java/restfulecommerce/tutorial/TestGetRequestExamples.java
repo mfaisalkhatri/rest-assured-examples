@@ -2,10 +2,13 @@ package restfulecommerce.tutorial;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.lessThan;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
+import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 public class TestGetRequestExamples {
@@ -13,7 +16,7 @@ public class TestGetRequestExamples {
     @Test
     public void testGetAllOrders () {
         given ().when ()
-            .get ("")
+            .get ("http://localhost:3004/getAllOrders")
             .then ()
             .statusCode (200);
     }
@@ -98,4 +101,81 @@ public class TestGetRequestExamples {
             .statusCode (200);
     }
 
+    @Test
+    public void testAuthHeader () {
+        given ().header ("Authorization", "Bearer my-token-123")
+            .when ()
+            .get ("https://httpbin.org/bearer")
+            .then ()
+            .log ()
+            .all ()
+            .statusCode (200);
+    }
+
+    @Test
+    public void testGetAllOrdersWithHeaders () {
+        Map<String, String> headers = new HashMap<> ();
+        headers.put ("Content-Type", "application/json");
+        headers.put ("Accept", "application/json");
+        given ().headers (headers)
+            .when ()
+            .get ("http://localhost:3004/getAllOrders")
+            .then ()
+            .statusCode (200);
+    }
+
+    @Test
+    public void testExtractResponseBody () {
+        String responseBody = given ().when ()
+            .get ("http://localhost:3004/getAllOrders")
+            .then ()
+            .statusCode (200)
+            .extract ()
+            .response ()
+            .asString ();
+
+        System.out.println (responseBody);
+    }
+
+    @Test
+    public void testExtractFiedValueFromResponse () {
+        int orderId = given ().when ()
+            .get ("http://localhost:3004/getAllOrders")
+            .then ()
+            .statusCode (200)
+            .extract ()
+            .response ()
+            .path ("orders[0].id");
+
+        System.out.println ("Order id is: " + orderId);
+    }
+
+    @Test
+    public void testVerifyResponseHeader () {
+        given ().when ()
+            .get ("http://localhost:3004/getAllOrders")
+            .then ()
+            .headers ("Content-Type", "application/json; charset=utf-8")
+            .statusCode (200);
+    }
+
+    @Test
+    public void testVerifyResponseTime () {
+        given ().when ()
+            .get ("http://localhost:3004/getAllOrders")
+            .then ()
+            .statusCode (200)
+            .time (lessThan (500L), TimeUnit.MILLISECONDS);
+    }
+
+    @Test
+    public void testResponseTime () {
+        Response response = given ().get ("http://localhost:3004/getAllOrders");
+        System.out.println (response.getTimeIn (TimeUnit.MILLISECONDS));
+    }
+
+    @Test
+    public void testVerifyResponseSize () {
+
+    }
 }
