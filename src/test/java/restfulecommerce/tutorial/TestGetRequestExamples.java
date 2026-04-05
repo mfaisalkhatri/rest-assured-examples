@@ -2,7 +2,9 @@ package restfulecommerce.tutorial;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.notNullValue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -176,6 +178,47 @@ public class TestGetRequestExamples {
 
     @Test
     public void testVerifyResponseSize () {
-
+        given ().when ()
+            .get ("http://localhost:3004/getAllOrders")
+            .then ()
+            .statusCode (200)
+            .body ("orders.size()", greaterThan (0));
     }
+
+    @Test
+    public void testResponseBody () {
+        given ().when ()
+            .queryParam ("id", 1)
+            .get ("http://localhost:3004/getOrder")
+            .then ()
+            .statusCode (200)
+            .and ()
+            .body ("message", equalTo ("Order found!!"))
+            .body ("orders[0].id", notNullValue ())
+            .body ("orders[0].id", equalTo (1));
+    }
+
+    @Test
+    public void testResponseBodyMultipleAssertions () {
+        given ().when ()
+            .queryParam ("id", 1)
+            .get ("http://localhost:3004/getOrder")
+            .then ()
+            .statusCode (200)
+            .and ()
+            .body ("message", equalTo ("Order found!!"), "orders[0].id", notNullValue (), "orders[0].id", equalTo (1));
+    }
+
+    @Test
+    public void testBasicAuthWithGetRequest () {
+        given ().auth ()
+            .basic ("user", "passwd")
+            .log ()
+            .all ()
+            .when ()
+            .get ("https://httpbin.org/basic-auth/user/passwd")
+            .then ()
+            .statusCode (200);
+    }
+
 }
