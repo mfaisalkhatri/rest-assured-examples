@@ -220,5 +220,4 @@ public class TestGetRequestExamples {
             .then ()
             .statusCode (200);
     }
-
 }
