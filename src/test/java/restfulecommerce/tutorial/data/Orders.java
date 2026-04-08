@@ -18,5 +18,4 @@ public class Orders {
     public String toString () {
         return "Order{" + " user_id=" + user_id + " product_id=" + product_id + " product_name=" + product_name + " product_amount=" + product_amount + " qty= " + qty + " tax_amt=" + tax_amt + " total_amt= " + total_amt;
     }
-
 }
