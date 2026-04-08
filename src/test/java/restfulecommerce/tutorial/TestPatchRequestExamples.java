@@ -27,13 +27,12 @@ public class TestPatchRequestExamples {
         orderDetail.addProperty ("product_id", productId);
         orderDetail.addProperty ("product_name", productName);
 
-        System.out.println (orderDetail);
         given ().contentType (ContentType.JSON)
             .header ("Authorization", token)
             .when ()
             .log ()
             .all ()
-            .body (orderDetail)
+            .body (orderDetail.toString ())
             .patch ("http://localhost:3004/partialUpdateOrder/" + orderId)
             .then ()
             .log ()
