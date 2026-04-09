@@ -21,6 +21,8 @@ example code from writing basic tests to running end to end API automation tests
 - [{REST-API} READY TO USE APIs](https://restful-api.dev/) is used for testing.
 - End to End scenarios have been added for
   the [restful booker APIs](https://restful-booker.herokuapp.com/apidoc/index.html).
+- [Restful E-Commerce](https://github.com/mfaisalkhatri/restful-ecommerce) - A A simple Node E-Commerce application
+  for testing RESTful web services. This application is built for testers to practice API Testing.
 
 ## :hammer_and_wrench: Talking more about the Scenarios Covered in this project:
 
@@ -46,7 +48,7 @@ framework in this repository:
 - How to write end-to-end api tests?
 - How to perform `JSON Schema Validation`?
 
-## :writing_hand: Blog Links
+## :writing_hand: Tutorial Blog Links
 
 - [What is API Testing?](https://medium.com/@iamfaisalkhatri/what-is-api-testing-2921e3114afb)
 - [End to End API testing using rest-assured](https://medium.com/@iamfaisalkhatri/end-to-end-api-testing-using-rest-assured-a58c4ea80255)
@@ -57,9 +59,14 @@ framework in this repository:
 - [How to test a SOAP API request with Rest-Assured Java](https://medium.com/javarevisited/how-to-test-a-soap-api-request-with-rest-assured-java-c7fbab845c46)
 - [How to Perform Response Verification in REST-Assured Java for API Testing](https://medium.com/javarevisited/how-to-perform-response-verification-in-rest-assured-java-for-api-testing-666583f58334)
 - [How to use Java Records to serialize JSON API requests](https://medium.com/@iamfaisalkhatri/how-to-use-java-records-to-serialize-json-api-requests-23af1a52b378)
+- [How to Test a GET API Request using Rest-Assured Java](https://medium.com/javarevisited/how-to-test-a-get-api-request-using-rest-assured-java-90c75eaccdd0)
+- [How to Test PUT API Request using Rest Assured Java](https://medium.com/javarevisited/how-to-test-put-api-request-using-rest-assured-java-da58fa361217)
+- [How to Test a PATCH API Request with Rest Assured Java](https://medium.com/@iamfaisalkhatri/how-to-test-a-patch-api-request-with-rest-assured-java-a78309500315)
 - [Data Driven API Testing in Java using Object[] with Rest-Assured and TestNG](https://medium.com/javarevisited/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-1-275795ca2c62)
 - [Data Driven API Testing in Java using Iterator with Rest-Assured and TestNG](https://medium.com/@iamfaisalkhatri/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-2-06029e688efe)
 - [Data Driven API Testing in Java using CSV files with Rest-Assured and TestNG](https://medium.com/@iamfaisalkhatri/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-3-3eed3cc1e39f)
+- [Data Driven API Testing in Java using JSON files with Rest-Assured and TestNG](https://medium.com/javarevisited/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-4-3e90355085d5)
+- [Data Driven API Testing in Java using Excel files with Rest-Assured and TestNG](https://medium.com/javarevisited/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-5-e7fcde4203cc)
 
 ## :movie_camera: Tutorial Video
 
