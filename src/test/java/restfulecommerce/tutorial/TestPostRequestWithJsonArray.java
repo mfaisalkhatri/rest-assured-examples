@@ -4,7 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +46,7 @@ public class TestPostRequestWithJsonArray {
 
     @Test
     public void testCreateOrderWithCollections () {
-        Map<String, Object> orderOne = new HashMap<> ();
+        Map<String, Object> orderOne = new LinkedHashMap<> ();
         orderOne.put ("user_id", "2");
         orderOne.put ("product_id", "2");
         orderOne.put ("product_name", "Xiaomi Pad 7");
