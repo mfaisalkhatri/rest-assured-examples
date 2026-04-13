@@ -23,7 +23,7 @@
         <json-simple.version>1.1.1</json-simple.version>
         <org-json.verion>20251224</org-json.verion>
         <jsonassert.version>1.5.3</jsonassert.version>
-        <allure.version>2.33.0</allure.version>
+        <allure.version>2.34.0</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
         <jackson-dataformat-csv.version>2.21.2</jackson-dataformat-csv.version>
         <commons-lang3.version>3.20.0</commons-lang3.version>
