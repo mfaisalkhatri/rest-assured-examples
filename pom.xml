@@ -166,7 +166,7 @@
                         <suiteXmlFiles>
                             <suiteXmlFile>${suite-xml}</suiteXmlFile>
                         </suiteXmlFiles>
-                        <argLine>-Dfile.encoding=UTF-8 -Xdebug -Xnoagent</argLine>
+                        <argLine>-Dfile.encoding=UTF-8</argLine>
                         <argLine>
                             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                         </argLine>

@@ -15,16 +15,16 @@ public class TestResponseExamples {
             .then ()
             .statusCode (200);
 
-        Response response = given ().when ()
+        final Response response = given ().when ()
             .get ("http://localhost:3004/getAllOrders")
             .then ()
             .extract ()
             .response ();
 
-        int statusCode = response.getStatusCode ();
+        final int statusCode = response.getStatusCode ();
         assertEquals (200, statusCode);
 
-        int getStatusCode = given ().when ()
+        final int getStatusCode = given ().when ()
             .get ("http://localhost:3004/getAllOrders")
             .then ()
             .extract ()
@@ -40,7 +40,7 @@ public class TestResponseExamples {
             .statusCode (200)
             .contentType ("application/json; charset=utf-8");
 
-        Response response = given ().when ()
+        final Response response = given ().when ()
             .get ("http://localhost:3004/getAllOrders")
             .then ()
             .extract ()
@@ -48,7 +48,7 @@ public class TestResponseExamples {
 
         assertEquals ("application/json; charset=utf-8", response.getContentType ());
 
-        String contentType = given ().when ()
+        final String contentType = given ().when ()
             .get ("http://localhost:3004/getAllOrders")
             .then ()
             .extract ()
@@ -66,7 +66,7 @@ public class TestResponseExamples {
             .and ()
             .statusCode (200);
 
-        Response response = given ().when ()
+        final Response response = given ().when ()
             .get ("http://localhost:3004/getAllOrders")
             .then ()
             .extract ()
@@ -75,7 +75,7 @@ public class TestResponseExamples {
         assertEquals ("application/json; charset=utf-8", response.getHeader ("Content-Type"));
         System.out.println ("content-length: " + response.getHeader ("Content-Length"));
 
-        String header = given ().when ()
+        final String header = given ().when ()
             .get ("http://localhost:3004/getAllOrders")
             .then ()
             .extract ()
@@ -83,4 +83,5 @@ public class TestResponseExamples {
 
         assertEquals ("application/json; charset=utf-8", header);
     }
+
 }
