@@ -56,14 +56,13 @@ public class NumberRelatedAssertionTests {
     public void testGreaterThanAssertions () {
 
         given ().when ()
-            .queryParam ("id", 3)
             .get (URL)
             .then ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("[0].data['capacity GB']", greaterThan (500))
-            .body ("[0].data['capacity GB']", greaterThanOrEqualTo (512));
+            .body ("[2].data['capacity GB']", greaterThan (500))
+            .body ("[5].data['price']", greaterThanOrEqualTo (120));
     }
 
     @Test
@@ -72,7 +71,6 @@ public class NumberRelatedAssertionTests {
     public void testLessThanAssertions () {
 
         given ().when ()
-            .queryParam ("id", 5)
             .log ()
             .all ()
             .get (URL)
@@ -82,8 +80,8 @@ public class NumberRelatedAssertionTests {
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("[0].data.price", lessThan (700f))
-            .body ("[0].data.price", lessThanOrEqualTo (689.99f));
+            .body ("[4].data['price']", lessThan (700f))
+            .body ("[6].data['year']", lessThanOrEqualTo (2019));
     }
 
     @Test
@@ -104,10 +102,10 @@ public class NumberRelatedAssertionTests {
     }
 
     @AfterMethod
-    public void getTestExecutionTime (ITestResult result) {
-        String methodName = result.getMethod ()
+    public void getTestExecutionTime (final ITestResult result) {
+        final String methodName = result.getMethod ()
             .getMethodName ();
-        long totalExecutionTime = (result.getEndMillis () - result.getStartMillis ());
+        final long totalExecutionTime = (result.getEndMillis () - result.getStartMillis ());
         System.out.println (
             "Total Execution time: " + totalExecutionTime + " milliseconds" + " for method " + methodName);
     }
