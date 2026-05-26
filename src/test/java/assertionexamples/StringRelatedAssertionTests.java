@@ -47,12 +47,12 @@ public class StringRelatedAssertionTests {
 
     @BeforeClass
     public void setupSpecBuilder () {
-        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder ().setBaseUri (
+        final RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder ().setBaseUri (
                 "https://api.restful-api.dev/objects")
             .addQueryParam ("id", 3)
             .addFilter (new RequestLoggingFilter ())
             .addFilter (new ResponseLoggingFilter ());
-        ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder ().expectStatusCode (200);
+        final ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder ().expectStatusCode (200);
 
         responseSpecification = responseSpecBuilder.build ();
         requestSpecification = requestSpecBuilder.build ();
@@ -68,6 +68,29 @@ public class StringRelatedAssertionTests {
             .get ()
             .then ()
             .spec (responseSpecification)
+            .assertThat ()
+            .body ("[0].name", equalTo ("Apple iPhone 12 Pro Max"))
+            .body ("[0].name", equalToIgnoringCase ("ApPLE IPhone 12 pro MAX"))
+            .body ("[0].data.color", containsString ("White"))
+            .body ("[0].name", startsWith ("A"))
+            .body ("[0].name", endsWith ("x"))
+            .body ("[0].name", equalToCompressingWhiteSpace ("    Apple iPhone    12    Pro Max    "));
+    }
+
+    @Test
+    @Description ("Example Test for performing String related assertions using Hamcrest")
+    @Severity (SeverityLevel.NORMAL)
+    public void testStringAssertionWithoutSpec () {
+        given ().when ()
+            .log ()
+            .all ()
+            .queryParam ("id", 3)
+            .get ("https://api.restful-api.dev/objects")
+            .then ()
+            .log ()
+            .all ()
+            .statusCode (200)
+            .and ()
             .assertThat ()
             .body ("[0].name", equalTo ("Apple iPhone 12 Pro Max"))
             .body ("[0].name", equalToIgnoringCase ("ApPLE IPhone 12 pro MAX"))
@@ -107,6 +130,26 @@ public class StringRelatedAssertionTests {
     }
 
     @Test
+    @Description ("Example Test for performing has key assertions using Hamcrest")
+    @Severity (SeverityLevel.NORMAL)
+    public void testHasKeyAssertionWithoutSpec () {
+        given ().when ()
+            .log ()
+            .all ()
+            .queryParam ("id", 3)
+            .get ("https://api.restful-api.dev/objects")
+            .then ()
+            .log ()
+            .all ()
+            .statusCode (200)
+            .and ()
+            .assertThat ()
+            .body ("$", everyItem (hasKey ("id")))
+            .body ("[0].data", hasKey ("capacity GB"))
+            .body ("$", everyItem (hasKey ("name")));
+    }
+
+    @Test
     @Description ("Example Test for performing Not assertions using Hamcrest")
     @Severity (SeverityLevel.NORMAL)
     public void testNotAssertions () {
@@ -117,6 +160,27 @@ public class StringRelatedAssertionTests {
             .and ()
             .assertThat ()
             .body ("$", not (emptyArray ()))
+            .body ("[0].name", not (equalTo ("Samsung")))
+            .body ("[0].data['capacity GB']", not (greaterThan (550)));
+    }
+
+    @Test
+    @Description ("Example Test for performing Not assertions using Hamcrest")
+    @Severity (SeverityLevel.NORMAL)
+    public void testNotAssertionsWithoutSpec () {
+        given ().when ()
+            .log ()
+            .all ()
+            .queryParam ("id", 3)
+            .get ("https://api.restful-api.dev/objects")
+            .then ()
+            .log ()
+            .all ()
+            .statusCode (200)
+            .and ()
+            .assertThat ()
+            .body ("$", not (emptyArray ()))
+            .body ("[0].id", notNullValue ())
             .body ("[0].name", not (equalTo ("Samsung")))
             .body ("[0].data['capacity GB']", not (greaterThan (550)));
     }
@@ -137,10 +201,10 @@ public class StringRelatedAssertionTests {
     }
 
     @AfterMethod
-    public void getTestExecutionTime (ITestResult result) {
-        String methodName = result.getMethod ()
+    public void getTestExecutionTime (final ITestResult result) {
+        final String methodName = result.getMethod ()
             .getMethodName ();
-        long totalExecutionTime = (result.getEndMillis () - result.getStartMillis ());
+        final long totalExecutionTime = (result.getEndMillis () - result.getStartMillis ());
         System.out.println (
             "Total Execution time: " + totalExecutionTime + " milliseconds" + " for method " + methodName);
     }
