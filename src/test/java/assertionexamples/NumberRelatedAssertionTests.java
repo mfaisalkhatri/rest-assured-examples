@@ -100,7 +100,7 @@ public class NumberRelatedAssertionTests {
             .body ("name", hasItem ("Apple iPhone 12 Pro Max"))
             .body ("[1].id", not (equalTo ("6")));
     }
-
+    
     @AfterMethod
     public void getTestExecutionTime (final ITestResult result) {
         final String methodName = result.getMethod ()

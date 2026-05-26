@@ -81,7 +81,6 @@ public class StringRelatedAssertionTests {
     @Description ("Example Test for performing String related assertions using Hamcrest")
     @Severity (SeverityLevel.NORMAL)
     public void testStringAssertionWithoutSpec () {
-
         given ().when ()
             .log ()
             .all ()
@@ -131,6 +130,26 @@ public class StringRelatedAssertionTests {
     }
 
     @Test
+    @Description ("Example Test for performing has key assertions using Hamcrest")
+    @Severity (SeverityLevel.NORMAL)
+    public void testHasKeyAssertionWithoutSpec () {
+        given ().when ()
+            .log ()
+            .all ()
+            .queryParam ("id", 3)
+            .get ("https://api.restful-api.dev/objects")
+            .then ()
+            .log ()
+            .all ()
+            .statusCode (200)
+            .and ()
+            .assertThat ()
+            .body ("$", everyItem (hasKey ("id")))
+            .body ("[0].data", hasKey ("capacity GB"))
+            .body ("$", everyItem (hasKey ("name")));
+    }
+
+    @Test
     @Description ("Example Test for performing Not assertions using Hamcrest")
     @Severity (SeverityLevel.NORMAL)
     public void testNotAssertions () {
@@ -138,6 +157,26 @@ public class StringRelatedAssertionTests {
             .get ()
             .then ()
             .spec (responseSpecification)
+            .and ()
+            .assertThat ()
+            .body ("$", not (emptyArray ()))
+            .body ("[0].name", not (equalTo ("Samsung")))
+            .body ("[0].data['capacity GB']", not (greaterThan (550)));
+    }
+
+    @Test
+    @Description ("Example Test for performing Not assertions using Hamcrest")
+    @Severity (SeverityLevel.NORMAL)
+    public void testNotAssertionsWithoutSpec () {
+        given ().when ()
+            .log ()
+            .all ()
+            .queryParam ("id", 3)
+            .get ("https://api.restful-api.dev/objects")
+            .then ()
+            .log ()
+            .all ()
+            .statusCode (200)
             .and ()
             .assertThat ()
             .body ("$", not (emptyArray ()))
