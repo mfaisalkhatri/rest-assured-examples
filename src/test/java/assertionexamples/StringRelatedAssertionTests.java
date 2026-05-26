@@ -180,6 +180,7 @@ public class StringRelatedAssertionTests {
             .and ()
             .assertThat ()
             .body ("$", not (emptyArray ()))
+            .body ("[0].id", notNullValue ())
             .body ("[0].name", not (equalTo ("Samsung")))
             .body ("[0].data['capacity GB']", not (greaterThan (550)));
     }
