@@ -24,16 +24,16 @@ public class TestResponseHeaders extends SetupSpecification {
     @Severity (SeverityLevel.MINOR)
     @Story ("Checking response headers using rest-assured")
     public void responseHeadersTest () {
+        final int orderId = 3;
         given ().when ()
             .with ()
-            .queryParam ("page", 2)
-            .get ("/api/users")
+            .queryParam ("id", orderId)
+            .get ("/getOrder")
             .then ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("page", equalTo (2))
-            .header ("Content-Type", equalTo ("application/json; charset=utf-8"))
-            .header ("Content-Encoding", equalTo ("gzip"));
+            .body ("orders[0].id", equalTo (orderId))
+            .header ("Content-Type", equalTo ("application/json; charset=utf-8"));
     }
 }
