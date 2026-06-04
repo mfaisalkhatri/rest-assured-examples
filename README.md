@@ -57,16 +57,22 @@ framework in this repository:
 - [How to Test POST Requests with Rest-Assured Java for API Testing: Part I](https://medium.com/javarevisited/how-to-test-post-requests-with-rest-assured-for-api-testing-part-i-d697efab5875)
 - [How to Test POST Requests with Rest-Assured Java for API Testing: Part II](https://medium.com/javarevisited/how-to-test-post-requests-with-rest-assured-java-for-api-testing-part-ii-30dfe04a533a)
 - [How to test a SOAP API request with Rest-Assured Java](https://medium.com/javarevisited/how-to-test-a-soap-api-request-with-rest-assured-java-c7fbab845c46)
-- [How to Perform Response Verification in REST-Assured Java for API Testing](https://medium.com/javarevisited/how-to-perform-response-verification-in-rest-assured-java-for-api-testing-666583f58334)
+- [How to Perform Response Verification in REST-Assured Java for API Testing:Part 1](https://medium.com/javarevisited/how-to-perform-response-verification-in-rest-assured-java-for-api-testing-666583f58334)
+- [How to Perform Response Verification in REST-Assured Java for API Testing: Part 2](https://medium.com/javarevisited/how-to-perform-response-verification-in-rest-assured-java-for-api-testing-part-2-8e1393ec3594)
 - [How to use Java Records to serialize JSON API requests](https://medium.com/@iamfaisalkhatri/how-to-use-java-records-to-serialize-json-api-requests-23af1a52b378)
 - [How to Test a GET API Request using Rest-Assured Java](https://medium.com/javarevisited/how-to-test-a-get-api-request-using-rest-assured-java-90c75eaccdd0)
 - [How to Test PUT API Request using Rest Assured Java](https://medium.com/javarevisited/how-to-test-put-api-request-using-rest-assured-java-da58fa361217)
 - [How to Test a PATCH API Request with Rest Assured Java](https://medium.com/@iamfaisalkhatri/how-to-test-a-patch-api-request-with-rest-assured-java-a78309500315)
+- [How to Test a DELETE API Request with Rest Assured Java](https://medium.com/javarevisited/how-to-test-a-delete-api-request-with-rest-assured-java-6b3ae9941760)
 - [Data Driven API Testing in Java using Object[] with Rest-Assured and TestNG](https://medium.com/javarevisited/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-1-275795ca2c62)
 - [Data Driven API Testing in Java using Iterator with Rest-Assured and TestNG](https://medium.com/@iamfaisalkhatri/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-2-06029e688efe)
 - [Data Driven API Testing in Java using CSV files with Rest-Assured and TestNG](https://medium.com/@iamfaisalkhatri/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-3-3eed3cc1e39f)
 - [Data Driven API Testing in Java using JSON files with Rest-Assured and TestNG](https://medium.com/javarevisited/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-4-3e90355085d5)
 - [Data Driven API Testing in Java using Excel files with Rest-Assured and TestNG](https://medium.com/javarevisited/data-driven-api-testing-in-java-with-rest-assured-and-testng-part-5-e7fcde4203cc)
+
+## :movie_camera: API Test Automation with Rest-Assured - Free Course
+
+[![Watch the video](https://img.youtube.com/vi/IPf_CBZe_Ec/hqdefault.jpg)](https://youtube.com/playlist?list=PLMer2TvhZIw-8KszaIZFsOrE8MEJXVYoY&si=PED9Dybb_dGobtdB)
 
 ## :movie_camera: Tutorial Video
 
@@ -88,6 +94,5 @@ framework in this repository:
 
 ## :thought_balloon: Checkout the blogs related to Testing written by me on the following links:
 
-- [Medium Blogs](https://medium.com/@iamfaisalkhatri)
-- [LambdaTest Blogs](https://www.lambdatest.com/blog/author/mfaisalkhatri/)
+- [Medium Blog](https://medium.com/@iamfaisalkhatri)
 - [My Website](https://mfaisalkhatri.github.io)
