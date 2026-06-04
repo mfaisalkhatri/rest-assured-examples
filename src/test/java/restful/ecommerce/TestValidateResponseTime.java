@@ -1,4 +1,4 @@
-package in.reqres;
+package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -34,6 +34,6 @@ public class TestValidateResponseTime extends SetupSpecification {
             .time (Matchers.lessThan (1000L))
             .and ()
             .assertThat ()
-            .body ("page", equalTo(2));
+            .body ("page", equalTo (2));
     }
 }

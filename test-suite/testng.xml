@@ -3,13 +3,14 @@
 <suite name="Rest-Assured API Test Suite">
     <listeners>
         <listener
-                class-name="in.reqres.utility.TestListener"/>
+                class-name="restful.ecommerce.utility.TestListener"/>
     </listeners>
     <suite-files>
-        <!--        <suite-file path="reqrestestsuite.xml"/>-->
+        <suite-file path="restfulecommerce-create-update-tests.xml"/>
+        <suite-file path="restfulecommerce-get-tests.xml"/>
         <suite-file path="restfulbookersuite.xml"/>
         <suite-file path="soapapisuite.xml"/>
-        <!--        <suite-file path="assertionsuite.xml"/>-->
+        <suite-file path="assertionsuite.xml"/>
         <suite-file path="fileuploadsuite.xml"/>
         <suite-file path="restfulecommercesuite.xml"/>
     </suite-files>

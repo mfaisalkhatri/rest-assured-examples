@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package in.reqres;
+package restful.ecommerce;
 
 import static org.hamcrest.Matchers.lessThan;
 
@@ -35,13 +35,13 @@ public class SetupSpecification {
     @BeforeClass
     public void setup () {
 
-        RequestSpecification request = new RequestSpecBuilder ().addHeader ("Content-Type", "application/json")
-            .setBaseUri ("https://api.restful-api.dev/objects")
+        final RequestSpecification request = new RequestSpecBuilder ().addHeader ("Content-Type", "application/json")
+            .setBaseUri ("http://localhost:3004")
             .addFilter (new RequestLoggingFilter ())
             .addFilter (new ResponseLoggingFilter ())
             .build ();
 
-        ResponseSpecification response = new ResponseSpecBuilder ().expectResponseTime (lessThan (10000L))
+        final ResponseSpecification response = new ResponseSpecBuilder ().expectResponseTime (lessThan (10000L))
             .build ();
 
         RestAssured.requestSpecification = request;

@@ -1,10 +1,7 @@
-package in.reqres;
+package restful.ecommerce;
 
-import static io.restassured.RestAssured.post;
+import static io.restassured.RestAssured.get;
 import static org.awaitility.Awaitility.await;
-import static org.hamcrest.MatcherAssert.assertThat;
-
-import static io.restassured.RestAssured.put;
 import static org.hamcrest.Matchers.equalTo;
 
 import io.qameta.allure.Description;
@@ -21,7 +18,7 @@ import org.testng.annotations.Test;
  **/
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
-public class TestDelayedAPIWithAwaitility extends  AwaitilityBase {
+public class TestDelayedAPIWithAwaitility extends AwaitilityBase {
 
     @Test
     @Description ("Example Test for executing GET request using awaitility")
@@ -29,11 +26,11 @@ public class TestDelayedAPIWithAwaitility extends  AwaitilityBase {
     @Story ("Writing API Tests using awaitility")
     public void testDelayedPostAPI () {
 
-        await ().until (() -> post ("https://apimocha.com/checkt/rover").then ()
+        await ().until (() -> get ("http://localhost:3004/getAllOrders").then ()
             .statusCode (200)
             .and ()
             .extract ()
-            .path ("type")
-            .toString (), equalTo ("dog"));
+            .path ("orders[1].user_id")
+            .toString (), equalTo ("USR002"));
     }
 }

@@ -1,4 +1,4 @@
-package in.reqres;
+package restful.ecommerce;
 
 import io.restassured.RestAssured;
 import io.restassured.config.HttpClientConfig;

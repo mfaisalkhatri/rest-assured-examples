@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ReqRes Test Suite">
+    <listeners>
+        <listener
+                class-name="restful.ecommerce.utility.TestListener"/>
+    </listeners>
+    <test name="Get Request Tests" parallel="methods">
+        <classes>
+            <class name="restful.ecommerce.TestGetRequests">
+                <methods>
+                    <include name="getRequestTest"/>
+                    <include name="getRequestTestWithQueryParam"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Get Tests with Rest Assured Config">
+        <classes>
+            <class name="restful.ecommerce.TestGetRequestWithRestAssuredSpecs">
+                <methods>
+                    <include name="getRequestTestWithRestAssuredConfig"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Test Response Headers">
+        <classes>
+            <class name="restful.ecommerce.TestResponseHeaders"/>
+        </classes>
+    </test>
+    <test name="JsonPath usage tests">
+        <classes>
+            <class name="restful.ecommerce.TestResponseBodyWithJsonPath"/>
+        </classes>
+    </test>
+    <test name="Awaitility Example tests">
+        <classes>
+            <class name="restful.ecommerce.TestDelayedAPIWithAwaitility"/>
+        </classes>
+    </test>
+    <test name="Delete Requests tests">
+        <classes>
+            <class name="restful.ecommerce.TestDeleteRequests">
+                <methods>
+                    <include name="deleteRequestTests"/>
+                    <include name="deleteAllOrderTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -10,7 +10,7 @@
         limitations under the License.
 */
 
-package data.reqres;
+package data.restful.ecommerce;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,20 +20,24 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PostData {
+public class OrderData {
 
-    private final String name;
-    private final String job;
+    private final String user_id;
+    private final String product_id;
+    private final String product_name;
+    private final int    product_amount;
+    private final int    qty;
+    private final int    tax_amt;
+    private final int    total_amt;
 
-    /**
-     * Created By Faisal Khatri on 19-11-2021
-     *
-     * @param name - mandatory field for post request
-     * @param job - mandatory field for post request
-     */
-    public PostData (final String name, final String job) {
-        this.name = name;
-        this.job = job;
-
+    public OrderData (final String user_id, final String product_id, final String product_name,
+        final int product_amount, final int qty, final int tax_amt, final int total_amt) {
+        this.user_id = user_id;
+        this.product_id = product_id;
+        this.product_name = product_name;
+        this.product_amount = product_amount;
+        this.qty = qty;
+        this.tax_amt = tax_amt;
+        this.total_amt = total_amt;
     }
 }

@@ -3,7 +3,7 @@
 <suite name="Restful Booker Test Suite" thread-count="3" parallel="tests">
     <listeners>
         <listener
-                class-name="in.reqres.utility.TestListener"/>
+                class-name="restful.ecommerce.utility.TestListener"/>
     </listeners>
     <test name="Restful Booker tests on GitHub Actions">
         <parameter name="agent" value="githubActions"/>

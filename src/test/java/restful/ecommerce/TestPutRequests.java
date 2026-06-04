@@ -13,16 +13,18 @@
         limitations under the License.
 */
 
-package in.reqres;
+package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import data.reqres.PostData;
+import data.restful.ecommerce.AuthenticationPojo;
+import data.restful.ecommerce.OrderData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -32,6 +34,7 @@ import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -40,53 +43,56 @@ import org.testng.annotations.Test;
  */
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
-
 public class TestPutRequests {
 
     private static final Logger LOG = LogManager.getLogger (TestPutRequests.class);
-    private static final String URL = "https://reqres.in";
+    private static final String URL = "http://localhost:3004";
+    private              String token;
 
-    /**
-     * Created By Faisal Khatri on 20-11-2021
-     *
-     * @return test data for put requests
-     */
+    @BeforeClass
+    public void setup () {
+        getToken ();
+    }
+
     @DataProvider (name = "putData")
     public Iterator<Object[]> putData () {
         final List<Object[]> putData = new ArrayList<> ();
-        putData.add (new Object[] { 2, "Michael", "QA Lead" });
-        putData.add (new Object[] { 958, "Yuan", "Project Architect" });
+        putData.add (new Object[] { 2, "USR002", "PRD112", "Wireless Keyboard", 450, 1, 50, 500 });
+        putData.add (new Object[] { 3, "USR003", "PRD133", "USB-C Charger", 2000, 3, 560, 6560 });
         return putData.iterator ();
     }
 
-    /**
-     * Created By Faisal Khatri on 20-11-2021 Executing Put Request using Rest Assured.
-     *
-     * @param id
-     * @param name
-     * @param job
-     */
     @Test (dataProvider = "putData")
     @Description ("Example Test for executing PUT request using rest assured")
     @Severity (SeverityLevel.CRITICAL)
     @Story ("Execute Post requests using rest-assured")
-    public void putRequestsTests (final int id, final String name, final String job) {
+    public void putRequestsTests (final int id, final String userId, final String productId, final String productName,
+        final int productAmount, final int qty, final int taxAmt, final int totalAmt) {
 
-        final PostData postData = new PostData (name, job);
-        final String response = given ().contentType (ContentType.JSON)
-            .header ("x-api-key","reqres-free-v1")
-            .body (postData)
+        final OrderData orderData = new OrderData (userId, productId, productName, productAmount, qty, taxAmt,
+            totalAmt);
+        final String response = given ().header ("Authorization", this.token)
+            .contentType (ContentType.JSON)
+            .body (orderData)
             .when ()
-            .put (URL + "/api/users/" + id)
+            .log ()
+            .all ()
+            .put (URL + "/updateOrder/" + id)
             .then ()
+            .log ()
+            .all ()
             .assertThat ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("name", equalTo (name))
+            .body ("message", equalTo ("Order updated successfully!"))
             .and ()
             .assertThat ()
-            .body ("job", equalTo (job))
+            .body ("order.id", equalTo (id))
+            .and ()
+            .assertThat ()
+            .body ("order.user_id", equalTo (userId))
+            .body ("order.product_name", equalTo (productName))
             .and ()
             .extract ()
             .response ()
@@ -94,6 +100,25 @@ public class TestPutRequests {
             .asString ();
 
         LOG.info (response);
+
+    }
+
+    private void getToken () {
+        final AuthenticationPojo requestBody = new AuthenticationPojo ("admin", "secretPass123");
+        this.token = given ().contentType (ContentType.JSON)
+            .body (requestBody)
+            .when ()
+            .header ("accept", "application/json")
+            .post (URL + "/auth")
+            .then ()
+            .assertThat ()
+            .statusCode (201)
+            .body ("message", equalTo ("Authentication Successful!"))
+            .and ()
+            .body ("token", notNullValue ())
+            .and ()
+            .extract ()
+            .path ("token");
 
     }
 }

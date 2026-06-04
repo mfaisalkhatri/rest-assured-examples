@@ -1,8 +1,7 @@
-package in.reqres;
+package restful.ecommerce;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-import io.restassured.RestAssured;
 import org.awaitility.Awaitility;
 import org.testng.annotations.BeforeClass;
 

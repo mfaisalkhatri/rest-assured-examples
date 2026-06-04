@@ -1,4 +1,4 @@
-package in.reqres;
+package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
@@ -24,39 +24,40 @@ import org.testng.annotations.Test;
 @Feature ("Performing different API Tests using Rest-Assured")
 public class TestResponseBodyWithJsonPath extends SetupSpecification {
 
-
     @Test
     @Description ("Example Test for extracting the response data using jsonpath")
     @Severity (SeverityLevel.MINOR)
     @Story ("Extracting response data using JsonPath")
-    public void testResponseWithJsonPath() {
-        ResponseBody response = given ().when ()
-            .queryParam ("page", "2")
-            .get ("/api/users")
+    public void testResponseWithJsonPath () {
+        final int orderId = 2;
+        final ResponseBody response = given ().when ()
+            .get ("/getAllOrders")
             .then ()
-            .statusCode (200).and ().extract ().response ().getBody ();
+            .statusCode (200)
+            .and ()
+            .extract ()
+            .response ()
+            .getBody ();
 
         //Getting value of a respective field from response
-        JsonPath jsonPath = response.jsonPath ();
-        assertEquals(jsonPath.getInt ("page"), 2);
-
+        final JsonPath jsonPath = response.jsonPath ();
+        assertEquals (jsonPath.getString ("message"), "Orders fetched successfully!");
 
         //List all objects inside the array
-        List<String > dataArray = jsonPath.getList ("data");
-        System.out.println ("Data array " +dataArray);
+        final List<String> orderArray = jsonPath.getList ("orders");
+        System.out.println ("Orders array " + orderArray);
 
         //Listing first object values
-        System.out.println (jsonPath.getJsonObject ("data[0]").toString ());
+        System.out.println (jsonPath.getJsonObject ("orders[0]")
+            .toString ());
 
         //listing specific field values of all objects inside the array
-        List<String> listOfFirstNames = jsonPath.getList ("data.first_name");
-        System.out.println ("List of first names in data array " +listOfFirstNames);
+        final List<String> listOfUserIds = jsonPath.getList ("orders.user_id");
+        System.out.println ("List of user ids in order array " + listOfUserIds);
 
         //listing only a required field value from a particular object
-        String firstNameInSecondObject = jsonPath.getString ("data[1].first_name");
-        System.out.println ("First Name in second object " +firstNameInSecondObject);
-        assertEquals (firstNameInSecondObject, "Lindsay");
-
+        final String productNameOfSecondOrder = jsonPath.getString ("orders[1].product_name");
+        System.out.println ("First Name in second object " + productNameOfSecondOrder);
+        assertEquals (productNameOfSecondOrder, "coffee toffee");
     }
-
 }
