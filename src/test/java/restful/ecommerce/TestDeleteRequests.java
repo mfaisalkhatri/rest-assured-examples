@@ -16,17 +16,22 @@
 package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import data.restful.ecommerce.AuthenticationPojo;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import io.restassured.http.ContentType;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -37,35 +42,49 @@ import org.testng.annotations.Test;
 @Feature ("Performing different API Tests using Rest-Assured")
 public class TestDeleteRequests {
 
-    private static final String URL = "https://reqres.in/api/users/";
+    private static final String URL = "http://localhost:3004";
+    private              String token;
 
-    /**
-     * Created By Faisal Khatri on 20-11-2021
-     *
-     * @return deleteUserData using rest assured
-     */
-    @DataProvider (name = "deleteUserRestAssured")
+    @BeforeClass
+    public void setup () {
+        getToken ();
+    }
+
+    @DataProvider (name = "deleteOrder")
     public Iterator<Object[]> deleteRestUsers () {
         final List<Object[]> deleteData = new ArrayList<> ();
-        deleteData.add (new Object[] { 2 });
+        deleteData.add (new Object[] { 4 });
         return deleteData.iterator ();
     }
 
-    /**
-     * Executing delete requests using Rest-assured. Created By Faisal Khatri on 20-11-2021
-     *
-     * @param userId
-     */
-    @Test (dataProvider = "deleteUserRestAssured")
+    @Test (dataProvider = "deleteOrder")
     @Description ("Example Test for executing DELETE request using rest assured")
     @Severity (SeverityLevel.NORMAL)
     @Story ("Execute Delete requests using rest-assured")
-    public void deleteRequestTests (final int userId) {
-        given ().header ("x-api-key", "reqres-free-v1")
+    public void deleteRequestTests (final int orderId) {
+        given ().header ("Authorization", this.token)
             .when ()
-            .delete (URL + userId)
+            .delete (URL + "/deleteOrder/" + orderId)
             .then ()
             .assertThat ()
             .statusCode (204);
+    }
+
+    private void getToken () {
+        final AuthenticationPojo requestBody = new AuthenticationPojo ("admin", "secretPass123");
+        this.token = given ().contentType (ContentType.JSON)
+            .body (requestBody)
+            .when ()
+            .header ("accept", "application/json")
+            .post (URL + "/auth")
+            .then ()
+            .assertThat ()
+            .statusCode (201)
+            .body ("message", equalTo ("Authentication Successful!"))
+            .and ()
+            .body ("token", notNullValue ())
+            .and ()
+            .extract ()
+            .path ("token");
     }
 }

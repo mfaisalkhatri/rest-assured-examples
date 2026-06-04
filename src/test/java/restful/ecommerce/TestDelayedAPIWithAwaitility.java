@@ -1,6 +1,6 @@
 package restful.ecommerce;
 
-import static io.restassured.RestAssured.post;
+import static io.restassured.RestAssured.get;
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -26,11 +26,11 @@ public class TestDelayedAPIWithAwaitility extends AwaitilityBase {
     @Story ("Writing API Tests using awaitility")
     public void testDelayedPostAPI () {
 
-        await ().until (() -> post ("https://apimocha.com/checkt/rover").then ()
+        await ().until (() -> get ("http://localhost:3004/getAllOrders").then ()
             .statusCode (200)
             .and ()
             .extract ()
-            .path ("type")
-            .toString (), equalTo ("dog"));
+            .path ("orders[1].user_id")
+            .toString (), equalTo ("USR002"));
     }
 }

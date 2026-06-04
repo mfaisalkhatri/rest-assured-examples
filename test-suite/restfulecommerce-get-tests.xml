@@ -34,7 +34,7 @@
             <class name="restful.ecommerce.TestResponseBodyWithJsonPath"/>
         </classes>
     </test>
-    <test name="Awaitility Example tests" enabled="false">
+    <test name="Awaitility Example tests">
         <classes>
             <class name="restful.ecommerce.TestDelayedAPIWithAwaitility"/>
         </classes>

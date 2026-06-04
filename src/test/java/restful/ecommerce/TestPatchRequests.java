@@ -104,6 +104,5 @@ public class TestPatchRequests {
             .and ()
             .extract ()
             .path ("token");
-
     }
 }
