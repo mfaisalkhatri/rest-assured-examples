@@ -36,60 +36,51 @@ import org.apache.logging.log4j.Logger;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-/**
- * Created By Faisal Khatri on 20-11-2021
- */
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
 public class TestPostRequests {
 
     private static final Logger LOG = LogManager.getLogger (TestPostRequests.class);
-    private static final String URL = "https://reqres.in";
+    private static final String URL = "http://localhost:3004";
 
-    /**
-     * @return postData
-     *
-     * @since Mar 7, 2020
-     */
     @DataProvider (name = "postData")
     public Iterator<Object[]> postData () {
         final List<Object[]> postData = new ArrayList<> ();
-        postData.add (new Object[] { "Rahul", "QA" });
-        postData.add (new Object[] { "Jane", "Sr.Dev" });
-        postData.add (new Object[] { "Albert", "Dev" });
-        postData.add (new Object[] { "Johnny", "Project Manager" });
+        postData.add (new Object[] { "USR001", "PRD101", "Wireless Mouse", 1200, 2, 432, 2832 });
+        postData.add (new Object[] { "USR002", "PRD102", "Mechanical Keyboard", 3500, 1, 630, 4130 });
+        postData.add (new Object[] { "USR003", "PRD103", "USB-C Hub", 1800, 3, 972, 6372 });
+        postData.add (new Object[] { "USR004", "PRD104", "27 Inch Monitor", 15000, 1, 2700, 17700 });
         return postData.iterator ();
     }
 
-    /**
-     * Created By Faisal Khatri on 20-11-2021
-     *
-     * @param name
-     * @param job
-     */
     @Test (dataProvider = "postData")
     @Description ("Example Test for executing POST request using rest assured")
     @Severity (SeverityLevel.CRITICAL)
     @Story ("Execute Post requests using rest-assured")
-    public void testPostRequests (final String name, final String job) {
-        final PostData postData = new PostData (name, job);
-        final String response = given ().header ("x-api-key", "reqres-free-v1")
-            .contentType (ContentType.JSON)
+    public void testPostRequests (final String userId, final String productId, final String productName,
+        final int productAmount, final int qty, final int taxAmt, final int totalAmt) {
+
+        final PostData postData = new PostData (userId, productId, productName, productAmount, qty, taxAmt, totalAmt);
+
+        final String response = given ().contentType (ContentType.JSON)
             .body (postData)
             .when ()
-            .post (URL + "/api/users")
+            .post (URL + "/addOrder")
             .then ()
             .assertThat ()
             .statusCode (201)
             .and ()
             .assertThat ()
-            .body ("name", equalTo (name))
+            .body ("message", equalTo ("Orders added successfully!"))
             .and ()
             .assertThat ()
-            .body ("job", equalTo (job))
+            .body ("orders[0].id", notNullValue ())
             .and ()
             .assertThat ()
-            .body ("id", notNullValue ())
+            .body ("orders[0].user_id", equalTo (userId))
+            .and ()
+            .assertThat ()
+            .body ("orders[0].product_name", equalTo (productName))
             .and ()
             .extract ()
             .response ()

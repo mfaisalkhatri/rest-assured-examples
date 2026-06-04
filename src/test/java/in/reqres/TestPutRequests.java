@@ -44,49 +44,44 @@ import org.testng.annotations.Test;
 public class TestPutRequests {
 
     private static final Logger LOG = LogManager.getLogger (TestPutRequests.class);
-    private static final String URL = "https://reqres.in";
+    private static final String URL = "http://localhost:3004";
 
-    /**
-     * Created By Faisal Khatri on 20-11-2021
-     *
-     * @return test data for put requests
-     */
     @DataProvider (name = "putData")
     public Iterator<Object[]> putData () {
         final List<Object[]> putData = new ArrayList<> ();
-        putData.add (new Object[] { 2, "Michael", "QA Lead" });
-        putData.add (new Object[] { 958, "Yuan", "Project Architect" });
+        putData.add (new Object[] { 2, "USR002", "PRD112", "Wireless Keyboard", 450, 1, 50, 500 });
+        putData.add (new Object[] { 3, "USR003", "PRD133", "USB-C Charger", 2000, 3, 560, 6560 });
         return putData.iterator ();
     }
 
-    /**
-     * Created By Faisal Khatri on 20-11-2021 Executing Put Request using Rest Assured.
-     *
-     * @param id
-     * @param name
-     * @param job
-     */
     @Test (dataProvider = "putData")
     @Description ("Example Test for executing PUT request using rest assured")
     @Severity (SeverityLevel.CRITICAL)
     @Story ("Execute Post requests using rest-assured")
-    public void putRequestsTests (final int id, final String name, final String job) {
+    public void putRequestsTests (final int id, final String userId, final String productId, final String productName,
+        final int productAmount, final int qty, final int taxAmt, final int totalAmt) {
 
-        final PostData postData = new PostData (name, job);
+        final PostData postData = new PostData (userId, productId, productName, productAmount, qty, taxAmt, totalAmt);
         final String response = given ().contentType (ContentType.JSON)
-            .header ("x-api-key","reqres-free-v1")
             .body (postData)
             .when ()
-            .put (URL + "/api/users/" + id)
+            .put (URL + "/updateOrder" + id)
             .then ()
             .assertThat ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("name", equalTo (name))
+            .body ("message", equalTo ("Order updated successfully!"))
             .and ()
             .assertThat ()
-            .body ("job", equalTo (job))
+            .body ("order.id", equalTo (id))
+            .and ()
+            .assertThat ()
+            .body ("order.product_id", equalTo (productId))
+            .and ()
+            .assertThat ()
+            .body ("order.product_name", equalTo (productName))
+
             .and ()
             .extract ()
             .response ()
