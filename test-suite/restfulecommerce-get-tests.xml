@@ -44,6 +44,7 @@
             <class name="restful.ecommerce.TestDeleteRequests">
                 <methods>
                     <include name="deleteRequestTests"/>
+                    <include name="deleteAllOrderTests"/>
                 </methods>
             </class>
         </classes>

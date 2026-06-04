@@ -70,6 +70,19 @@ public class TestDeleteRequests {
             .statusCode (204);
     }
 
+    @Test ()
+    @Description ("Testing Delete All order EndPoint")
+    @Severity (SeverityLevel.NORMAL)
+    @Story ("Execute Delete requests using rest-assured")
+    public void deleteAllOrderTests () {
+        given ().header ("Authorization", this.token)
+            .when ()
+            .delete (URL + "/deleteOrderAllOrders")
+            .then ()
+            .assertThat ()
+            .statusCode (204);
+    }
+
     private void getToken () {
         final AuthenticationPojo requestBody = new AuthenticationPojo ("admin", "secretPass123");
         this.token = given ().contentType (ContentType.JSON)
