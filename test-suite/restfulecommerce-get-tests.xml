@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="ReqRes Test Suite" thread-count="10" parallel="tests">
+<suite name="ReqRes Test Suite">
     <listeners>
         <listener
                 class-name="restful.ecommerce.utility.TestListener"/>
     </listeners>
-    <test name="Get Request Tests">
+    <test name="Get Request Tests" parallel="methods">
         <classes>
             <class name="restful.ecommerce.TestGetRequests">
                 <methods>

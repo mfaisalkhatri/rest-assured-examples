@@ -77,7 +77,7 @@ public class TestDeleteRequests {
     public void deleteAllOrderTests () {
         given ().header ("Authorization", this.token)
             .when ()
-            .delete (URL + "/deleteOrderAllOrders")
+            .delete (URL + "/deleteAllOrders")
             .then ()
             .assertThat ()
             .statusCode (204);
