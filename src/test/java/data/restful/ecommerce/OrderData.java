@@ -10,7 +10,7 @@
         limitations under the License.
 */
 
-package data.reqres;
+package data.restful.ecommerce;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +20,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PostData {
+public class OrderData {
 
     private final String user_id;
     private final String product_id;
@@ -30,8 +30,8 @@ public class PostData {
     private final int    tax_amt;
     private final int    total_amt;
 
-    public PostData (final String user_id, final String product_id, final String product_name, final int product_amount,
-        final int qty, final int tax_amt, final int total_amt) {
+    public OrderData (final String user_id, final String product_id, final String product_name,
+        final int product_amount, final int qty, final int tax_amt, final int total_amt) {
         this.user_id = user_id;
         this.product_id = product_id;
         this.product_name = product_name;

@@ -17,7 +17,9 @@ package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 
+import data.restful.ecommerce.AuthenticationPojo;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -27,6 +29,7 @@ import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
@@ -37,7 +40,13 @@ import org.testng.annotations.Test;
 public class TestPatchRequests {
 
     private static final Logger LOG = LogManager.getLogger (TestPatchRequests.class);
-    private static final String URL = "https://reqres.in";
+    private static final String URL = "http://localhost:3004";
+    private              String token;
+
+    @BeforeClass
+    public void setup () {
+        getToken ();
+    }
 
     @Test ()
     @Description ("Example Test for executing PATCH request using rest assured ")
@@ -53,22 +62,23 @@ public class TestPatchRequests {
                 "product_amount": 30
                 }
             """;
-        final String response = given ().contentType (ContentType.JSON)
+        final String response = given ().header ("Authorization", this.token)
+            .contentType (ContentType.JSON)
             .body (partialOrderUpdate)
             .when ()
+            .log ()
+            .all ()
             .patch (URL + "/partialUpdateOrder/" + orderId)
             .then ()
+            .log ()
+            .all ()
             .assertThat ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("message", equalTo ("Order updated successfully!\""))
-            .and ()
-            .assertThat ()
+            .body ("message", equalTo ("Order updated successfully!"))
             .body ("order.id", equalTo (orderId))
-            .and ()
-            .assertThat ()
-            .body ("product_name.id", equalTo ("coffee toffee"))
+            .body ("order.product_name", equalTo ("coffee toffee"))
             .and ()
             .extract ()
             .response ()
@@ -76,5 +86,24 @@ public class TestPatchRequests {
             .asString ();
 
         LOG.info (response);
+    }
+
+    private void getToken () {
+        final AuthenticationPojo requestBody = new AuthenticationPojo ("admin", "secretPass123");
+        this.token = given ().contentType (ContentType.JSON)
+            .body (requestBody)
+            .when ()
+            .header ("accept", "application/json")
+            .post (URL + "/auth")
+            .then ()
+            .assertThat ()
+            .statusCode (201)
+            .body ("message", equalTo ("Authentication Successful!"))
+            .and ()
+            .body ("token", notNullValue ())
+            .and ()
+            .extract ()
+            .path ("token");
+
     }
 }

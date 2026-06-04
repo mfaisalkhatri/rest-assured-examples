@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import data.reqres.AuthenticationPojo;
+import data.restful.ecommerce.AuthenticationPojo;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -92,7 +92,7 @@ public class TestAuthentication {
             .body ("token", notNullValue ());
 
     }
-    
+
     public static Map<String, Object> getToken (final String username, final String password) {
         final AuthenticationPojo requestBody = new AuthenticationPojo (username, password);
         final String response = given ().contentType (ContentType.JSON)

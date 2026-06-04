@@ -10,7 +10,7 @@
         limitations under the License.
 */
 
-package data.reqres;
+package data.restful.ecommerce;
 
 import lombok.Data;
 

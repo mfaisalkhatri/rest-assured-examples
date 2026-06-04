@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import data.reqres.PostData;
+import data.restful.ecommerce.OrderData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -60,10 +60,11 @@ public class TestPostRequests {
     public void testPostRequests (final String userId, final String productId, final String productName,
         final int productAmount, final int qty, final int taxAmt, final int totalAmt) {
 
-        final PostData postData = new PostData (userId, productId, productName, productAmount, qty, taxAmt, totalAmt);
+        final OrderData orderData = new OrderData (userId, productId, productName, productAmount, qty, taxAmt,
+            totalAmt);
 
-        final List<PostData> orders = new ArrayList<> ();
-        orders.add (postData);
+        final List<OrderData> orders = new ArrayList<> ();
+        orders.add (orderData);
 
         final JsonPath response = given ().contentType (ContentType.JSON)
             .body (orders)
