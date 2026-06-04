@@ -5,7 +5,7 @@
         <listener
                 class-name="restful.ecommerce.utility.TestListener"/>
     </listeners>
-    <test name="Authentication Tests">
+    <test name="Authentication Tests" parallel="methods">
         <classes>
             <class name="restful.ecommerce.TestAuthentication">
                 <methods>
@@ -41,7 +41,7 @@
                     <include name="testPostRequests"/>
                 </methods>
             </class>
-            <class name="restful.ecommerce.PostRequestBuilderExample">
+            <class name="restful.ecommerce.PostRequestBuilderExampleTest">
                 <methods>
                     <include name="postTestUsingBuilderPattern"/>
                 </methods>

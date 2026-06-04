@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ReqRes Test Suite" thread-count="10" parallel="tests">
+    <listeners>
+        <listener
+                class-name="restful.ecommerce.utility.TestListener"/>
+    </listeners>
+    <test name="Authentication Tests" parallel="methods">
+        <classes>
+            <class name="restful.ecommerce.TestAuthentication">
+                <methods>
+                    <include name="testAuthenticationToken"/>
+                    <include name="testAuthToken"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Post Request tests">
+        <classes>
+            <class name="restful.ecommerce.TestPostRequests">
+                <methods>
+                    <include name="testPostRequests"/>
+                </methods>
+            </class>
+            <class name="restful.ecommerce.TestPostWithRecords"/>
+            <class name="restful.ecommerce.PostRequestBuilderExampleTest">
+                <methods>
+                    <include name="postTestUsingBuilderPattern"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Put Request Tests">
+        <classes>
+            <class name="restful.ecommerce.TestPutRequests">
+                <methods>
+                    <include name="putRequestsTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Patch Request tests">
+        <classes>
+            <class name="restful.ecommerce.TestPatchRequests">
+                <methods>
+                    <include name="patchRequestTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

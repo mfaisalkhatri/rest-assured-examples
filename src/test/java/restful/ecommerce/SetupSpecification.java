@@ -36,7 +36,7 @@ public class SetupSpecification {
     public void setup () {
 
         final RequestSpecification request = new RequestSpecBuilder ().addHeader ("Content-Type", "application/json")
-            .setBaseUri ("https://api.restful-api.dev/objects")
+            .setBaseUri ("http://localhost:3004")
             .addFilter (new RequestLoggingFilter ())
             .addFilter (new ResponseLoggingFilter ())
             .build ();
