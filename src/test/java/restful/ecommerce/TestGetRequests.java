@@ -42,14 +42,9 @@ import org.testng.annotations.Test;
 @Feature ("Performing different API Tests using Rest-Assured")
 public class TestGetRequests {
 
-    private static final String URL = "https://reqres.in/api/users/";
+    private static final String URL = "http://localhost:3004/getOrder";
     private static final Logger LOG = LogManager.getLogger (TestGetRequests.class);
 
-    /**
-     * Created By Faisal Khatri on 19-11-2021
-     *
-     * @return testData
-     */
     @DataProvider (name = "getUserData")
     public Iterator<Object[]> getUsers () {
         final List<Object[]> getData = new ArrayList<> ();
@@ -61,24 +56,23 @@ public class TestGetRequests {
     @Description ("Example Test for executing GET request using rest assured")
     @Severity (SeverityLevel.CRITICAL)
     @Story ("Execute Get requests using rest-assured")
-    public void getRequestTest (final int userId) {
+    public void getRequestTest (final int orderId) {
         given ().when ()
-            .header ("x-api-key", "reqres-free-v1")
-            .get (URL + userId)
+            .get (URL + "?id=" + orderId)
             .then ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("data.id", equalTo (userId));
+            .body ("orders[0].id", equalTo (orderId));
 
         final int statusCode = given ().when ()
-            .header ("x-api-key", "reqres-free-v1")
-            .get (URL + userId)
+            .queryParam ("id", orderId)
+            .get (URL + orderId)
             .statusCode ();
         LOG.info (statusCode);
 
         final String responseBody = given ().when ()
-            .get (URL + userId)
+            .get (URL + orderId)
             .getBody ()
             .asString ();
         LOG.info (responseBody);
@@ -88,33 +82,31 @@ public class TestGetRequests {
     @Description ("Example Test for executing GET request using rest assured with query params")
     @Severity (SeverityLevel.CRITICAL)
     @Story ("Execute Get requests using rest-assured")
-    public void getRequestTestWithQueryParam (final int userPage) {
+    public void getRequestTestWithQueryParam (final int orderId) {
         given ().when ()
-            .queryParam ("page", userPage)
-            .header ("x-api-key", "reqres-free-v1")
+            .queryParam ("id", orderId)
             .get (URL)
             .then ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("page", equalTo (userPage))
+            .body ("message", equalTo ("Order found!!"))
             .and ()
-            .body ("data[0].first_name", equalTo ("Michael"));
+            .body ("orders[0].id", equalTo (orderId), "orders[0].product_name", equalTo ("coffee toffee"));
 
         final String responseBody = given ().when ()
-            .header ("x-api-key", "reqres-free-v1")
-            .queryParam ("page", userPage)
+            .queryParam ("id", orderId)
             .get (URL)
             .getBody ()
             .asString ();
         LOG.info (responseBody);
 
         final JSONObject jsonObject = new JSONObject (responseBody);
-        final JSONArray dataArray = jsonObject.getJSONArray ("data");
+        final JSONArray dataArray = jsonObject.getJSONArray ("orders");
         final JSONObject dataObject = dataArray.getJSONObject (0);
-        final String first_name = dataObject.get ("first_name")
+        final String userId = dataObject.get ("user_id")
             .toString ();
-        LOG.info (first_name);
 
+        LOG.info (userId);
     }
 }

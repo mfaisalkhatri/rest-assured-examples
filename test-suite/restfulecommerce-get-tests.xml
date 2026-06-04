@@ -5,16 +5,6 @@
         <listener
                 class-name="restful.ecommerce.utility.TestListener"/>
     </listeners>
-    <test name="Authentication Tests" parallel="methods">
-        <classes>
-            <class name="restful.ecommerce.TestAuthentication">
-                <methods>
-                    <include name="testAuthenticationToken"/>
-                    <include name="testAuthToken"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
     <test name="Get Request Tests">
         <classes>
             <class name="restful.ecommerce.TestGetRequests">
@@ -34,47 +24,6 @@
             </class>
         </classes>
     </test>
-    <test name="Post Request tests">
-        <classes>
-            <class name="restful.ecommerce.TestPostRequests">
-                <methods>
-                    <include name="testPostRequests"/>
-                </methods>
-            </class>
-            <class name="restful.ecommerce.PostRequestBuilderExampleTest">
-                <methods>
-                    <include name="postTestUsingBuilderPattern"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test name="Put Request Tests">
-        <classes>
-            <class name="restful.ecommerce.TestPutRequests">
-                <methods>
-                    <include name="putRequestsTests"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test name="Patch Request tests">
-        <classes>
-            <class name="restful.ecommerce.TestPatchRequests">
-                <methods>
-                    <include name="patchRequestTests"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test name="Delete Requests tests">
-        <classes>
-            <class name="restful.ecommerce.TestDeleteRequests">
-                <methods>
-                    <include name="deleteRequestTests"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
     <test name="Test Response Headers">
         <classes>
             <class name="restful.ecommerce.TestResponseHeaders"/>
@@ -90,9 +39,13 @@
             <class name="restful.ecommerce.TestDelayedAPIWithAwaitility"/>
         </classes>
     </test>
-    <test name="Post Request Example with Java records">
+    <test name="Delete Requests tests">
         <classes>
-            <class name="restful.ecommerce.TestPostWithRecords"/>
+            <class name="restful.ecommerce.TestDeleteRequests">
+                <methods>
+                    <include name="deleteRequestTests"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
