@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package in.reqres;
+package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -92,15 +92,7 @@ public class TestAuthentication {
             .body ("token", notNullValue ());
 
     }
-
-    /**
-     * Created by Faisal on 20-11-2021
-     *
-     * @param username
-     * @param password
-     *
-     * @return auth details
-     */
+    
     public static Map<String, Object> getToken (final String username, final String password) {
         final AuthenticationPojo requestBody = new AuthenticationPojo (username, password);
         final String response = given ().contentType (ContentType.JSON)

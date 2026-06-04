@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package in.reqres;
+package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -30,6 +30,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.DataProvider;
@@ -64,15 +65,13 @@ public class TestPostRequests {
         final List<PostData> orders = new ArrayList<> ();
         orders.add (postData);
 
-        final String response = given ().contentType (ContentType.JSON)
+        final JsonPath response = given ().contentType (ContentType.JSON)
             .body (orders)
             .when ()
             .log ()
             .all ()
             .post (URL + "/addOrder")
             .then ()
-            .log ()
-            .all ()
             .assertThat ()
             .statusCode (201)
             .and ()
@@ -84,8 +83,8 @@ public class TestPostRequests {
             .extract ()
             .response ()
             .body ()
-            .asString ();
-        
+            .jsonPath ();
+
         LOG.info (response);
 
     }

@@ -3,11 +3,11 @@
 <suite name="ReqRes Test Suite" thread-count="10" parallel="tests">
     <listeners>
         <listener
-                class-name="in.reqres.utility.TestListener"/>
+                class-name="restful.ecommerce.utility.TestListener"/>
     </listeners>
     <test name="Authentication Tests">
         <classes>
-            <class name="in.reqres.TestAuthentication">
+            <class name="restful.ecommerce.TestAuthentication">
                 <methods>
                     <include name="testAuthenticationToken"/>
                     <include name="testAuthToken"/>
@@ -17,7 +17,7 @@
     </test>
     <test name="Get Request Tests">
         <classes>
-            <class name="in.reqres.TestGetRequests">
+            <class name="restful.ecommerce.TestGetRequests">
                 <methods>
                     <include name="getRequestTest"/>
                     <include name="getRequestTestWithQueryParam"/>
@@ -27,7 +27,7 @@
     </test>
     <test name="Get Tests with Rest Assured Config">
         <classes>
-            <class name="in.reqres.TestGetRequestWithRestAssuredSpecs">
+            <class name="restful.ecommerce.TestGetRequestWithRestAssuredSpecs">
                 <methods>
                     <include name="getRequestTestWithRestAssuredConfig"/>
                 </methods>
@@ -36,12 +36,12 @@
     </test>
     <test name="Post Request tests">
         <classes>
-            <class name="in.reqres.TestPostRequests">
+            <class name="restful.ecommerce.TestPostRequests">
                 <methods>
                     <include name="testPostRequests"/>
                 </methods>
             </class>
-            <class name="in.reqres.PostRequestBuilderExample">
+            <class name="restful.ecommerce.PostRequestBuilderExample">
                 <methods>
                     <include name="postTestUsingBuilderPattern"/>
                 </methods>
@@ -50,7 +50,7 @@
     </test>
     <test name="Put Request Tests">
         <classes>
-            <class name="in.reqres.TestPutRequests">
+            <class name="restful.ecommerce.TestPutRequests">
                 <methods>
                     <include name="putRequestsTests"/>
                 </methods>
@@ -59,7 +59,7 @@
     </test>
     <test name="Patch Request tests">
         <classes>
-            <class name="in.reqres.TestPatchRequests">
+            <class name="restful.ecommerce.TestPatchRequests">
                 <methods>
                     <include name="patchRequestTests"/>
                 </methods>
@@ -68,7 +68,7 @@
     </test>
     <test name="Delete Requests tests">
         <classes>
-            <class name="in.reqres.TestDeleteRequests">
+            <class name="restful.ecommerce.TestDeleteRequests">
                 <methods>
                     <include name="deleteRequestTests"/>
                 </methods>
@@ -77,22 +77,22 @@
     </test>
     <test name="Test Response Headers">
         <classes>
-            <class name="in.reqres.TestResponseHeaders"/>
+            <class name="restful.ecommerce.TestResponseHeaders"/>
         </classes>
     </test>
     <test name="JsonPath usage tests">
         <classes>
-            <class name="in.reqres.TestResponseBodyWithJsonPath"/>
+            <class name="restful.ecommerce.TestResponseBodyWithJsonPath"/>
         </classes>
     </test>
     <test name="Awaitility Example tests" enabled="false">
         <classes>
-            <class name="in.reqres.TestDelayedAPIWithAwaitility"/>
+            <class name="restful.ecommerce.TestDelayedAPIWithAwaitility"/>
         </classes>
     </test>
     <test name="Post Request Example with Java records">
         <classes>
-            <class name="in.reqres.TestPostWithRecords"/>
+            <class name="restful.ecommerce.TestPostWithRecords"/>
         </classes>
     </test>
 </suite>

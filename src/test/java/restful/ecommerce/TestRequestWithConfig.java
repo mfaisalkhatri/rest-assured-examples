@@ -1,4 +1,4 @@
-package in.reqres;
+package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -24,7 +24,7 @@ public class TestRequestWithConfig extends SetupConfiguration {
     @Severity (SeverityLevel.CRITICAL)
     @Story ("Writing API Tests using rest assured configurations")
     public void testGetRequest () {
-        String responseBody = given ().when ()
+        final String responseBody = given ().when ()
             .post ("https://apimocha.com/checkt/rover")
             .then ()
             .statusCode (200)

@@ -13,16 +13,11 @@
         limitations under the License.
 */
 
-package in.reqres;
+package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import data.reqres.PostData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -32,7 +27,6 @@ import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
@@ -40,48 +34,41 @@ import org.testng.annotations.Test;
  */
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
+public class TestPatchRequests {
 
-public class TestPutRequests {
+    private static final Logger LOG = LogManager.getLogger (TestPatchRequests.class);
+    private static final String URL = "https://reqres.in";
 
-    private static final Logger LOG = LogManager.getLogger (TestPutRequests.class);
-    private static final String URL = "http://localhost:3004";
-
-    @DataProvider (name = "putData")
-    public Iterator<Object[]> putData () {
-        final List<Object[]> putData = new ArrayList<> ();
-        putData.add (new Object[] { 2, "USR002", "PRD112", "Wireless Keyboard", 450, 1, 50, 500 });
-        putData.add (new Object[] { 3, "USR003", "PRD133", "USB-C Charger", 2000, 3, 560, 6560 });
-        return putData.iterator ();
-    }
-
-    @Test (dataProvider = "putData")
-    @Description ("Example Test for executing PUT request using rest assured")
+    @Test ()
+    @Description ("Example Test for executing PATCH request using rest assured ")
     @Severity (SeverityLevel.CRITICAL)
-    @Story ("Execute Post requests using rest-assured")
-    public void putRequestsTests (final int id, final String userId, final String productId, final String productName,
-        final int productAmount, final int qty, final int taxAmt, final int totalAmt) {
+    @Story ("Execute Patch requests using rest-assured")
+    public void patchRequestTests () {
 
-        final PostData postData = new PostData (userId, productId, productName, productAmount, qty, taxAmt, totalAmt);
+        final int orderId = 2;
+        final String partialOrderUpdate = """
+                {
+                "product_id": "4",
+                "product_name": "coffee toffee",
+                "product_amount": 30
+                }
+            """;
         final String response = given ().contentType (ContentType.JSON)
-            .body (postData)
+            .body (partialOrderUpdate)
             .when ()
-            .put (URL + "/updateOrder" + id)
+            .patch (URL + "/partialUpdateOrder/" + orderId)
             .then ()
             .assertThat ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("message", equalTo ("Order updated successfully!"))
+            .body ("message", equalTo ("Order updated successfully!\""))
             .and ()
             .assertThat ()
-            .body ("order.id", equalTo (id))
+            .body ("order.id", equalTo (orderId))
             .and ()
             .assertThat ()
-            .body ("order.product_id", equalTo (productId))
-            .and ()
-            .assertThat ()
-            .body ("order.product_name", equalTo (productName))
-
+            .body ("product_name.id", equalTo ("coffee toffee"))
             .and ()
             .extract ()
             .response ()
@@ -89,6 +76,5 @@ public class TestPutRequests {
             .asString ();
 
         LOG.info (response);
-
     }
 }

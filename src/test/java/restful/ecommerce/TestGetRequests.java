@@ -13,7 +13,7 @@
         limitations under the License.
 */
 
-package in.reqres;
+package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -32,7 +32,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -62,9 +61,9 @@ public class TestGetRequests {
     @Description ("Example Test for executing GET request using rest assured")
     @Severity (SeverityLevel.CRITICAL)
     @Story ("Execute Get requests using rest-assured")
-    public void getRequestTest (final int userId)  {
+    public void getRequestTest (final int userId) {
         given ().when ()
-            .header ("x-api-key","reqres-free-v1")
+            .header ("x-api-key", "reqres-free-v1")
             .get (URL + userId)
             .then ()
             .statusCode (200)
@@ -73,7 +72,7 @@ public class TestGetRequests {
             .body ("data.id", equalTo (userId));
 
         final int statusCode = given ().when ()
-            .header ("x-api-key","reqres-free-v1")
+            .header ("x-api-key", "reqres-free-v1")
             .get (URL + userId)
             .statusCode ();
         LOG.info (statusCode);
@@ -92,7 +91,7 @@ public class TestGetRequests {
     public void getRequestTestWithQueryParam (final int userPage) {
         given ().when ()
             .queryParam ("page", userPage)
-            .header ("x-api-key","reqres-free-v1")
+            .header ("x-api-key", "reqres-free-v1")
             .get (URL)
             .then ()
             .statusCode (200)
@@ -103,17 +102,17 @@ public class TestGetRequests {
             .body ("data[0].first_name", equalTo ("Michael"));
 
         final String responseBody = given ().when ()
-            .header ("x-api-key","reqres-free-v1")
+            .header ("x-api-key", "reqres-free-v1")
             .queryParam ("page", userPage)
             .get (URL)
             .getBody ()
             .asString ();
         LOG.info (responseBody);
 
-        JSONObject jsonObject = new JSONObject (responseBody);
-        JSONArray dataArray = jsonObject.getJSONArray ("data");
-        JSONObject dataObject = dataArray.getJSONObject (0);
-        String first_name = dataObject.get ("first_name")
+        final JSONObject jsonObject = new JSONObject (responseBody);
+        final JSONArray dataArray = jsonObject.getJSONArray ("data");
+        final JSONObject dataObject = dataArray.getJSONObject (0);
+        final String first_name = dataObject.get ("first_name")
             .toString ();
         LOG.info (first_name);
 

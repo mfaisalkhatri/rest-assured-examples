@@ -13,37 +13,55 @@
         limitations under the License.
 */
 
-package in.reqres;
+package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
+import data.restfulbooker.UserData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import net.datafaker.Faker;
 import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 20-11-2021
  */
+
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
-public class TestGetRequestWithRestAssuredSpecs extends SetupSpecification {
+public class PostRequestBuilderExample extends SetupSpecification {
 
     @Test
-    @Description ("Example Test for executing GET request using rest assured specification")
-    @Severity (SeverityLevel.CRITICAL)
-    @Story ("Writing API Tests using rest assured configurations")
-    public void getRequestTestWithRestAssuredConfig () {
-        given ().when ()
-            .get ("/api/users/2")
+    @Description ("Example of using Builder Pattern to pass test data in tests")
+    @Severity (SeverityLevel.BLOCKER)
+    @Story ("Builder Pattern Example using rest assured")
+    public void postTestUsingBuilderPattern () {
+        final UserData userData = userDataBuilder ();
+        given ().body (userData)
+            .when ()
+            .post ("/api/users")
             .then ()
-            .statusCode (200)
+            .statusCode (201)
             .and ()
             .assertThat ()
-            .body ("data.first_name", equalTo ("Janet"));
+            .body ("name", equalTo (userData.getName ()))
+            .body ("job", equalTo (userData.getJob ()));
+
     }
+
+    private UserData userDataBuilder () {
+        final Faker faker = new Faker ();
+        return UserData.builder ()
+            .name (faker.name ()
+                .firstName ())
+            .job (faker.company ()
+                .profession ())
+            .build ();
+    }
+
 }

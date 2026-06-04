@@ -13,10 +13,9 @@
         limitations under the License.
 */
 
-package in.reqres.utility;
+package restful.ecommerce.utility;
 
 import static org.apache.commons.lang3.StringUtils.repeat;
-
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

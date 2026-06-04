@@ -1,4 +1,4 @@
-package in.reqres;
+package restful.ecommerce;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -9,6 +9,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 /**
@@ -17,23 +18,22 @@ import org.testng.annotations.Test;
  **/
 @Epic ("Rest Assured POC - Example Tests")
 @Feature ("Performing different API Tests using Rest-Assured")
-public class TestResponseHeaders extends SetupSpecification {
+public class TestValidateResponseTime extends SetupSpecification {
 
     @Test
-    @Description ("Example Test for verifying the response headers using rest assured")
+    @Description ("Example Test for validating response time using rest assured")
     @Severity (SeverityLevel.MINOR)
-    @Story ("Checking response headers using rest-assured")
-    public void responseHeadersTest () {
+    @Story ("Validate Response Time using rest assured")
+    public void testResponseTime () {
         given ().when ()
-            .with ()
-            .queryParam ("page", 2)
+            .queryParam ("page", "2")
             .get ("/api/users")
             .then ()
             .statusCode (200)
             .and ()
+            .time (Matchers.lessThan (1000L))
+            .and ()
             .assertThat ()
-            .body ("page", equalTo(2))
-            .header ("Content-Type", equalTo ("application/json; charset=utf-8"))
-            .header ("Content-Encoding", equalTo ("gzip"));
+            .body ("page", equalTo (2));
     }
 }
