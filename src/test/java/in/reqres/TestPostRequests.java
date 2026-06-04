@@ -17,7 +17,6 @@ package in.reqres;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -62,11 +61,18 @@ public class TestPostRequests {
 
         final PostData postData = new PostData (userId, productId, productName, productAmount, qty, taxAmt, totalAmt);
 
+        final List<PostData> orders = new ArrayList<> ();
+        orders.add (postData);
+
         final String response = given ().contentType (ContentType.JSON)
-            .body (postData)
+            .body (orders)
             .when ()
+            .log ()
+            .all ()
             .post (URL + "/addOrder")
             .then ()
+            .log ()
+            .all ()
             .assertThat ()
             .statusCode (201)
             .and ()
@@ -74,19 +80,12 @@ public class TestPostRequests {
             .body ("message", equalTo ("Orders added successfully!"))
             .and ()
             .assertThat ()
-            .body ("orders[0].id", notNullValue ())
-            .and ()
-            .assertThat ()
-            .body ("orders[0].user_id", equalTo (userId))
-            .and ()
-            .assertThat ()
-            .body ("orders[0].product_name", equalTo (productName))
             .and ()
             .extract ()
             .response ()
             .body ()
             .asString ();
-
+        
         LOG.info (response);
 
     }

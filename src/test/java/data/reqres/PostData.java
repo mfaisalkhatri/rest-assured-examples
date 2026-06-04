@@ -30,18 +30,6 @@ public class PostData {
     private final int    tax_amt;
     private final int    total_amt;
 
-    /**
-     * Created By Faisal Khatri on 19-11-2021
-     *
-     * @param user_id - mandatory field for post request
-     * @param product_id
-     * @param product_name
-     * @param product_amount
-     * @param qty
-     * @param tax_amt
-     * @param total_amt
-     */
-
     public PostData (final String user_id, final String product_id, final String product_name, final int product_amount,
         final int qty, final int tax_amt, final int total_amt) {
         this.user_id = user_id;
