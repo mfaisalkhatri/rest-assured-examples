@@ -20,17 +20,17 @@ import lombok.Data;
 @Data
 public class AuthenticationPojo {
 
-    private String email;
+    private String username;
     private String password;
 
     /**
      * Created By Faisal Khatri on 19-11-2021
      *
-     * @param email for login
+     * @param username for login
      * @param password for login
      */
-    public AuthenticationPojo (String email, String password) {
-        this.email = email;
+    public AuthenticationPojo (final String username, final String password) {
+        this.username = username;
         this.password = password;
     }
 

@@ -16,6 +16,7 @@
 package in.reqres;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 import java.text.MessageFormat;
@@ -47,7 +48,7 @@ import org.testng.annotations.Test;
 @Story ("Perform Authentication using rest-assured")
 public class TestAuthentication {
 
-    private static final String URL = "https://reqres.in";
+    private static final String URL = "http://localhost:3004";
     private static final Logger LOG = LogManager.getLogger (TestAuthentication.class);
 
     /**
@@ -58,35 +59,35 @@ public class TestAuthentication {
     @DataProvider
     public Iterator<Object[]> getAuthenticationData () {
         final List<Object[]> getTestData = new ArrayList<> ();
-        getTestData.add (new Object[] { "eve.holt@reqres.in", "pistol" });
+        getTestData.add (new Object[] { "admin", "secretPass123" });
         return getTestData.iterator ();
     }
 
     /**
      * Created by Faisal on 20-11-2021
      *
-     * @param email
+     * @param username
      * @param password
      */
     @Test (dataProvider = "getAuthenticationData")
     @Description ("Example Test for performing authentication using rest assured")
     @Severity (SeverityLevel.NORMAL)
-    public void testAuthenticationToken (String email, String password) {
-        final AuthenticationPojo requestBody = new AuthenticationPojo (email, password);
+    public void testAuthenticationToken (final String username, final String password) {
+        final AuthenticationPojo requestBody = new AuthenticationPojo (username, password);
 
         given ().contentType (ContentType.JSON)
             .body (requestBody)
             .when ()
             .log ()
             .all ()
-            .header ("x-api-key", "reqres-free-v1")
-            .post (URL + "/api/register")
+            .header ("accept", "application/json")
+            .post (URL + "/auth")
             .then ()
             .assertThat ()
-            .statusCode (200)
+            .statusCode (201)
             .log ()
             .all ()
-            .body ("id", notNullValue ())
+            .body ("message", equalTo ("Authentication Successful!"))
             .and ()
             .body ("token", notNullValue ());
 
@@ -95,26 +96,26 @@ public class TestAuthentication {
     /**
      * Created by Faisal on 20-11-2021
      *
-     * @param email
+     * @param username
      * @param password
      *
      * @return auth details
      */
-    public static Map<String, Object> getToken (String email, String password) {
-        final AuthenticationPojo requestBody = new AuthenticationPojo (email, password);
+    public static Map<String, Object> getToken (final String username, final String password) {
+        final AuthenticationPojo requestBody = new AuthenticationPojo (username, password);
         final String response = given ().contentType (ContentType.JSON)
             .body (requestBody)
             .when ()
             .log ()
             .all ()
-            .header ("x-api-key","reqres-free-v1")
-            .post (URL + "/api/register")
+            .header ("accept", "application/json")
+            .post (URL + "/auth")
             .then ()
             .assertThat ()
-            .statusCode (200)
+            .statusCode (201)
             .log ()
             .all ()
-            .body ("id", notNullValue ())
+            .body ("message", equalTo ("Authentication Successful!"))
             .and ()
             .body ("token", notNullValue ())
             .and ()
@@ -124,7 +125,6 @@ public class TestAuthentication {
 
         final JSONObject responseObject = new JSONObject (response);
         final Map<String, Object> responseMap = new HashMap<> ();
-        responseMap.put ("id", responseObject.getInt ("id"));
         responseMap.put ("token", responseObject.getString ("token"));
         return responseMap;
     }
@@ -132,15 +132,13 @@ public class TestAuthentication {
     /**
      * Created by Faisal on 20-11-2021
      *
-     * @param email
+     * @param username
      * @param password
      */
     @Test (dataProvider = "getAuthenticationData")
     @Severity (SeverityLevel.NORMAL)
     @Description ("Example Test for printing token by getting token after executing the post authentication request")
-    public void testAuthToken (String email, String password) {
-        LOG.info (MessageFormat.format ("Token is {0}", getToken (email, password).get ("token")));
-
+    public void testAuthToken (final String username, final String password) {
+        LOG.info (MessageFormat.format ("Token is {0}", getToken (username, password).get ("token")));
     }
-
 }
