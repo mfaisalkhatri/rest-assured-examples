@@ -38,12 +38,14 @@ public class TestGetRequestWithRestAssuredSpecs extends SetupSpecification {
     @Severity (SeverityLevel.CRITICAL)
     @Story ("Writing API Tests using rest assured configurations")
     public void getRequestTestWithRestAssuredConfig () {
+        final int orderId = 3;
         given ().when ()
-            .get ("/api/users/2")
+            .queryParam ("id", orderId)
+            .get ("/getOrder")
             .then ()
             .statusCode (200)
             .and ()
             .assertThat ()
-            .body ("data.first_name", equalTo ("Janet"));
+            .body ("orders[0].id", equalTo (orderId), "orders[0].product_name", equalTo ("USB-C Charger"));
     }
 }
