@@ -202,7 +202,7 @@
                 <plugin>
                     <groupId>io.qameta.allure</groupId>
                     <artifactId>allure-maven</artifactId>
-                    <version>3.0.2</version>
+                    <version>3.0.3</version>
                     <configuration>
                         <reportDirectory>${project.build.directory}/target/allure-report</reportDirectory>
                         <reportVersion>${allure.version}</reportVersion>
