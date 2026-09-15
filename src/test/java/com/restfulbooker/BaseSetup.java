@@ -10,26 +10,26 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 
 /**
  * Created By Faisal Khatri on 18-02-2022
  */
 public class BaseSetup {
-    @Parameters ("agent")
     @BeforeClass
-    public void setup (String agent) {
-        String baseUri = agent.equals ("githubActions")
-                         ? "http://localhost:3001"
-                         : "https://restful-booker.herokuapp.com";
-        RequestSpecification requestSpecification = new RequestSpecBuilder ().setBaseUri (baseUri)
+    public void setup () {
+        final String agent = System.getProperty ("agent");
+        final String baseUri = agent.equals ("githubActions")
+                               ? "http://localhost:3001"
+                               : "https://restful-booker.herokuapp.com";
+        final RequestSpecification requestSpecification = new RequestSpecBuilder ().setBaseUri (baseUri)
             .addHeader ("Content-Type", "application/json")
             .addHeader ("Accept", "application/json")
             .addFilter (new RequestLoggingFilter ())
             .addFilter (new ResponseLoggingFilter ())
             .build ();
 
-        ResponseSpecification responseSpecification = new ResponseSpecBuilder ().expectResponseTime (lessThan (20000L))
+        final ResponseSpecification responseSpecification = new ResponseSpecBuilder ().expectResponseTime (
+                lessThan (20000L))
             .build ();
 
         RestAssured.requestSpecification = requestSpecification;
