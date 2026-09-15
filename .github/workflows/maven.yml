@@ -47,7 +47,7 @@ jobs:
           if [ -z "$rbPassword" ]; then echo "ERROR: rbPassword is empty"; fi
           if [ -z "$restful_ecommerce_username" ]; then echo "ERROR: restful_ecommerce_username is empty"; fi
           if [ -z "$restful_ecommerce_password" ]; then echo "ERROR: restful_ecommerce_password is empty"; fi
-          mvn clean install
+          mvn clean install -Dagent=githubActions
 
       - name: Stop restful booker and ecomerce service
         run: |
