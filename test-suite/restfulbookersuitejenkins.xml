@@ -6,7 +6,6 @@
                 class-name="restful.ecommerce.utility.TestListener"/>
     </listeners>
     <test name="Restful Booker tests on Jenkins">
-        <parameter name="agent" value="jenkins"/>
         <classes>
             <class name="com.restfulbooker.RestfulBookerE2ETests">
                 <methods>
