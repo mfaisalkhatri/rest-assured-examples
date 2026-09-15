@@ -42,7 +42,12 @@ jobs:
           rbPassword: ${{ secrets.RB_PASSWORD }}
           restful_ecommerce_username: ${{ secrets.ECOMM_USER_NAME }}
           restful_ecommerce_password: ${{ secrets.ECOMM_PASSWORD }}
-        run: mvn clean install
+        run: |
+          if [ -z "$rbUsername" ]; then echo "ERROR: rbUsername is empty"; fi
+          if [ -z "$rbPassword" ]; then echo "ERROR: rbPassword is empty"; fi
+          if [ -z "$restful_ecommerce_username" ]; then echo "ERROR: restful_ecommerce_username is empty"; fi
+          if [ -z "$restful_ecommerce_password" ]; then echo "ERROR: restful_ecommerce_password is empty"; fi
+          mvn clean install 
 
       - name: Stop restful booker and ecomerce service
         run: |
