@@ -26,7 +26,7 @@
         <allure.version>3.0.0</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
         <jackson-dataformat-csv.version>2.22.3</jackson-dataformat-csv.version>
-        <commons-lang3.version>3.20.0</commons-lang3.version>
+        <commons-lang3.version>3.21.0</commons-lang3.version>
         <apache.poi.common.version>5.5.1</apache.poi.common.version>
         <apache.poi.ooxml.version>5.5.1</apache.poi.ooxml.version>
         <aspectj.version>1.9.25.1</aspectj.version>
