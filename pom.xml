@@ -13,7 +13,7 @@
         <rest-assured.version>6.1.0</rest-assured.version>
         <testng.version>7.12.0</testng.version>
         <lombok.version>1.18.48</lombok.version>
-        <jackson-databind.version>2.22.3</jackson-databind.version>
+        <jackson-databind.version>2.22.4</jackson-databind.version>
         <data-faker.version>2.7.0</data-faker.version>
         <google-gson.verion>2.14.0</google-gson.verion>
         <log4jcore.version>2.26.1</log4jcore.version>
@@ -25,11 +25,11 @@
         <jsonassert.version>1.5.3</jsonassert.version>
         <allure.version>3.0.0</allure.version>
         <awaitility.version>4.3.0</awaitility.version>
-        <jackson-dataformat-csv.version>2.22.3</jackson-dataformat-csv.version>
+        <jackson-dataformat-csv.version>2.22.4</jackson-dataformat-csv.version>
         <commons-lang3.version>3.21.0</commons-lang3.version>
-        <apache.poi.common.version>5.5.1</apache.poi.common.version>
-        <apache.poi.ooxml.version>5.5.1</apache.poi.ooxml.version>
-        <aspectj.version>1.9.25.1</aspectj.version>
+        <apache.poi.common.version>6.0.0</apache.poi.common.version>
+        <apache.poi.ooxml.version>6.0.0</apache.poi.ooxml.version>
+        <aspectj.version>1.9.26</aspectj.version>
         <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.5.6</maven-surefire-plugin.version>
         <maven-enforcer.version>3.6.3</maven-enforcer.version>
